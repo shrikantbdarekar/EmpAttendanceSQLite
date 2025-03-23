@@ -1,0 +1,44 @@
+﻿######################################################################################################
+
+This is data for biometric machine. Total 6 Columns.
+
+3	2022-02-13 18:27:45	1	0	1	0
+2	2022-02-13 18:27:50	1	0	1	0
+1	2022-02-13 18:41:15	1	0	1	0
+12	2022-02-13 19:55:57	1	0	1	0
+9	2022-02-13 19:57:21	1	0	1	0
+3	2022-02-14 08:08:59	1	0	1	0
+2	2022-02-14 08:09:10	1	0	1	0
+12	2022-02-14 08:10:30	1	0	1	0
+4	2022-02-14 08:19:05	1	0	1	0
+
+##############################
+
+Explanation by GOOGLE/ChatGPT
+Based on the pattern, here’s what the fields might represent:
+
+#1 User ID / Employee ID
+The first column (e.g., 3, 2, 1, etc.) likely represents a unique identifier for an employee or
+user who is using the biometric device.
+
+#2 Timestamp
+The second column (2022-02-13 18:27:45) represents the date and time when the biometric machine 
+recorded the entry.
+
+#3 Device ID
+The third column (1) might indicate the specific biometric device if multiple devices are being 
+used in different locations.
+
+#4 Entry/Exit Flag
+The fourth column (0) could indicate whether this is an entry (0) or an exit (1), or it might be 
+reserved for additional data like verification status.
+
+#5 Verification Mode
+The fifth column (1) may represent how the person was authenticated (e.g., fingerprint, card, PIN, 
+or facial recognition).
+
+#6 Access Granted Flag / Status Code
+The sixth column (0) could indicate whether access was granted (0 = success, 1 = failure) or some 
+other status.
+
+######################################################################################################
