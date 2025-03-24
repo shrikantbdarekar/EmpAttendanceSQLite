@@ -67,7 +67,8 @@ namespace EmpAttendanceSQLite
 
         private void mnuManageAttendanceLog_Click(object sender, EventArgs e)
         {
-
+            FormManageLog formManageLog = new FormManageLog();
+            formManageLog.ShowDialog();
         }
 
         private void mnuExit_Click(object sender, EventArgs e)
