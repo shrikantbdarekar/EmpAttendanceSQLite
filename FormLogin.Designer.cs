@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             buttonLogin = new Button();
-            label1 = new Label();
+            labelUserId = new Label();
             textBoxUserId = new TextBox();
             textBoxPassword = new TextBox();
-            label2 = new Label();
+            labelPassword = new Label();
             buttonExit = new Button();
             SuspendLayout();
             // 
@@ -46,14 +46,14 @@
             buttonLogin.UseVisualStyleBackColor = true;
             buttonLogin.Click += buttonLogin_Click;
             // 
-            // label1
+            // labelUserId
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(42, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(68, 25);
-            label1.TabIndex = 1;
-            label1.Text = "User Id";
+            labelUserId.AutoSize = true;
+            labelUserId.Location = new Point(42, 31);
+            labelUserId.Name = "labelUserId";
+            labelUserId.Size = new Size(68, 25);
+            labelUserId.TabIndex = 1;
+            labelUserId.Text = "User Id";
             // 
             // textBoxUserId
             // 
@@ -66,17 +66,18 @@
             // 
             textBoxPassword.Location = new Point(150, 74);
             textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.PasswordChar = '*';
             textBoxPassword.Size = new Size(196, 31);
             textBoxPassword.TabIndex = 4;
             // 
-            // label2
+            // labelPassword
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(42, 77);
-            label2.Name = "label2";
-            label2.Size = new Size(87, 25);
-            label2.TabIndex = 3;
-            label2.Text = "Password";
+            labelPassword.AutoSize = true;
+            labelPassword.Location = new Point(42, 77);
+            labelPassword.Name = "labelPassword";
+            labelPassword.Size = new Size(87, 25);
+            labelPassword.TabIndex = 3;
+            labelPassword.Text = "Password";
             // 
             // buttonExit
             // 
@@ -96,9 +97,9 @@
             ClientSize = new Size(389, 189);
             Controls.Add(buttonExit);
             Controls.Add(textBoxPassword);
-            Controls.Add(label2);
+            Controls.Add(labelPassword);
             Controls.Add(textBoxUserId);
-            Controls.Add(label1);
+            Controls.Add(labelUserId);
             Controls.Add(buttonLogin);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -113,10 +114,10 @@
         #endregion
 
         private Button buttonLogin;
-        private Label label1;
+        private Label labelUserId;
         private TextBox textBoxUserId;
         private TextBox textBoxPassword;
-        private Label label2;
+        private Label labelPassword;
         private Button buttonExit;
     }
 }

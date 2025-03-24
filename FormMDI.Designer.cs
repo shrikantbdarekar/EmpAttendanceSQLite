@@ -32,6 +32,7 @@
             mnuSetting = new ToolStripMenuItem();
             mnuCompanyInfo = new ToolStripMenuItem();
             mnuUser = new ToolStripMenuItem();
+            mnuChangePassword = new ToolStripMenuItem();
             mnuEmployee = new ToolStripMenuItem();
             mnuAttendance = new ToolStripMenuItem();
             mniImportAttendance = new ToolStripMenuItem();
@@ -56,7 +57,7 @@
             // 
             // mnuSetting
             // 
-            mnuSetting.DropDownItems.AddRange(new ToolStripItem[] { mnuCompanyInfo, mnuUser });
+            mnuSetting.DropDownItems.AddRange(new ToolStripItem[] { mnuCompanyInfo, mnuUser, mnuChangePassword });
             mnuSetting.Name = "mnuSetting";
             mnuSetting.Size = new Size(97, 41);
             mnuSetting.Text = "Setting";
@@ -64,16 +65,25 @@
             // mnuCompanyInfo
             // 
             mnuCompanyInfo.Name = "mnuCompanyInfo";
-            mnuCompanyInfo.Size = new Size(270, 38);
+            mnuCompanyInfo.Size = new Size(286, 38);
             mnuCompanyInfo.Text = "Company Info";
+            mnuCompanyInfo.Visible = false;
             mnuCompanyInfo.Click += mnuCompanyInfo_Click;
             // 
             // mnuUser
             // 
             mnuUser.Name = "mnuUser";
-            mnuUser.Size = new Size(270, 38);
+            mnuUser.Size = new Size(286, 38);
             mnuUser.Text = "User";
+            mnuUser.Visible = false;
             mnuUser.Click += mnuUser_Click;
+            // 
+            // mnuChangePassword
+            // 
+            mnuChangePassword.Name = "mnuChangePassword";
+            mnuChangePassword.Size = new Size(286, 38);
+            mnuChangePassword.Text = "Change Password";
+            mnuChangePassword.Click += mnuChangePassword_Click;
             // 
             // mnuEmployee
             // 
@@ -144,5 +154,6 @@
         private ToolStripMenuItem mnuSetting;
         private ToolStripMenuItem mnuCompanyInfo;
         private ToolStripMenuItem mnuUser;
+        private ToolStripMenuItem mnuChangePassword;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmpAttendanceSQLite.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,23 @@ namespace EmpAttendanceSQLite
         public FormMDI()
         {
             InitializeComponent();
+
+            if (Program.loginUser.Role == (int)UserRoles.SuperAdmin)
+            {
+                mnuCompanyInfo.Visible = true;
+                mnuUser.Visible = true;
+            }
+            else if (Program.loginUser.Role == (int)UserRoles.Admin)
+            {
+                mnuUser.Visible = true;
+            }
+
+            Application.DoEvents();
         }
 
         private void FormMDI_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void mnuCompanyInfo_Click(object sender, EventArgs e)
@@ -32,6 +45,12 @@ namespace EmpAttendanceSQLite
         {
             FormUserSearch formUserSearch = new FormUserSearch();
             formUserSearch.ShowDialog();
+        }
+
+        private void mnuChangePassword_Click(object sender, EventArgs e)
+        {
+            FormChangePassword formChangePassword = new FormChangePassword();
+            formChangePassword.ShowDialog();
         }
 
         private void mnuEmployee_Click(object sender, EventArgs e)
@@ -56,6 +75,6 @@ namespace EmpAttendanceSQLite
             this.Close();
         }
 
-       
+        
     }
 }

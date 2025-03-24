@@ -1,7 +1,12 @@
+using EmpAttendanceSQLite.Models;
+
 namespace EmpAttendanceSQLite
 {
     internal static class Program
     {
+        // Handle current login credentials
+        public static LoginUser loginUser = new LoginUser();
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

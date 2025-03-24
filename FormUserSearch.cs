@@ -39,7 +39,9 @@ namespace EmpAttendanceSQLite
         {
             using (var context = new AppDbContext())
             {
-                dataGridViewMain.DataSource = context.LoginUsers.ToList();
+                dataGridViewMain.DataSource = context.LoginUsers
+                    .Where(user => user.Role != (int)UserRoles.SuperAdmin)  // Exclude Admin (Role = 1)
+                    .ToList();
             }
         }
 
