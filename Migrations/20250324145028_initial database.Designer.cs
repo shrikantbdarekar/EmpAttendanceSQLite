@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpAttendanceSQLite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250323195051_initial database")]
+    [Migration("20250324145028_initial database")]
     partial class initialdatabase
     {
         /// <inheritdoc />
@@ -29,6 +29,11 @@ namespace EmpAttendanceSQLite.Migrations
                     b.Property<int>("BMEmployeeId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("BatchCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
@@ -38,13 +43,18 @@ namespace EmpAttendanceSQLite.Migrations
                     b.Property<DateTime>("PunchTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<byte>("PunchTypeFlag")
+                    b.Property<int>("PunchTypeFlag")
                         .HasColumnType("INTEGER");
 
-                    b.Property<byte>("StatusCode")
+                    b.Property<string>("RecordType")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("StatusCode")
                         .HasColumnType("INTEGER");
 
-                    b.Property<byte>("VerificationMode")
+                    b.Property<int>("VerificationMode")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("LogId");

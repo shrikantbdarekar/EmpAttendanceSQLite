@@ -22,10 +22,12 @@ namespace EmpAttendanceSQLite.Migrations
                     BMEmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
                     PunchTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     DeviceId = table.Column<int>(type: "INTEGER", nullable: false),
-                    PunchTypeFlag = table.Column<byte>(type: "INTEGER", nullable: false),
-                    VerificationMode = table.Column<byte>(type: "INTEGER", nullable: false),
-                    StatusCode = table.Column<byte>(type: "INTEGER", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    PunchTypeFlag = table.Column<int>(type: "INTEGER", nullable: false),
+                    VerificationMode = table.Column<int>(type: "INTEGER", nullable: false),
+                    StatusCode = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    RecordType = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
+                    BatchCode = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {

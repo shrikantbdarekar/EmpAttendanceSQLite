@@ -9,6 +9,9 @@ namespace EmpAttendanceSQLite
         public FormLogin()
         {
             InitializeComponent();
+
+            textBoxUserId.Text = "admin";
+            textBoxPassword.Text = "admin";
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -43,7 +46,6 @@ namespace EmpAttendanceSQLite
                     {
                         MessageBox.Show("Invalid User Id or Passsword!");
                     }
-
                 }
                 else 
                 {

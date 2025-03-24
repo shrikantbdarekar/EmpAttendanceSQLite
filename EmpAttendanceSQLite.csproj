@@ -20,6 +20,9 @@
     <Compile Update="FormCompanyInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormImportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormImportAttendanceLog.cs">
       <SubType>Form</SubType>
     </Compile>
