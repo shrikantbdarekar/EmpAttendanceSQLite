@@ -1,11 +1,14 @@
 using EmpAttendanceSQLite.Data;
 using EmpAttendanceSQLite.Models;
+using Microsoft.VisualBasic.Logging;
 using System.Windows.Forms;
 
 namespace EmpAttendanceSQLite
 {
     public partial class FormManageLog : Form
     {
+        private DateTime VirtualFromDate = new DateTime(2025,3,1);
+        private DateTime VirtuaToDate = new DateTime(2025, 3, 25);
         public FormManageLog()
         {
             InitializeComponent();
@@ -34,8 +37,11 @@ namespace EmpAttendanceSQLite
                 comboBoxEmployee.DataSource = employeeList;
                 comboBoxEmployee.DisplayMember = "EmployeeName";  // Shown in dropdown
                 comboBoxEmployee.ValueMember = "EmployeeId";      // Stored value
+
+
             }
         }
+
 
         private void buttonLoadData_Click(object sender, EventArgs e)
         {
@@ -62,6 +68,7 @@ namespace EmpAttendanceSQLite
                         .ToList();
 
                     dataGridViewMain.DataSource = filteredData;
+                    labelTotal.Text = "Total Rows: " + dataGridViewMain.Rows.Count.ToString();
                 }
                 else
                 {
@@ -70,6 +77,97 @@ namespace EmpAttendanceSQLite
                         .ToList();
 
                     dataGridViewMain.DataSource = filteredData;
+                    labelTotal.Text = "Total Rows: " + dataGridViewMain.Rows.Count.ToString();
+                }
+            }
+        }
+
+        private void buttonInOut_Click(object sender, EventArgs e)
+        {
+            MissingLogPunchType();
+        }
+
+        private void buttonAmPm_Click(object sender, EventArgs e)
+        {
+            MissingLogPunchTypeAmPm();
+        }
+
+
+        private void MissingLogPunchType()
+        {
+            using (var context = new AppDbContext())
+            {
+
+                var groupedLogs = context.BiometricLogs
+                    .Where(b => b.PunchTime >= VirtualFromDate && b.PunchTime <= VirtuaToDate)
+                .GroupBy(b => new { b.BMEmployeeId, b.PunchTime.Date })
+                .Select(g => new
+                {
+                    EmployeeId = g.Key.BMEmployeeId,
+                    Date = g.Key.Date,
+                    InPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 0), // IN punch
+                    OutPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 1), // OUT punch
+                    AllPunches = g.ToList()
+                })
+                .ToList();
+                dataGridView1.DataSource = groupedLogs;
+
+                // Identify missing punches
+                var missingPunches = new List<MissingLog>();
+                foreach (var log in groupedLogs)
+                {
+                    if (log.InPunch == null || log.OutPunch == null)
+                    {
+                        missingPunches.Add(new MissingLog
+                        {
+                            BMEmployeeId = log.EmployeeId,
+                            PunchDate = log.Date,
+                            MissingType = log.InPunch == null ? "Missing IN" : "Missing OUT",
+                            CreatedAt = DateTime.UtcNow
+                        });
+                    }
+                }
+
+                // Insert missing logs into `MissingLogs` table
+                context.MissingLogs.AddRange(missingPunches);
+                context.SaveChanges();
+            }
+        }
+
+        private void MissingLogPunchTypeAmPm()
+        {
+            using (var context = new AppDbContext())
+            {
+                var groupedLogs = context.BiometricLogs
+                    .Where(b => b.PunchTime >= VirtualFromDate && b.PunchTime <= VirtuaToDate)
+                    .GroupBy(b => new { b.BMEmployeeId, b.PunchTime.Date })
+                    .Select(g => new
+                    {
+                        EmployeeId = g.Key.BMEmployeeId,
+                        Date = g.Key.Date,
+                        InPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 0), // IN punch
+                        OutPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 1), // OUT punch
+                        AllPunches = g.ToList()
+                    })
+                    .ToList();
+
+                dataGridView2.DataSource = groupedLogs;
+
+                foreach (var log in groupedLogs)
+                {
+                    var inPunch = log.AllPunches.FirstOrDefault(p => p.PunchTime.TimeOfDay < TimeSpan.FromHours(12)); // Before 12 PM
+                    var outPunch = log.AllPunches.FirstOrDefault(p => p.PunchTime.TimeOfDay >= TimeSpan.FromHours(12)); // After 12 PM
+
+                    if (inPunch == null || outPunch == null)
+                    {
+                        context.MissingLogs.Add(new MissingLog
+                        {
+                            BMEmployeeId = log.EmployeeId,
+                            PunchDate = log.Date,
+                            MissingType = inPunch == null ? "Missing IN" : "Missing OUT",
+                            CreatedAt = DateTime.UtcNow
+                        });
+                    }
                 }
             }
         }

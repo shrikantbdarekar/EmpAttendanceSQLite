@@ -32,7 +32,7 @@ namespace EmpAttendanceSQLite
 
         private void FormMDI_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void mnuCompanyInfo_Click(object sender, EventArgs e)
@@ -71,6 +71,10 @@ namespace EmpAttendanceSQLite
             formManageLog.ShowDialog();
         }
 
+        private void mnuMissingEntry_Click(object sender, EventArgs e)
+        {
+
+        }
         private void mnuExit_Click(object sender, EventArgs e)
         {
             this.Close();

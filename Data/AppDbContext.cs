@@ -16,6 +16,8 @@ namespace EmpAttendanceSQLite.Data
         public DbSet<LoginUser> LoginUsers { get; set; }
         public DbSet<BiometricLog> BiometricLogs { get; set; }
 
+        public DbSet<MissingLog> MissingLogs { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlite("Data Source=EmpAttendanceDB.db");

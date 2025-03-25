@@ -62,12 +62,14 @@
             textBoxEmpCode = new TextBox();
             labelEmpCoode = new Label();
             buttonSave = new Button();
+            checkBoxIsActive = new CheckBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(checkBoxIsActive);
             panel1.Controls.Add(label16);
             panel1.Controls.Add(dtpShiftEnd);
             panel1.Controls.Add(labelShiftEnd);
@@ -382,6 +384,18 @@
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
+            // checkBoxIsActive
+            // 
+            checkBoxIsActive.AutoSize = true;
+            checkBoxIsActive.Checked = true;
+            checkBoxIsActive.CheckState = CheckState.Checked;
+            checkBoxIsActive.Location = new Point(187, 294);
+            checkBoxIsActive.Name = "checkBoxIsActive";
+            checkBoxIsActive.Size = new Size(104, 29);
+            checkBoxIsActive.TabIndex = 42;
+            checkBoxIsActive.Text = "Is Active";
+            checkBoxIsActive.UseVisualStyleBackColor = true;
+            // 
             // FormEmployee
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
@@ -436,5 +450,6 @@
         private DateTimePicker dtpShiftStart;
         private Label labelShiftStart;
         private Label label16;
+        private CheckBox checkBoxIsActive;
     }
 }

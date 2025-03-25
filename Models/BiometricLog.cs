@@ -44,6 +44,6 @@ namespace EmpAttendanceSQLite.Models
 
         [Required]
         [MaxLength(20)]
-        public string BatchCode { get; set; } // BC-YYYYMMDDHHMMSS
+        public string BatchCode { get; set; } = "BCODE-" + DateTime.Now.ToString("yyyyMMddhhmmss").ToString(); // BC-YYYYMMDDHHMMSS
     }
 }

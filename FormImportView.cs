@@ -1,5 +1,6 @@
 using EmpAttendanceSQLite.Data;
 using EmpAttendanceSQLite.Models;
+using System.Diagnostics.SymbolStore;
 using System.Windows.Forms;
 
 namespace EmpAttendanceSQLite
@@ -18,14 +19,19 @@ namespace EmpAttendanceSQLite
 
         private void FormImportAttendanceLog_Load(object sender, EventArgs e)
         {
-            labelMessage.Text = importMessage;
-
             using (var context = new AppDbContext())
             {
                 dataGridViewMain.DataSource = context.BiometricLogs
                     .Where(x => x.BatchCode == batchCode)
                     .ToList();
+
+                dataGridViewMissingLogs.DataSource = context.MissingLogs
+                    .Where(x => x.BatchCode == batchCode)
+                    .ToList();
             }
+
+            labelMessage.Text = importMessage;
+            labelMessage.Text += " | Missing Entries " + dataGridViewMissingLogs.RowCount;
 
             Application.DoEvents();
         }

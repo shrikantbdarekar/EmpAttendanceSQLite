@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             labelMessage = new Label();
             dataGridViewMain = new DataGridView();
             dgcLogId = new DataGridViewTextBoxColumn();
@@ -40,7 +41,15 @@
             dgcStatusCode = new DataGridViewTextBoxColumn();
             dgcCreatedAt = new DataGridViewTextBoxColumn();
             openAttendanceLogFileDialog = new OpenFileDialog();
+            tabControl1 = new TabControl();
+            tabPageImportedLog = new TabPage();
+            tabPageMissingLogs = new TabPage();
+            dataGridViewMissingLogs = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).BeginInit();
+            tabControl1.SuspendLayout();
+            tabPageImportedLog.SuspendLayout();
+            tabPageMissingLogs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMissingLogs).BeginInit();
             SuspendLayout();
             // 
             // labelMessage
@@ -49,9 +58,9 @@
             labelMessage.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelMessage.Location = new Point(12, 9);
             labelMessage.Name = "labelMessage";
-            labelMessage.Size = new Size(110, 30);
+            labelMessage.Size = new Size(156, 30);
             labelMessage.TabIndex = 1;
-            labelMessage.Text = "File Name";
+            labelMessage.Text = "Messege Place";
             // 
             // dataGridViewMain
             // 
@@ -59,23 +68,23 @@
             dataGridViewMain.AllowUserToDeleteRows = false;
             dataGridViewMain.BackgroundColor = Color.Gainsboro;
             dataGridViewMain.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewMain.ColumnHeadersHeight = 40;
             dataGridViewMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewMain.Columns.AddRange(new DataGridViewColumn[] { dgcLogId, dgcBMEmployeeId, dgcPunchTime, dgcDeviceId, dgcPunchTypeFlag, dgcVerificationMode, dgcStatusCode, dgcCreatedAt });
-            dataGridViewMain.Dock = DockStyle.Bottom;
-            dataGridViewMain.Location = new Point(0, 51);
+            dataGridViewMain.Dock = DockStyle.Fill;
+            dataGridViewMain.Location = new Point(3, 3);
             dataGridViewMain.Name = "dataGridViewMain";
             dataGridViewMain.ReadOnly = true;
             dataGridViewMain.RowHeadersWidth = 62;
-            dataGridViewMain.Size = new Size(1178, 693);
+            dataGridViewMain.Size = new Size(1164, 648);
             dataGridViewMain.TabIndex = 6;
             // 
             // dgcLogId
@@ -156,13 +165,70 @@
             openAttendanceLogFileDialog.Filter = "Backup File | *.dat";
             openAttendanceLogFileDialog.Title = "Attendance Log";
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPageImportedLog);
+            tabControl1.Controls.Add(tabPageMissingLogs);
+            tabControl1.Dock = DockStyle.Bottom;
+            tabControl1.Location = new Point(0, 52);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1178, 692);
+            tabControl1.TabIndex = 7;
+            // 
+            // tabPageImportedLog
+            // 
+            tabPageImportedLog.Controls.Add(dataGridViewMain);
+            tabPageImportedLog.Location = new Point(4, 34);
+            tabPageImportedLog.Name = "tabPageImportedLog";
+            tabPageImportedLog.Padding = new Padding(3);
+            tabPageImportedLog.Size = new Size(1170, 654);
+            tabPageImportedLog.TabIndex = 0;
+            tabPageImportedLog.Text = "Imported Logs";
+            tabPageImportedLog.UseVisualStyleBackColor = true;
+            // 
+            // tabPageMissingLogs
+            // 
+            tabPageMissingLogs.Controls.Add(dataGridViewMissingLogs);
+            tabPageMissingLogs.Location = new Point(4, 34);
+            tabPageMissingLogs.Name = "tabPageMissingLogs";
+            tabPageMissingLogs.Padding = new Padding(3);
+            tabPageMissingLogs.Size = new Size(1170, 654);
+            tabPageMissingLogs.TabIndex = 1;
+            tabPageMissingLogs.Text = "Missing Logs";
+            tabPageMissingLogs.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewMissingLogs
+            // 
+            dataGridViewMissingLogs.AllowUserToAddRows = false;
+            dataGridViewMissingLogs.AllowUserToDeleteRows = false;
+            dataGridViewMissingLogs.BackgroundColor = Color.Gainsboro;
+            dataGridViewMissingLogs.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewMissingLogs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewMissingLogs.ColumnHeadersHeight = 40;
+            dataGridViewMissingLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewMissingLogs.Dock = DockStyle.Fill;
+            dataGridViewMissingLogs.Location = new Point(3, 3);
+            dataGridViewMissingLogs.Name = "dataGridViewMissingLogs";
+            dataGridViewMissingLogs.ReadOnly = true;
+            dataGridViewMissingLogs.RowHeadersWidth = 62;
+            dataGridViewMissingLogs.Size = new Size(1164, 648);
+            dataGridViewMissingLogs.TabIndex = 7;
+            // 
             // FormImportView
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1178, 744);
-            Controls.Add(dataGridViewMain);
+            Controls.Add(tabControl1);
             Controls.Add(labelMessage);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -171,6 +237,10 @@
             Text = "Import Data";
             Load += FormImportAttendanceLog_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).EndInit();
+            tabControl1.ResumeLayout(false);
+            tabPageImportedLog.ResumeLayout(false);
+            tabPageMissingLogs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMissingLogs).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,5 +261,9 @@
         private DataGridViewTextBoxColumn dgcVerificationMode;
         private DataGridViewTextBoxColumn dgcStatusCode;
         private DataGridViewTextBoxColumn dgcCreatedAt;
+        private TabControl tabControl1;
+        private TabPage tabPageImportedLog;
+        private TabPage tabPageMissingLogs;
+        private DataGridView dataGridViewMissingLogs;
     }
 }

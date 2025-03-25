@@ -1,0 +1,11 @@
+INSERT INTO Employees (EmployeeCode, BMEmployeeId, JoiningDate, BirthDate, EmployeeName, Address, EmailId, ContactNumber1, ContactNumber2, Department, Designation, MonthlySalary, HourlySalary, ShiftStart, ShiftEnd, IsActive, CreatedAt)
+VALUES
+('EMP001', 1, '2022-05-15', '1990-04-12', 'John Doe', '123 Street, City', 'john.doe@email.com', '9876543210', '9123456789', 'IT', 'Software Engineer', 50000.00, 312.50, '08:30:00', '18:00:00', 1, CURRENT_TIMESTAMP),
+
+('EMP002', 2, '2023-01-20', '1988-07-22', 'Jane Smith', '456 Avenue, City', 'jane.smith@email.com', '9123456780', '9234567890', 'HR', 'HR Manager', 60000.00, 375.00, '08:30:00', '18:00:00', 1, CURRENT_TIMESTAMP),
+
+('EMP003', 3, '2021-11-10', '1995-12-05', 'Robert Brown', '789 Boulevard, City', 'robert.brown@email.com', '9234567812', '9345678901', 'Finance', 'Accountant', 45000.00, 281.25, '08:30:00', '18:00:00', 1, CURRENT_TIMESTAMP),
+
+('EMP004', 4, '2020-06-18', '1992-09-30', 'Emily Johnson', '147 Street, City', 'emily.johnson@email.com', '9345678123', '9456789012', 'Sales', 'Sales Executive', 48000.00, 300.00, '08:30:00', '18:00:00', 1, CURRENT_TIMESTAMP),
+
+('EMP005', 5, '2019-03-25', '1985-02-14', 'Michael Williams', '258 Avenue, City', 'michael.williams@email.com', '9456781234', '9567890123', 'Operations', 'Operations Manager', 70000.00, 437.50, '08:30:00', '18:00:00', 1, CURRENT_TIMESTAMP);

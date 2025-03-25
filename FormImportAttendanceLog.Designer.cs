@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonLogin = new Button();
+            buttonImportData = new Button();
             label1 = new Label();
             textBoxFileName = new TextBox();
             buttonExit = new Button();
             openAttendanceLogFileDialog = new OpenFileDialog();
             SuspendLayout();
             // 
-            // buttonLogin
+            // buttonImportData
             // 
-            buttonLogin.Location = new Point(157, 77);
-            buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(106, 38);
-            buttonLogin.TabIndex = 0;
-            buttonLogin.Text = "Import";
-            buttonLogin.UseVisualStyleBackColor = true;
-            buttonLogin.Click += buttonImport_Click;
+            buttonImportData.Location = new Point(157, 77);
+            buttonImportData.Name = "buttonImportData";
+            buttonImportData.Size = new Size(106, 38);
+            buttonImportData.TabIndex = 0;
+            buttonImportData.Text = "Import";
+            buttonImportData.UseVisualStyleBackColor = true;
+            buttonImportData.Click += buttonImportData_Click;
             // 
             // label1
             // 
@@ -86,7 +86,7 @@
             Controls.Add(buttonExit);
             Controls.Add(textBoxFileName);
             Controls.Add(label1);
-            Controls.Add(buttonLogin);
+            Controls.Add(buttonImportData);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormImportAttendanceLog";
@@ -104,5 +104,6 @@
         private TextBox textBoxFileName;
         private Button buttonExit;
         private OpenFileDialog openAttendanceLogFileDialog;
+        private Button buttonImportData;
     }
 }

@@ -46,10 +46,10 @@ namespace EmpAttendanceSQLite
                         textBoxDesignation.Text = employee.Designation;
                         textBoxMonthlySalary.Text = employee.MonthlySalary.ToString();
                         textBoxHourlySalary.Text = employee.HourlySalary.ToString();
-                        dtpShiftStart.Value = (DateTime)employee.ShiftStart;
-                        dtpShiftEnd.Value = (DateTime)employee.ShiftEnd;
+                        dtpShiftStart.Value = DateTime.Today.Add(employee.ShiftStart);
+                        dtpShiftEnd.Value = DateTime.Today.Add(employee.ShiftEnd);
 
-                        //employee.IsActive = true;
+                        checkBoxIsActive.Checked = employee.IsActive;
                     }
                 }
             }
@@ -78,10 +78,10 @@ namespace EmpAttendanceSQLite
                         employee.Designation = textBoxDesignation.Text;
                         employee.MonthlySalary =Convert.ToDecimal(textBoxMonthlySalary.Text);
                         employee.HourlySalary = Convert.ToDecimal(textBoxHourlySalary.Text);
-                        employee.ShiftStart = dtpShiftStart.Value;
-                        employee.ShiftEnd = dtpShiftEnd.Value;
+                        employee.ShiftStart = dtpShiftStart.Value.TimeOfDay;
+                        employee.ShiftEnd = dtpShiftEnd.Value.TimeOfDay;
 
-                        //employee.IsActive = true;
+                        employee.IsActive = checkBoxIsActive.Checked;
 
                         context.SaveChanges();
                     }
@@ -104,10 +104,9 @@ namespace EmpAttendanceSQLite
                         Designation = textBoxDesignation.Text,
                         MonthlySalary = Convert.ToDecimal(textBoxMonthlySalary.Text),
                         HourlySalary = Convert.ToDecimal(textBoxHourlySalary.Text),
-                        ShiftStart = dtpShiftStart.Value,
-                        ShiftEnd = dtpShiftEnd.Value,
-
-                        //employee.IsActive = true;
+                        ShiftStart = dtpShiftStart.Value.TimeOfDay,
+                        ShiftEnd = dtpShiftEnd.Value.TimeOfDay,
+                        IsActive = true
                     };
 
                     context.Employees.Add(employee);

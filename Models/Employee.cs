@@ -57,13 +57,13 @@ namespace EmpAttendanceSQLite.Models
 
         [Required]
         [Column(TypeName = "DECIMAL(10,2)")]
-        public decimal HourlySalary;  // Hourly Salary
+        public decimal HourlySalary { get; set; }   // Hourly Salary
 
         [Required]
-        public DateTime ShiftStart { get; set; }  // Employee Shift Start Time
+        public TimeSpan ShiftStart { get; set; }  // Employee Shift Start Time
 
         [Required]
-        public DateTime ShiftEnd { get; set; }  // Employee Shift End Time
+        public TimeSpan ShiftEnd { get; set; }  // Employee Shift End Time
 
         [Required]
         public bool IsActive { get; set; }  // Employee Active/Inactive Status

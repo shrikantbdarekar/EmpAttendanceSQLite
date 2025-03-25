@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EmpAttendanceSQLite.Migrations
 {
     /// <inheritdoc />
-    public partial class initialdatabase : Migration
+    public partial class InitialDatabase10 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -87,8 +87,9 @@ namespace EmpAttendanceSQLite.Migrations
                     Department = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Designation = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     MonthlySalary = table.Column<decimal>(type: "DECIMAL(10,2)", nullable: false),
-                    ShiftStart = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ShiftEnd = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    HourlySalary = table.Column<decimal>(type: "DECIMAL(10,2)", nullable: false),
+                    ShiftStart = table.Column<TimeSpan>(type: "TEXT", nullable: false),
+                    ShiftEnd = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
@@ -112,6 +113,22 @@ namespace EmpAttendanceSQLite.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LoginUsers", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MissingLogs",
+                columns: table => new
+                {
+                    MissingLogId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    BMEmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    PunchDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    MissingType = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MissingLogs", x => x.MissingLogId);
                 });
 
             migrationBuilder.InsertData(
@@ -147,6 +164,9 @@ namespace EmpAttendanceSQLite.Migrations
 
             migrationBuilder.DropTable(
                 name: "LoginUsers");
+
+            migrationBuilder.DropTable(
+                name: "MissingLogs");
         }
     }
 }

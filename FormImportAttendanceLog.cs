@@ -17,7 +17,7 @@ namespace EmpAttendanceSQLite
         {
         }
 
-        private void buttonImport_Click(object sender, EventArgs e)
+        private void buttonImportData_Click(object sender, EventArgs e)
         {
             try
             {
@@ -32,12 +32,16 @@ namespace EmpAttendanceSQLite
                     Application.DoEvents();
 
                     ImportBiometricLogs(fileName);
+                    AddMissingLogEntry();
 
                     formSplash.Close();
-                    Application.DoEvents();
+                    
 
                     FormImportView formImportView = new FormImportView(batchCode, importMessage);
                     formImportView.ShowDialog();
+                    Application.DoEvents();
+
+                    //buttonLogin.Enabled = false;
                 }
                 else
                 {
@@ -107,6 +111,46 @@ namespace EmpAttendanceSQLite
             }
         }
 
+        private void AddMissingLogEntry()
+        {
+            using (var context = new AppDbContext())
+            {
+                var groupedLogs = context.BiometricLogs
+                    .Where(b => b.BatchCode==batchCode)
+                //.Where(b => b.PunchTime >= VirtualFromDate && b.PunchTime <= VirtuaToDate)
+                .GroupBy(b => new { b.BMEmployeeId, b.PunchTime.Date })
+                .Select(g => new
+                {
+                    EmployeeId = g.Key.BMEmployeeId,
+                    Date = g.Key.Date,
+                    InPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 0), // IN punch
+                    OutPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 1), // OUT punch
+                    AllPunches = g.ToList()
+                })
+                .ToList();
+
+                // Identify missing punches
+                var missingPunches = new List<MissingLog>();
+                foreach (var log in groupedLogs)
+                {
+                    if (log.InPunch == null || log.OutPunch == null)
+                    {
+                        missingPunches.Add(new MissingLog
+                        {
+                            BMEmployeeId = log.EmployeeId,
+                            PunchDate = log.Date,
+                            MissingType = log.InPunch == null ? "Missing IN" : "Missing OUT",
+                            CreatedAt = DateTime.UtcNow,
+                            BatchCode=batchCode
+                        });
+                    }
+                }
+
+                // Insert missing logs into `MissingLogs` table
+                context.MissingLogs.AddRange(missingPunches);
+                context.SaveChanges();
+            }
+        }
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

@@ -39,6 +39,7 @@
             mnuManageAttendanceLog = new ToolStripMenuItem();
             mnuReport = new ToolStripMenuItem();
             mnuExit = new ToolStripMenuItem();
+            mnuMissingEntry = new ToolStripMenuItem();
             menuStripMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -94,7 +95,7 @@
             // 
             // mnuAttendance
             // 
-            mnuAttendance.DropDownItems.AddRange(new ToolStripItem[] { mniImportAttendance, mnuManageAttendanceLog });
+            mnuAttendance.DropDownItems.AddRange(new ToolStripItem[] { mniImportAttendance, mnuManageAttendanceLog, mnuMissingEntry });
             mnuAttendance.Name = "mnuAttendance";
             mnuAttendance.Size = new Size(139, 41);
             mnuAttendance.Text = "Attendance";
@@ -126,6 +127,13 @@
             mnuExit.Text = "Exit";
             mnuExit.Click += mnuExit_Click;
             // 
+            // mnuMissingEntry
+            // 
+            mnuMissingEntry.Name = "mnuMissingEntry";
+            mnuMissingEntry.Size = new Size(353, 38);
+            mnuMissingEntry.Text = "Missing Entry";
+            mnuMissingEntry.Click += mnuMissingEntry_Click;
+            // 
             // FormMDI
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
@@ -155,5 +163,6 @@
         private ToolStripMenuItem mnuCompanyInfo;
         private ToolStripMenuItem mnuUser;
         private ToolStripMenuItem mnuChangePassword;
+        private ToolStripMenuItem mnuMissingEntry;
     }
 }

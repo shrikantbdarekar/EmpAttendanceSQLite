@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpAttendanceSQLite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250324145028_initial database")]
-    partial class initialdatabase
+    [Migration("20250325014923_Initial Database 1.1")]
+    partial class InitialDatabase11
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -198,6 +198,9 @@ namespace EmpAttendanceSQLite.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("HourlySalary")
+                        .HasColumnType("DECIMAL(10,2)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
@@ -207,10 +210,10 @@ namespace EmpAttendanceSQLite.Migrations
                     b.Property<decimal>("MonthlySalary")
                         .HasColumnType("DECIMAL(10,2)");
 
-                    b.Property<DateTime>("ShiftEnd")
+                    b.Property<TimeSpan>("ShiftEnd")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ShiftStart")
+                    b.Property<TimeSpan>("ShiftStart")
                         .HasColumnType("TEXT");
 
                     b.HasKey("EmployeeId");
@@ -274,6 +277,36 @@ namespace EmpAttendanceSQLite.Migrations
                             Role = 3,
                             UserName = "emp"
                         });
+                });
+
+            modelBuilder.Entity("EmpAttendanceSQLite.Models.MissingLog", b =>
+                {
+                    b.Property<int>("MissingLogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BMEmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("BatchCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MissingType")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("PunchDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MissingLogId");
+
+                    b.ToTable("MissingLogs");
                 });
 #pragma warning restore 612, 618
         }
