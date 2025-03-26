@@ -4,17 +4,54 @@ using System.Windows.Forms;
 
 namespace EmpAttendanceSQLite
 {
-    public partial class FormImportAttendanceLog : Form
+    public partial class FormImportAttendanceLogAdv : Form
     {
-        private string batchCode = string.Empty;
-        private string importMessage = string.Empty;
-        public FormImportAttendanceLog()
+        //private string batchCode = string.Empty;
+        //private string importMessage = string.Empty;
+        public FormImportAttendanceLogAdv()
         {
             InitializeComponent();
         }
 
         private void FormImportAttendanceLog_Load(object sender, EventArgs e)
         {
+            DateTime now = DateTime.Now;
+
+            // Get the first day of the previous month
+            DateTime firstDayOfPreviousMonth = new DateTime(now.Year, now.Month, 1).AddMonths(-1);
+            // Get the last day of the previous month
+            DateTime lastDayOfPreviousMonth = firstDayOfPreviousMonth.AddMonths(1).AddDays(-1);
+
+            dtpStartDate.Value = firstDayOfPreviousMonth;
+            dtpEndDate.Value = lastDayOfPreviousMonth;
+
+            dataGridViewBiometricLogs.AutoGenerateColumns = false;
+            dataGridViewBatchHistory.AutoGenerateColumns = false;
+
+            LoadBatchHistory();
+        }
+
+        private void LoadBatchHistory()
+        {
+            using (var context = new AppDbContext())
+            {
+                var batchCodes = context.BiometricLogs
+                    .GroupBy(x => new { x.BatchCode, x.StartDate, x.EndDate }) // Group by all three
+                    .Select(g => new
+                    {
+                        g.Key.BatchCode,
+                        g.Key.StartDate,
+                        g.Key.EndDate
+                    })
+                    .OrderBy(x => x.StartDate) // Order by StartDate
+                    .ToList();
+
+                dataGridViewBatchHistory.DataSource = batchCodes;
+                dataGridViewBiometricLogs.DataSource = null;
+
+                tabPageBatchHistory.Text = "# Batch History (" + dataGridViewBatchHistory.RowCount + ")";
+            }
+
         }
 
         private void buttonBrowseFile_Click(object sender, EventArgs e)
@@ -25,11 +62,24 @@ namespace EmpAttendanceSQLite
         }
         private void buttonImportData_Click(object sender, EventArgs e)
         {
+            if (textBoxFileName.Text == string.Empty)
+            {
+                MessageBox.Show("Select file to import data!", "Alert");
+                return;
+            }
+
             try
             {
-                DateTime fromDate = dtpFromDate.Value;
-                DateTime toDate = dtpToDate.Value;
                 string fileName = textBoxFileName.Text;
+
+                DateTime FD = dtpStartDate.Value;
+                DateTime TD = dtpEndDate.Value;
+
+                DateTime fromDate = new DateTime(FD.Year, FD.Month, FD.Day, 0, 1, 0);
+                DateTime toDate = new DateTime(TD.Year, TD.Month, TD.Day, 23, 59, 0);
+
+
+                string batchCode = "BCODE-" + DateTime.Now.ToString("yyyyMMddhhmmss").ToString();
 
                 if (File.Exists(fileName))
                 {
@@ -37,18 +87,12 @@ namespace EmpAttendanceSQLite
                     formSplash.Show();
                     Application.DoEvents();
 
-                    ImportBiometricLogs(fileName, fromDate, toDate);
-                    UpdateAlternateInOut();
-                    AddMissingLogEntry();
+                    ImportBiometricLogs(fileName, batchCode, fromDate, toDate);
 
                     formSplash.Close();
 
-
-                    FormImportView formImportView = new FormImportView(batchCode, importMessage);
-                    formImportView.ShowDialog();
-                    Application.DoEvents();
-
-                    //buttonLogin.Enabled = false;
+                    LoadBatchHistory();
+                    LoadBatchData(batchCode);
                 }
                 else
                 {
@@ -61,11 +105,43 @@ namespace EmpAttendanceSQLite
             }
         }
 
-        private void ImportBiometricLogs(string filePath, DateTime fromDate, DateTime toDate)
+        private void LoadBatchData(string batchCode)
+        {
+            using (var context = new AppDbContext())
+            {
+                var biometricLogData = (from bl in context.BiometricLogs
+                                        join emp in context.Employees on bl.BMEmployeeId equals emp.BMEmployeeId
+                                        where bl.BatchCode == batchCode // Filter by BatchCode
+                                        orderby bl.PunchTime, bl.BMEmployeeId // Sorting first by PunchTime, then BMEmployeeId
+                                        select new
+                                        {
+                                            bl.LogId,
+                                            bl.BMEmployeeId,
+                                            EmployeeName = emp.EmployeeName,
+                                            EmployeeId = emp.EmployeeId,
+                                            bl.PunchTime,
+                                            bl.DeviceId,
+                                            bl.PunchTypeFlag,
+                                            bl.VerificationMode,
+                                            bl.StatusCode,
+                                            bl.CreatedAt,
+                                            bl.RecordType,
+                                            bl.BatchCode
+                                        }).ToList();
+
+                dataGridViewBiometricLogs.DataSource = biometricLogData;
+
+                labelBatchCode.Text = "Batch Code\n" + batchCode;
+                tabPageRawLogs.Text = "#Raw Log Data (" + dataGridViewBiometricLogs.RowCount + ")    ";
+
+                tabControlMain.SelectedTab = tabPageRawLogs; // Ensure the tab is selected
+                tabPageRawLogs.Focus(); // Set focus on the tab
+            }
+        }
+        private void ImportBiometricLogs(string filePath, string batchCode, DateTime startDate, DateTime endDate)
         {
             int insertedCount = 0;
             int duplicateCount = 0;
-            batchCode = "BCODE-" + DateTime.Now.ToString("yyyyMMddhhmmss").ToString();
 
             var lines = File.ReadAllLines(filePath);
             using (var context = new AppDbContext())
@@ -92,7 +168,7 @@ namespace EmpAttendanceSQLite
 
                     // Import data for selected month duratuin only.
                     bool isValidDate = false;
-                    if (punchTime.Date >= fromDate.Date && punchTime.Date <= toDate.Date)
+                    if (punchTime.Date >= startDate.Date && punchTime.Date <= endDate.Date)
                         isValidDate = true;
 
                     // Insert only if data doesn't exist
@@ -109,7 +185,9 @@ namespace EmpAttendanceSQLite
                             StatusCode = statusCode,
                             CreatedAt = DateTime.UtcNow,
                             RecordType = RecordTypes.AUTO.ToString(),
-                            BatchCode = batchCode
+                            BatchCode = batchCode,
+                            StartDate = startDate,
+                            EndDate = endDate
                         });
 
                         ++insertedCount;
@@ -121,11 +199,12 @@ namespace EmpAttendanceSQLite
                 }
                 context.SaveChanges();
 
-                importMessage = "Inserted " + insertedCount.ToString() + " records out of " + (insertedCount + duplicateCount) + " records.";
+                string importMessage = "Inserted " + insertedCount.ToString() + " records out of " + (insertedCount + duplicateCount) + " records.";
+                MessageBox.Show(importMessage, "Process Complete");
             }
         }
 
-        private void UpdateAlternateInOut()
+        private void UpdateAlternateInOut(string batchCode)
         {
             using (var context = new AppDbContext())
             {
@@ -154,7 +233,7 @@ namespace EmpAttendanceSQLite
                 context.SaveChanges();  // Save the updated PunchTypeFlag
             }
         }
-        private void AddMissingLogEntry()
+        private void AddMissingLogEntry(string batchCode)
         {
             using (var context = new AppDbContext())
             {
@@ -240,7 +319,45 @@ namespace EmpAttendanceSQLite
 
         private void dtpFromDate_ValueChanged(object sender, EventArgs e)
         {
-            dtpToDate.Value = dtpFromDate.Value.AddMonths(1).AddDays(-1);
+            dtpEndDate.Value = dtpStartDate.Value.AddMonths(1).AddDays(-1);
+        }
+
+        private void dataGridViewBatchHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string batchCode = dataGridViewBatchHistory.Rows[e.RowIndex].Cells[dgcHistoryBatchCode.Name].Value.ToString();
+
+            if (e.ColumnIndex == dgcHistoryView.Index)
+            {
+                if (batchCode != null && batchCode != string.Empty)
+                {
+                    LoadBatchData(batchCode);
+
+                }
+            }
+            else if (e.ColumnIndex == dgcHistoryDelete.Index)
+            {
+                if (MessageBox.Show("Do you want to delete log data for selected Batch?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+
+                using (var context = new AppDbContext())
+                {
+                    // Delete from MissingLogs
+                    var missingLogs = context.MissingLogs.Where(x => x.BatchCode == batchCode).ToList();
+                    context.MissingLogs.RemoveRange(missingLogs);
+
+                    // Delete from BiometricLogs
+                    var biometricLogs = context.BiometricLogs.Where(x => x.BatchCode == batchCode).ToList();
+                    context.BiometricLogs.RemoveRange(biometricLogs);
+
+                    context.SaveChanges();
+
+                    MessageBox.Show("Batch data deleted successfully!", "Process Complete");
+
+                    LoadBatchHistory();
+                }
+            }
         }
     }
 }

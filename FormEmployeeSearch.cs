@@ -1,4 +1,5 @@
 ﻿using EmpAttendanceSQLite.Data;
+using EmpAttendanceSQLite.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace EmpAttendanceSQLite
 {
     public partial class FormEmployeeSearch : Form
     {
+        private List<Employee> employeeList = new List<Employee>();
         public FormEmployeeSearch()
         {
             InitializeComponent();
@@ -29,7 +31,8 @@ namespace EmpAttendanceSQLite
         {
             using (var context = new AppDbContext())
             {
-                dataGridViewMain.DataSource = context.Employees.ToList();
+                employeeList = context.Employees.ToList();
+                dataGridViewMain.DataSource = employeeList;
             }
         }
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -69,6 +72,24 @@ namespace EmpAttendanceSQLite
                     }
                 }
             }
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBoxSearch.Text.ToLower();
+
+            var filteredData = employeeList.Where(emp =>
+                emp.EmployeeCode.ToLower().Contains(searchText) ||
+                emp.BMEmployeeId.ToString().Contains(searchText) ||
+                emp.EmployeeName.ToLower().Contains(searchText) ||
+                emp.EmailId.ToLower().Contains(searchText) ||
+                emp.ContactNumber1.Contains(searchText) ||
+                emp.ContactNumber2.Contains(searchText) ||
+                emp.Department.ToLower().Contains(searchText) ||
+                emp.Designation.ToLower().Contains(searchText)
+            ).ToList();
+
+            dataGridViewMain.DataSource = filteredData;
         }
     }
 }

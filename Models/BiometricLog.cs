@@ -47,6 +47,12 @@ namespace EmpAttendanceSQLite.Models
         public string BatchCode { get; set; } = "BCODE-" + DateTime.Now.ToString("yyyyMMddhhmmss").ToString(); // BC-YYYYMMDDHHMMSS
 
         [Required]
+        public DateTime StartDate { get; set; } // Batch start date
+
+        [Required]
+        public DateTime EndDate { get; set; } // Batch end date
+
+        [Required]
         [MaxLength(10)]
         public string InOut { get; set; } = "NA"; // Set vallues IN/OUT/NA for user friendly or custom use purpose.
 

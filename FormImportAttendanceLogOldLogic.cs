@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace EmpAttendanceSQLite
 {
-    public partial class FormImportAttendanceLog : Form
+    public partial class FormImportAttendanceLogOldLogic : Form
     {
         private string batchCode = string.Empty;
         private string importMessage = string.Empty;
-        public FormImportAttendanceLog()
+        public FormImportAttendanceLogOldLogic()
         {
             InitializeComponent();
         }
@@ -38,7 +38,6 @@ namespace EmpAttendanceSQLite
                     Application.DoEvents();
 
                     ImportBiometricLogs(fileName, fromDate, toDate);
-                    UpdateAlternateInOut();
                     AddMissingLogEntry();
 
                     formSplash.Close();
@@ -95,9 +94,7 @@ namespace EmpAttendanceSQLite
                     if (punchTime.Date >= fromDate.Date && punchTime.Date <= toDate.Date)
                         isValidDate = true;
 
-                    // Insert only if data doesn't exist
-                    // and data is for selected month
-                    if (!existingData && isValidDate)
+                    if (!existingData && isValidDate) // Insert only if it doesn't exist
                     {
                         context.BiometricLogs.Add(new BiometricLog
                         {
@@ -122,17 +119,10 @@ namespace EmpAttendanceSQLite
                 context.SaveChanges();
 
                 importMessage = "Inserted " + insertedCount.ToString() + " records out of " + (insertedCount + duplicateCount) + " records.";
-            }
-        }
 
-        private void UpdateAlternateInOut()
-        {
-            using (var context = new AppDbContext())
-            {
-                // Update PunchTypeFlag
-                // Logic Applied : Alternate IN/OUT
+
+                // Update PunchTypeFlag (Alternate IN/OUT)
                 var biometricLogs = context.BiometricLogs
-                    .Where(bl => bl.BatchCode == batchCode)
                     .OrderBy(bl => bl.BMEmployeeId)
                     .ThenBy(bl => bl.PunchTime)
                     .ToList();
@@ -149,98 +139,59 @@ namespace EmpAttendanceSQLite
                         log.InOut = isIn ? "IN" : "OUT";
                         log.PunchTypeFlag = isIn ? 1 : 0; // Assign IN=1, OUT=0
                         isIn = !isIn; // Flip for next record
+                       
                     }
                 }
                 context.SaveChanges();  // Save the updated PunchTypeFlag
+
+
             }
         }
+
         private void AddMissingLogEntry()
         {
             using (var context = new AppDbContext())
             {
-                var biometricLogs = context.BiometricLogs
+                var groupedLogs = context.BiometricLogs
                     .Where(b => b.BatchCode == batchCode)
-                    .OrderBy(bl => bl.BMEmployeeId)
-                    .ThenBy(bl => bl.PunchTime)
-                    .ToList();
-
-                var groupedLogs = biometricLogs
-                    .Where(b => b.BatchCode == batchCode)
-                    .GroupBy(bl => new { bl.BMEmployeeId, bl.PunchTime.Date });
-
-                List<MissingLog> missingLogs = new List<MissingLog>();
-
-                foreach (var group in groupedLogs)
+                //.Where(b => b.PunchTime >= VirtualFromDate && b.PunchTime <= VirtuaToDate)
+                .GroupBy(b => new { b.BMEmployeeId, b.PunchTime.Date })
+                .Select(g => new
                 {
-                    var logs = group.ToList();
-                    if (logs.Count % 2 != 0) // Odd number of entries = Missing punch
-                    {
-                        var lastLog = logs.Last();
+                    EmployeeId = g.Key.BMEmployeeId,
+                    Date = g.Key.Date,
+                    InPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 0), // IN punch
+                    OutPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 1), // OUT punch
+                    AllPunches = g.ToList()
+                })
+                .ToList();
 
-                        missingLogs.Add(new MissingLog
+                // Identify missing punches
+                var missingPunches = new List<MissingLog>();
+                foreach (var log in groupedLogs)
+                {
+                    if (log.InPunch == null || log.OutPunch == null)
+                    {
+                        missingPunches.Add(new MissingLog
                         {
-                            BMEmployeeId = lastLog.BMEmployeeId,
-                            PunchDate = lastLog.PunchTime.Date,
-                            MissingType = lastLog.PunchTypeFlag == 1 ? "OUT Missing" : "IN Missing",
+                            BMEmployeeId = log.EmployeeId,
+                            PunchDate = log.Date,
+                            MissingType = log.InPunch == null ? "Missing IN" : "Missing OUT",
                             CreatedAt = DateTime.UtcNow,
-                            BatchCode = lastLog.BatchCode
+                            BatchCode = batchCode
                         });
                     }
                 }
 
-                if (missingLogs.Any())
-                {
-                    context.MissingLogs.AddRange(missingLogs);
-                    context.SaveChanges(); // Save Missing Logs
-                }
+                // Insert missing logs into `MissingLogs` table
+                context.MissingLogs.AddRange(missingPunches);
+                context.SaveChanges();
             }
-
-            //using (var context = new AppDbContext())
-            //{
-            //    var groupedLogs = context.BiometricLogs
-            //        .Where(b => b.BatchCode == batchCode)
-            //    //.Where(b => b.PunchTime >= VirtualFromDate && b.PunchTime <= VirtuaToDate)
-            //    .GroupBy(b => new { b.BMEmployeeId, b.PunchTime.Date })
-            //    .Select(g => new
-            //    {
-            //        EmployeeId = g.Key.BMEmployeeId,
-            //        Date = g.Key.Date,
-            //        InPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 0), // IN punch
-            //        OutPunch = g.FirstOrDefault(p => p.PunchTypeFlag == 1), // OUT punch
-            //        AllPunches = g.ToList()
-            //    })
-            //    .ToList();
-
-            //    // Identify missing punches
-            //    var missingPunches = new List<MissingLog>();
-            //    foreach (var log in groupedLogs)
-            //    {
-            //        if (log.InPunch == null || log.OutPunch == null)
-            //        {
-            //            missingPunches.Add(new MissingLog
-            //            {
-            //                BMEmployeeId = log.EmployeeId,
-            //                PunchDate = log.Date,
-            //                MissingType = log.InPunch == null ? "Missing IN" : "Missing OUT",
-            //                CreatedAt = DateTime.UtcNow,
-            //                BatchCode = batchCode
-            //            });
-            //        }
-            //    }
-
-            //    // Insert missing logs into `MissingLogs` table
-            //    context.MissingLogs.AddRange(missingPunches);
-            //    context.SaveChanges();
-            //}
         }
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
-        {
-            dtpToDate.Value = dtpFromDate.Value.AddMonths(1).AddDays(-1);
-        }
     }
 }

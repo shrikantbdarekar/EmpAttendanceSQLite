@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpAttendanceSQLite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250326041221_initial migration 1.0")]
-    partial class initialmigration10
+    [Migration("20250326102532_Initial Database 1.0")]
+    partial class InitialDatabase10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,9 @@ namespace EmpAttendanceSQLite.Migrations
                     b.Property<int>("DeviceId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("InOut")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -59,6 +62,9 @@ namespace EmpAttendanceSQLite.Migrations
                     b.Property<string>("RecordType")
                         .IsRequired()
                         .HasMaxLength(10)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("StatusCode")
@@ -155,7 +161,7 @@ namespace EmpAttendanceSQLite.Migrations
                             ContactNo = "+91-9876543210",
                             CreatedAt = new DateTime(2025, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailId = "contact@abc.com",
-                            ShiftEnd = new TimeSpan(0, 20, 0, 0, 0),
+                            ShiftEnd = new TimeSpan(0, 18, 0, 0, 0),
                             ShiftStart = new TimeSpan(0, 8, 30, 0, 0),
                             Website = "https://www.abc.com"
                         });

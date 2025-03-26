@@ -83,12 +83,22 @@ namespace EmpAttendanceSQLite
             formManageLog.ShowDialog();
         }
 
-        
+
         private void mnuExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-       
+        private void mnuImportAttendanceAdv_Click(object sender, EventArgs e)
+        {
+            FormImportAttendanceLogAdv formImportAttendanceLogAdv = new FormImportAttendanceLogAdv();
+            formImportAttendanceLogAdv.ShowDialog();
+        }
+
+        private void mnuMissingLogAdv_Click(object sender, EventArgs e)
+        {
+            FormManageMissingLogAdv formManageMissingLogAdv = new FormManageMissingLogAdv();
+            formManageMissingLogAdv.ShowDialog();
+        }
     }
 }

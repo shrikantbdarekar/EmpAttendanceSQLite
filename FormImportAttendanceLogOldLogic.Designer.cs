@@ -1,6 +1,7 @@
-﻿namespace EmpAttendanceSQLite
+﻿
+namespace EmpAttendanceSQLite
 {
-    partial class FormImportAttendanceLog
+    partial class FormImportAttendanceLogOldLogic
     {
         /// <summary>
         ///  Required designer variable.
@@ -119,7 +120,6 @@
             dtpFromDate.Name = "dtpFromDate";
             dtpFromDate.Size = new Size(158, 31);
             dtpFromDate.TabIndex = 31;
-            dtpFromDate.ValueChanged += dtpFromDate_ValueChanged;
             // 
             // labelDate
             // 

@@ -30,14 +30,18 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridViewMain = new DataGridView();
+            buttonAdd = new Button();
+            textBoxSearch = new TextBox();
+            labelSearch = new Label();
             dgcEmployeeId = new DataGridViewTextBoxColumn();
+            dgcEmployeeCode = new DataGridViewTextBoxColumn();
             dgcEmployeeName = new DataGridViewTextBoxColumn();
+            dgcBMId = new DataGridViewTextBoxColumn();
             dgcContactNo = new DataGridViewTextBoxColumn();
             dgcDesignation = new DataGridViewTextBoxColumn();
             dgcMonthlySalary = new DataGridViewTextBoxColumn();
             dgcEdit = new DataGridViewLinkColumn();
             dgcDelete = new DataGridViewLinkColumn();
-            buttonAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +61,7 @@
             dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewMain.ColumnHeadersHeight = 40;
             dataGridViewMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewMain.Columns.AddRange(new DataGridViewColumn[] { dgcEmployeeId, dgcEmployeeName, dgcContactNo, dgcDesignation, dgcMonthlySalary, dgcEdit, dgcDelete });
+            dataGridViewMain.Columns.AddRange(new DataGridViewColumn[] { dgcEmployeeId, dgcEmployeeCode, dgcEmployeeName, dgcBMId, dgcContactNo, dgcDesignation, dgcMonthlySalary, dgcEdit, dgcDelete });
             dataGridViewMain.Dock = DockStyle.Bottom;
             dataGridViewMain.Location = new Point(0, 68);
             dataGridViewMain.Name = "dataGridViewMain";
@@ -66,6 +70,33 @@
             dataGridViewMain.Size = new Size(1178, 676);
             dataGridViewMain.TabIndex = 0;
             dataGridViewMain.CellContentClick += dataGridViewMain_CellContentClick;
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.Location = new Point(994, 12);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(172, 38);
+            buttonAdd.TabIndex = 7;
+            buttonAdd.Text = "Add Employee";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
+            // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(97, 16);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(264, 31);
+            textBoxSearch.TabIndex = 10;
+            textBoxSearch.TextChanged += textBoxSearch_TextChanged;
+            // 
+            // labelSearch
+            // 
+            labelSearch.AutoSize = true;
+            labelSearch.Location = new Point(27, 19);
+            labelSearch.Name = "labelSearch";
+            labelSearch.Size = new Size(64, 25);
+            labelSearch.TabIndex = 9;
+            labelSearch.Text = "Search";
             // 
             // dgcEmployeeId
             // 
@@ -77,6 +108,15 @@
             dgcEmployeeId.Visible = false;
             dgcEmployeeId.Width = 150;
             // 
+            // dgcEmployeeCode
+            // 
+            dgcEmployeeCode.DataPropertyName = "EmployeeCode";
+            dgcEmployeeCode.HeaderText = "Emp.Code";
+            dgcEmployeeCode.MinimumWidth = 8;
+            dgcEmployeeCode.Name = "dgcEmployeeCode";
+            dgcEmployeeCode.ReadOnly = true;
+            dgcEmployeeCode.Width = 120;
+            // 
             // dgcEmployeeName
             // 
             dgcEmployeeName.DataPropertyName = "EmployeeName";
@@ -84,7 +124,15 @@
             dgcEmployeeName.MinimumWidth = 8;
             dgcEmployeeName.Name = "dgcEmployeeName";
             dgcEmployeeName.ReadOnly = true;
-            dgcEmployeeName.Width = 300;
+            dgcEmployeeName.Width = 270;
+            // 
+            // dgcBMId
+            // 
+            dgcBMId.DataPropertyName = "BMEmployeeId";
+            dgcBMId.HeaderText = "BM-Id";
+            dgcBMId.MinimumWidth = 8;
+            dgcBMId.Name = "dgcBMId";
+            dgcBMId.ReadOnly = true;
             // 
             // dgcContactNo
             // 
@@ -111,7 +159,7 @@
             dgcMonthlySalary.MinimumWidth = 8;
             dgcMonthlySalary.Name = "dgcMonthlySalary";
             dgcMonthlySalary.ReadOnly = true;
-            dgcMonthlySalary.Width = 150;
+            dgcMonthlySalary.Width = 120;
             // 
             // dgcEdit
             // 
@@ -133,22 +181,14 @@
             dgcDelete.UseColumnTextForLinkValue = true;
             dgcDelete.Width = 80;
             // 
-            // buttonAdd
-            // 
-            buttonAdd.Location = new Point(994, 12);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(172, 38);
-            buttonAdd.TabIndex = 7;
-            buttonAdd.Text = "Add Employee";
-            buttonAdd.UseVisualStyleBackColor = true;
-            buttonAdd.Click += buttonAdd_Click;
-            // 
             // FormEmployeeSearch
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1178, 744);
+            Controls.Add(textBoxSearch);
+            Controls.Add(labelSearch);
             Controls.Add(buttonAdd);
             Controls.Add(dataGridViewMain);
             MaximizeBox = false;
@@ -159,14 +199,19 @@
             Load += FormEmployeeSearch_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridViewMain;
         private Button buttonAdd;
+        private TextBox textBoxSearch;
+        private Label labelSearch;
         private DataGridViewTextBoxColumn dgcEmployeeId;
+        private DataGridViewTextBoxColumn dgcEmployeeCode;
         private DataGridViewTextBoxColumn dgcEmployeeName;
+        private DataGridViewTextBoxColumn dgcBMId;
         private DataGridViewTextBoxColumn dgcContactNo;
         private DataGridViewTextBoxColumn dgcDesignation;
         private DataGridViewTextBoxColumn dgcMonthlySalary;

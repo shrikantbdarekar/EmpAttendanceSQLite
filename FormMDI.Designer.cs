@@ -36,12 +36,15 @@
             mnuBiometricMachine = new ToolStripMenuItem();
             mnuEmployee = new ToolStripMenuItem();
             mnuAttendance = new ToolStripMenuItem();
-            mniImportAttendance = new ToolStripMenuItem();
+            mnuImportAttendanceAdv = new ToolStripMenuItem();
             mnuManageMissingLog = new ToolStripMenuItem();
+            mnuMissingLogAdv = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
             mnuManageAttendanceLog = new ToolStripMenuItem();
+            mniImportAttendance = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
             mnuReport = new ToolStripMenuItem();
             mnuExit = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
             menuStripMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -105,32 +108,56 @@
             // 
             // mnuAttendance
             // 
-            mnuAttendance.DropDownItems.AddRange(new ToolStripItem[] { mniImportAttendance, mnuManageMissingLog, toolStripSeparator1, mnuManageAttendanceLog });
+            mnuAttendance.DropDownItems.AddRange(new ToolStripItem[] { mnuImportAttendanceAdv, mnuMissingLogAdv, toolStripSeparator1, mnuManageAttendanceLog, mniImportAttendance, mnuManageMissingLog, toolStripSeparator2 });
             mnuAttendance.Name = "mnuAttendance";
             mnuAttendance.Size = new Size(139, 41);
             mnuAttendance.Text = "Attendance";
             // 
-            // mniImportAttendance
+            // mnuImportAttendanceAdv
             // 
-            mniImportAttendance.Name = "mniImportAttendance";
-            mniImportAttendance.Size = new Size(316, 38);
-            mniImportAttendance.Text = "Import Attendance";
-            mniImportAttendance.Click += mniImportAttendance_Click;
+            mnuImportAttendanceAdv.Name = "mnuImportAttendanceAdv";
+            mnuImportAttendanceAdv.Size = new Size(342, 38);
+            mnuImportAttendanceAdv.Text = "Import Attendance Adv";
+            mnuImportAttendanceAdv.Click += mnuImportAttendanceAdv_Click;
             // 
             // mnuManageMissingLog
             // 
             mnuManageMissingLog.Name = "mnuManageMissingLog";
-            mnuManageMissingLog.Size = new Size(316, 38);
+            mnuManageMissingLog.Size = new Size(342, 38);
             mnuManageMissingLog.Text = "Manage Missing Log";
             mnuManageMissingLog.Click += mnuManageMissingLog_Click;
+            // 
+            // mnuMissingLogAdv
+            // 
+            mnuMissingLogAdv.Name = "mnuMissingLogAdv";
+            mnuMissingLogAdv.Size = new Size(342, 38);
+            mnuMissingLogAdv.Text = "Missing Log Adv";
+            mnuMissingLogAdv.Click += mnuMissingLogAdv_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(339, 6);
             // 
             // mnuManageAttendanceLog
             // 
             mnuManageAttendanceLog.ForeColor = Color.Red;
             mnuManageAttendanceLog.Name = "mnuManageAttendanceLog";
-            mnuManageAttendanceLog.Size = new Size(316, 38);
+            mnuManageAttendanceLog.Size = new Size(342, 38);
             mnuManageAttendanceLog.Text = "Manage Attendance";
             mnuManageAttendanceLog.Click += mnuManageAttendanceLog_Click;
+            // 
+            // mniImportAttendance
+            // 
+            mniImportAttendance.Name = "mniImportAttendance";
+            mniImportAttendance.Size = new Size(342, 38);
+            mniImportAttendance.Text = "Import Attendance";
+            mniImportAttendance.Click += mniImportAttendance_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(339, 6);
             // 
             // mnuReport
             // 
@@ -144,11 +171,6 @@
             mnuExit.Size = new Size(62, 41);
             mnuExit.Text = "Exit";
             mnuExit.Click += mnuExit_Click;
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(313, 6);
             // 
             // FormMDI
             // 
@@ -182,5 +204,8 @@
         private ToolStripMenuItem mnuManageMissingLog;
         private ToolStripMenuItem mnuBiometricMachine;
         private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem mnuImportAttendanceAdv;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem mnuMissingLogAdv;
     }
 }

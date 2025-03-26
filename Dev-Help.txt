@@ -1,5 +1,26 @@
 ﻿######################################################################################################
 
+General development procedure depending on previous discussion
+
+Step 1: Fill employee details in system with BiometricEmployeeId
+		Full Name, PunchIn, PunchOut, Monthly Salary, Hourly Salary
+		
+Step 2:	Read and import attendance for selected month.
+		Example 1Jan2025 To 31Jan2025
+
+Setp 3:	Detect missing logs, where employee has only IN or OUT entry
+		Detect duplicate entries, where employee have double entries for IN or Out
+		
+Step 4: Add missing entries, remove duplicates (*Manual Task)
+		Apply In/Out flag (Automatic Task)
+
+Step 5: After data finalization, calculate monthly salaries
+
+Step 6: Print/export epmloyee wise monthly salary calculation
+
+
+######################################################################################################
+
 This is data for biometric machine. Total 6 Columns.
 
 3	2022-02-13 18:27:45	1	0	1	0
