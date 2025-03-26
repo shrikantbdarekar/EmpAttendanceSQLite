@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            checkBoxIsActive = new CheckBox();
             label16 = new Label();
             dtpShiftEnd = new DateTimePicker();
             labelShiftEnd = new Label();
@@ -62,13 +63,26 @@
             textBoxEmpCode = new TextBox();
             labelEmpCoode = new Label();
             buttonSave = new Button();
-            checkBoxIsActive = new CheckBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(checkBoxIsActive);
             panel1.Controls.Add(label16);
             panel1.Controls.Add(dtpShiftEnd);
@@ -107,6 +121,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1144, 344);
             panel1.TabIndex = 0;
+            // 
+            // checkBoxIsActive
+            // 
+            checkBoxIsActive.AutoSize = true;
+            checkBoxIsActive.Checked = true;
+            checkBoxIsActive.CheckState = CheckState.Checked;
+            checkBoxIsActive.Location = new Point(187, 294);
+            checkBoxIsActive.Name = "checkBoxIsActive";
+            checkBoxIsActive.Size = new Size(104, 29);
+            checkBoxIsActive.TabIndex = 42;
+            checkBoxIsActive.Text = "Is Active";
+            checkBoxIsActive.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -384,17 +410,75 @@
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
-            // checkBoxIsActive
+            // label1
             // 
-            checkBoxIsActive.AutoSize = true;
-            checkBoxIsActive.Checked = true;
-            checkBoxIsActive.CheckState = CheckState.Checked;
-            checkBoxIsActive.Location = new Point(187, 294);
-            checkBoxIsActive.Name = "checkBoxIsActive";
-            checkBoxIsActive.Size = new Size(104, 29);
-            checkBoxIsActive.TabIndex = 42;
-            checkBoxIsActive.Text = "Is Active";
-            checkBoxIsActive.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(781, 109);
+            label1.Name = "label1";
+            label1.Size = new Size(20, 25);
+            label1.TabIndex = 43;
+            label1.Text = "*";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(781, 153);
+            label2.Name = "label2";
+            label2.Size = new Size(20, 25);
+            label2.TabIndex = 44;
+            label2.Text = "*";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.Red;
+            label3.Location = new Point(781, 193);
+            label3.Name = "label3";
+            label3.Size = new Size(20, 25);
+            label3.TabIndex = 45;
+            label3.Text = "*";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(781, 234);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 25);
+            label4.TabIndex = 46;
+            label4.Text = "*";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = Color.Red;
+            label5.Location = new Point(13, 68);
+            label5.Name = "label5";
+            label5.Size = new Size(20, 25);
+            label5.TabIndex = 47;
+            label5.Text = "*";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(13, 109);
+            label6.Name = "label6";
+            label6.Size = new Size(20, 25);
+            label6.TabIndex = 48;
+            label6.Text = "*";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = Color.Red;
+            label7.Location = new Point(13, 234);
+            label7.Name = "label7";
+            label7.Size = new Size(20, 25);
+            label7.TabIndex = 49;
+            label7.Text = "*";
             // 
             // FormEmployee
             // 
@@ -451,5 +535,12 @@
         private Label labelShiftStart;
         private Label label16;
         private CheckBox checkBoxIsActive;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
     }
 }

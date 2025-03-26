@@ -41,12 +41,21 @@
             textBoxCompanyName = new TextBox();
             labelCompanyName = new Label();
             buttonSave = new Button();
+            dtpShiftEnd = new DateTimePicker();
+            labelShiftEnd = new Label();
+            dtpShiftStart = new DateTimePicker();
+            labelShiftStart = new Label();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(dtpShiftEnd);
+            panel1.Controls.Add(labelShiftEnd);
+            panel1.Controls.Add(dtpShiftStart);
+            panel1.Controls.Add(labelShiftStart);
             panel1.Controls.Add(labelWebsite);
             panel1.Controls.Add(textBoxWebsite);
             panel1.Controls.Add(textBoxEmailId);
@@ -59,9 +68,10 @@
             panel1.Controls.Add(textBoxCompanyName);
             panel1.Controls.Add(labelCompanyName);
             panel1.Controls.Add(buttonSave);
+            panel1.Controls.Add(label1);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(782, 294);
+            panel1.Size = new Size(782, 354);
             panel1.TabIndex = 0;
             // 
             // labelWebsite
@@ -130,7 +140,7 @@
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(394, 240);
+            buttonCancel.Location = new Point(394, 312);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(106, 38);
             buttonCancel.TabIndex = 11;
@@ -156,7 +166,7 @@
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(282, 240);
+            buttonSave.Location = new Point(282, 312);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(106, 38);
             buttonSave.TabIndex = 6;
@@ -164,18 +174,61 @@
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
+            // dtpShiftEnd
+            // 
+            dtpShiftEnd.CustomFormat = "hh:mm:ss tt";
+            dtpShiftEnd.Format = DateTimePickerFormat.Time;
+            dtpShiftEnd.Location = new Point(508, 248);
+            dtpShiftEnd.Name = "dtpShiftEnd";
+            dtpShiftEnd.Size = new Size(185, 31);
+            dtpShiftEnd.TabIndex = 47;
+            // 
+            // labelShiftEnd
+            // 
+            labelShiftEnd.AutoSize = true;
+            labelShiftEnd.Location = new Point(419, 251);
+            labelShiftEnd.Name = "labelShiftEnd";
+            labelShiftEnd.Size = new Size(83, 25);
+            labelShiftEnd.TabIndex = 46;
+            labelShiftEnd.Text = "Shift End";
+            // 
+            // dtpShiftStart
+            // 
+            dtpShiftStart.CustomFormat = "hh:mm:ss tt";
+            dtpShiftStart.Format = DateTimePickerFormat.Time;
+            dtpShiftStart.Location = new Point(228, 248);
+            dtpShiftStart.Name = "dtpShiftStart";
+            dtpShiftStart.Size = new Size(185, 31);
+            dtpShiftStart.TabIndex = 45;
+            // 
+            // labelShiftStart
+            // 
+            labelShiftStart.AutoSize = true;
+            labelShiftStart.Location = new Point(121, 251);
+            labelShiftStart.Name = "labelShiftStart";
+            labelShiftStart.Size = new Size(89, 25);
+            labelShiftStart.TabIndex = 44;
+            labelShiftStart.Text = "Shift Start";
+            // 
+            // label1
+            // 
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Location = new Point(92, 232);
+            label1.Name = "label1";
+            label1.Size = new Size(616, 63);
+            label1.TabIndex = 48;
+            // 
             // FormCompanyInfo
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.LightSteelBlue;
-            ClientSize = new Size(806, 321);
+            ClientSize = new Size(806, 381);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormCompanyInfo";
-            Opacity = 0.8D;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Company Info";
             Load += FormCompanyInfo_Load;
@@ -199,5 +252,10 @@
         private Label labelEmailId;
         private Label labelWebsite;
         private TextBox textBoxWebsite;
+        private DateTimePicker dtpShiftEnd;
+        private Label labelShiftEnd;
+        private DateTimePicker dtpShiftStart;
+        private Label labelShiftStart;
+        private Label label1;
     }
 }

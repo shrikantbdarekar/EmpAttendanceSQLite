@@ -17,10 +17,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FormAddManualLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormCompanyInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormManageLog.cs">
+    <Compile Update="FormManageMissingLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormManageAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormImportView.cs">
@@ -32,10 +38,14 @@
     <Compile Update="FormChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormMachine.cs" />
     <Compile Update="FormUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormEmployeeSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormMachineSearch.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

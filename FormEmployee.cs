@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -53,10 +54,23 @@ namespace EmpAttendanceSQLite
                     }
                 }
             }
+            else
+            {
+                dtpShiftStart.Value = DateTime.Today.Add(Program.companyInfo.ShiftStart);
+                dtpShiftEnd.Value = DateTime.Today.Add(Program.companyInfo.ShiftEnd);
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            if (textBoxBMEmpId.Text == string.Empty || textBoxEmployeeName.Text == string.Empty
+                || textBoxContactNo1.Text == string.Empty || textBoxMonthlySalary.Text == string.Empty
+                || textBoxHourlySalary.Text == string.Empty)
+            {
+                MessageBox.Show("Fill all *manadatory data");
+                return;
+            }
+
             using (var context = new AppDbContext())
             {
                 if (EmployeeId > 0)

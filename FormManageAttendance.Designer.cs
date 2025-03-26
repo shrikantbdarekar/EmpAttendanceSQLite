@@ -1,6 +1,6 @@
 ﻿namespace EmpAttendanceSQLite
 {
-    partial class FormManageLog
+    partial class FormManageAttendance
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             labelDate = new Label();
             dataGridViewMain = new DataGridView();
             dgcLogId = new DataGridViewTextBoxColumn();
             dgcBMEmployeeId = new DataGridViewTextBoxColumn();
+            dgcEmployeeName = new DataGridViewTextBoxColumn();
+            dgcEmployeeId = new DataGridViewTextBoxColumn();
             dgcPunchTime = new DataGridViewTextBoxColumn();
             dgcDeviceId = new DataGridViewTextBoxColumn();
             dgcPunchTypeFlag = new DataGridViewTextBoxColumn();
@@ -47,21 +49,21 @@
             comboBoxEmployee = new ComboBox();
             label2 = new Label();
             labelTotal = new Label();
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
-            dataGridView1 = new DataGridView();
-            tabPage3 = new TabPage();
-            dataGridView2 = new DataGridView();
             buttonInOut = new Button();
             buttonAmPm = new Button();
+            tabPage3 = new TabPage();
+            dataGridView2 = new DataGridView();
+            tabPage2 = new TabPage();
+            dataGridView1 = new DataGridView();
+            tabPageOrderByEmpIdTime = new TabPage();
+            tabControl1 = new TabControl();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).BeginInit();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tabPageOrderByEmpIdTime.SuspendLayout();
+            tabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // labelDate
@@ -80,18 +82,17 @@
             dataGridViewMain.AllowUserToDeleteRows = false;
             dataGridViewMain.BackgroundColor = Color.Gainsboro;
             dataGridViewMain.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewMain.ColumnHeadersHeight = 40;
             dataGridViewMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewMain.Columns.AddRange(new DataGridViewColumn[] { dgcLogId, dgcBMEmployeeId, dgcPunchTime, dgcDeviceId, dgcPunchTypeFlag, dgcVerificationMode, dgcStatusCode, dgcCreatedAt });
-            dataGridViewMain.Dock = DockStyle.Fill;
+            dataGridViewMain.Columns.AddRange(new DataGridViewColumn[] { dgcLogId, dgcBMEmployeeId, dgcEmployeeName, dgcEmployeeId, dgcPunchTime, dgcDeviceId, dgcPunchTypeFlag, dgcVerificationMode, dgcStatusCode, dgcCreatedAt });
             dataGridViewMain.Location = new Point(3, 3);
             dataGridViewMain.Name = "dataGridViewMain";
             dataGridViewMain.ReadOnly = true;
@@ -117,6 +118,25 @@
             dgcBMEmployeeId.Name = "dgcBMEmployeeId";
             dgcBMEmployeeId.ReadOnly = true;
             dgcBMEmployeeId.Width = 150;
+            // 
+            // dgcEmployeeName
+            // 
+            dgcEmployeeName.DataPropertyName = "EmployeeName";
+            dgcEmployeeName.HeaderText = "EmployeeName";
+            dgcEmployeeName.MinimumWidth = 8;
+            dgcEmployeeName.Name = "dgcEmployeeName";
+            dgcEmployeeName.ReadOnly = true;
+            dgcEmployeeName.Width = 250;
+            // 
+            // dgcEmployeeId
+            // 
+            dgcEmployeeId.DataPropertyName = "EmployeeName";
+            dgcEmployeeId.HeaderText = "Emp.Id";
+            dgcEmployeeId.MinimumWidth = 8;
+            dgcEmployeeId.Name = "dgcEmployeeId";
+            dgcEmployeeId.ReadOnly = true;
+            dgcEmployeeId.Visible = false;
+            dgcEmployeeId.Width = 150;
             // 
             // dgcPunchTime
             // 
@@ -247,49 +267,27 @@
             labelTotal.TabIndex = 45;
             labelTotal.Text = "Total Rows: ";
             // 
-            // tabControl1
+            // buttonInOut
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Dock = DockStyle.Bottom;
-            tabControl1.Location = new Point(0, 106);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1171, 638);
-            tabControl1.TabIndex = 46;
+            buttonInOut.Enabled = false;
+            buttonInOut.Location = new Point(738, 10);
+            buttonInOut.Name = "buttonInOut";
+            buttonInOut.Size = new Size(120, 38);
+            buttonInOut.TabIndex = 47;
+            buttonInOut.Text = "In Out";
+            buttonInOut.UseVisualStyleBackColor = true;
+            buttonInOut.Click += buttonInOut_Click;
             // 
-            // tabPage1
+            // buttonAmPm
             // 
-            tabPage1.Controls.Add(dataGridViewMain);
-            tabPage1.Location = new Point(4, 34);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1163, 600);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(dataGridView1);
-            tabPage2.Location = new Point(4, 34);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1163, 600);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1157, 594);
-            dataGridView1.TabIndex = 0;
+            buttonAmPm.Enabled = false;
+            buttonAmPm.Location = new Point(886, 10);
+            buttonAmPm.Name = "buttonAmPm";
+            buttonAmPm.Size = new Size(120, 38);
+            buttonAmPm.TabIndex = 48;
+            buttonAmPm.Text = "Am Pm";
+            buttonAmPm.UseVisualStyleBackColor = true;
+            buttonAmPm.Click += buttonAmPm_Click;
             // 
             // tabPage3
             // 
@@ -297,7 +295,7 @@
             tabPage3.Location = new Point(4, 34);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1163, 600);
+            tabPage3.Size = new Size(1163, 591);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "tabPage3";
             tabPage3.UseVisualStyleBackColor = true;
@@ -309,30 +307,54 @@
             dataGridView2.Location = new Point(3, 3);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(1157, 594);
+            dataGridView2.Size = new Size(1157, 585);
             dataGridView2.TabIndex = 1;
             // 
-            // buttonInOut
+            // tabPage2
             // 
-            buttonInOut.Location = new Point(738, 10);
-            buttonInOut.Name = "buttonInOut";
-            buttonInOut.Size = new Size(120, 38);
-            buttonInOut.TabIndex = 47;
-            buttonInOut.Text = "In Out";
-            buttonInOut.UseVisualStyleBackColor = true;
-            buttonInOut.Click += buttonInOut_Click;
+            tabPage2.Controls.Add(dataGridView1);
+            tabPage2.Location = new Point(4, 34);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1163, 591);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
-            // buttonAmPm
+            // dataGridView1
             // 
-            buttonAmPm.Location = new Point(886, 10);
-            buttonAmPm.Name = "buttonAmPm";
-            buttonAmPm.Size = new Size(120, 38);
-            buttonAmPm.TabIndex = 48;
-            buttonAmPm.Text = "Am Pm";
-            buttonAmPm.UseVisualStyleBackColor = true;
-            buttonAmPm.Click += buttonAmPm_Click;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1157, 585);
+            dataGridView1.TabIndex = 0;
             // 
-            // FormManageLog
+            // tabPageOrderByEmpIdTime
+            // 
+            tabPageOrderByEmpIdTime.Controls.Add(dataGridViewMain);
+            tabPageOrderByEmpIdTime.Location = new Point(4, 34);
+            tabPageOrderByEmpIdTime.Name = "tabPageOrderByEmpIdTime";
+            tabPageOrderByEmpIdTime.Padding = new Padding(3);
+            tabPageOrderByEmpIdTime.Size = new Size(1163, 591);
+            tabPageOrderByEmpIdTime.TabIndex = 0;
+            tabPageOrderByEmpIdTime.Text = "#Order By BM Employee Id     ";
+            tabPageOrderByEmpIdTime.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPageOrderByEmpIdTime);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Dock = DockStyle.Bottom;
+            tabControl1.Location = new Point(0, 115);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1171, 629);
+            tabControl1.TabIndex = 46;
+            // 
+            // FormManageAttendance
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
@@ -351,17 +373,17 @@
             Controls.Add(labelDate);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FormManageLog";
+            Name = "FormManageAttendance";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Manage Log Data";
             Load += FormImportAttendanceLog_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).EndInit();
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tabPageOrderByEmpIdTime.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -380,22 +402,24 @@
         private Button buttonLoadData;
         private ComboBox comboBoxEmployee;
         private Label label2;
+        private Label labelTotal;
+        private Button buttonInOut;
+        private Button buttonAmPm;
+        private TabPage tabPage3;
+        private DataGridView dataGridView2;
+        private TabPage tabPage2;
+        private DataGridView dataGridView1;
+        private TabPage tabPageOrderByEmpIdTime;
+        private TabControl tabControl1;
         private DataGridViewTextBoxColumn dgcLogId;
         private DataGridViewTextBoxColumn dgcBMEmployeeId;
+        private DataGridViewTextBoxColumn dgcEmployeeName;
+        private DataGridViewTextBoxColumn dgcEmployeeId;
         private DataGridViewTextBoxColumn dgcPunchTime;
         private DataGridViewTextBoxColumn dgcDeviceId;
         private DataGridViewTextBoxColumn dgcPunchTypeFlag;
         private DataGridViewTextBoxColumn dgcVerificationMode;
         private DataGridViewTextBoxColumn dgcStatusCode;
         private DataGridViewTextBoxColumn dgcCreatedAt;
-        private Label labelTotal;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
-        private DataGridView dataGridView1;
-        private TabPage tabPage3;
-        private DataGridView dataGridView2;
-        private Button buttonInOut;
-        private Button buttonAmPm;
     }
 }

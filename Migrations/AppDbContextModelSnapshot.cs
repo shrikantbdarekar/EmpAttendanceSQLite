@@ -37,6 +37,16 @@ namespace EmpAttendanceSQLite.Migrations
                     b.Property<int>("DeviceId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("InOut")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ManualEntryRemark")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("PunchTime")
                         .HasColumnType("TEXT");
 
@@ -118,6 +128,12 @@ namespace EmpAttendanceSQLite.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("TEXT");
 
+                    b.Property<TimeSpan>("ShiftEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<TimeSpan>("ShiftStart")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Website")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -136,6 +152,8 @@ namespace EmpAttendanceSQLite.Migrations
                             ContactNo = "+91-9876543210",
                             CreatedAt = new DateTime(2025, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailId = "contact@abc.com",
+                            ShiftEnd = new TimeSpan(0, 20, 0, 0, 0),
+                            ShiftStart = new TimeSpan(0, 8, 30, 0, 0),
                             Website = "https://www.abc.com"
                         });
                 });

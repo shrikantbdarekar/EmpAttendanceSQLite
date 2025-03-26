@@ -45,5 +45,12 @@ namespace EmpAttendanceSQLite.Models
         [Required]
         [MaxLength(20)]
         public string BatchCode { get; set; } = "BCODE-" + DateTime.Now.ToString("yyyyMMddhhmmss").ToString(); // BC-YYYYMMDDHHMMSS
+
+        [Required]
+        [MaxLength(10)]
+        public string InOut { get; set; } = "NA"; // Set vallues IN/OUT/NA for user friendly or custom use purpose.
+
+        [MaxLength(150)]
+        public string ManualEntryRemark { get; set; } = string.Empty; // Remark to maintain history of update
     }
 }

@@ -35,7 +35,9 @@ namespace EmpAttendanceSQLite.Data
                     EmailId = "contact@abc.com",
                     ContactNo = "+91-9876543210",
                     Website = "https://www.abc.com",
-                    CreatedAt = new DateTime(2025, 3, 24, 0, 0, 0) // Hardcoded DateTime >> DateTime.UtcNow
+                    CreatedAt = new DateTime(2025, 3, 24, 0, 0, 0), // Hardcoded DateTime >> DateTime.UtcNow
+                    ShiftStart = new TimeSpan(8,30,0),
+                    ShiftEnd = new TimeSpan(18,0,0)
                 }
             };
             modelBuilder.Entity<CompanyInfo>().HasData(defaultCompanyInfo);

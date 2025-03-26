@@ -16,7 +16,11 @@ namespace EmpAttendanceSQLite
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-
+            if (Program.companyInfo == null)
+            {
+                MessageBox.Show("Invalid company data! \n Contact system admin.");
+                return;
+            }
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

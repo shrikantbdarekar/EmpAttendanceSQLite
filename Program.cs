@@ -1,4 +1,6 @@
+using EmpAttendanceSQLite.Data;
 using EmpAttendanceSQLite.Models;
+using System.Runtime.CompilerServices;
 
 namespace EmpAttendanceSQLite
 {
@@ -6,6 +8,7 @@ namespace EmpAttendanceSQLite
     {
         // Handle current login credentials
         public static LoginUser loginUser = new LoginUser();
+        public static CompanyInfo companyInfo = new CompanyInfo();
 
         /// <summary>
         ///  The main entry point for the application.
@@ -17,13 +20,20 @@ namespace EmpAttendanceSQLite
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            //Application.Run(new FormLogin());
+            using (var context = new AppDbContext())
+            {
+                if (context.CompanyInfos.Count() == 1)
+                {
+                    companyInfo = context.CompanyInfos.FirstOrDefault();
+                }
+            }
 
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
 
             if (formLogin.DialogResult == DialogResult.OK)
             {
+
                 FormMDI formMDI = new FormMDI();
                 formMDI.ShowDialog();
             }

@@ -35,5 +35,12 @@ namespace EmpAttendanceSQLite.Models
         public string Website { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+
+        [Required]
+        public TimeSpan ShiftStart { get; set; }  // Employee Shift Start Time
+
+        [Required]
+        public TimeSpan ShiftEnd { get; set; }  // Employee Shift End Time
     }
 }

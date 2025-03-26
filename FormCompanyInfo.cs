@@ -36,6 +36,8 @@ namespace EmpAttendanceSQLite
                         textBoxEmailId.Text = companyInfo.EmailId;
                         textBoxContactNo.Text = companyInfo.ContactNo;
                         textBoxWebsite.Text = companyInfo.Website;
+                        dtpShiftStart.Value = DateTime.Today.Add(companyInfo.ShiftStart);
+                        dtpShiftEnd.Value = DateTime.Today.Add(companyInfo.ShiftEnd);
                     }
                 }
             }
@@ -54,6 +56,8 @@ namespace EmpAttendanceSQLite
                     companyInfo.EmailId = textBoxEmailId.Text;
                     companyInfo.ContactNo = textBoxContactNo.Text;
                     companyInfo.Website = textBoxWebsite.Text;
+                    companyInfo.ShiftStart = dtpShiftStart.Value.TimeOfDay;
+                    companyInfo.ShiftEnd = dtpShiftEnd.Value.TimeOfDay;
 
                     context.SaveChanges();
                     MessageBox.Show("Updated Successfully!");

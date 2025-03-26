@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace EmpAttendanceSQLite
 {
-    public partial class FormManageLog : Form
+    public partial class FormManageAttendance : Form
     {
-        private DateTime VirtualFromDate = new DateTime(2025,3,1);
+        private DateTime VirtualFromDate = new DateTime(2025, 3, 1);
         private DateTime VirtuaToDate = new DateTime(2025, 3, 25);
-        public FormManageLog()
+        public FormManageAttendance()
         {
             InitializeComponent();
 
@@ -18,6 +18,17 @@ namespace EmpAttendanceSQLite
 
         private void FormImportAttendanceLog_Load(object sender, EventArgs e)
         {
+            DateTime now = DateTime.Now;
+
+            // Get the first day of the previous month
+            DateTime firstDayOfPreviousMonth = new DateTime(now.Year, now.Month, 1).AddMonths(-1);
+
+            // Get the last day of the previous month
+            DateTime lastDayOfPreviousMonth = firstDayOfPreviousMonth.AddMonths(1).AddDays(-1);
+
+            dtpFromDate.Value = firstDayOfPreviousMonth;
+            dtpToDate.Value = lastDayOfPreviousMonth;
+
             using (var context = new AppDbContext())
             {
                 var employeeList = context.Employees
@@ -37,16 +48,12 @@ namespace EmpAttendanceSQLite
                 comboBoxEmployee.DataSource = employeeList;
                 comboBoxEmployee.DisplayMember = "EmployeeName";  // Shown in dropdown
                 comboBoxEmployee.ValueMember = "EmployeeId";      // Stored value
-
-
             }
         }
 
 
         private void buttonLoadData_Click(object sender, EventArgs e)
         {
-            //DateTime toDate = dtpToDate.Value.Date.AddDays(1).AddSeconds(-1); // End of To Date
-
             DateTime fromDate = dtpFromDate.Value.Date;  // Get selected From Date
             DateTime toDate = dtpToDate.Value.Date; // Get selected To Date
 
@@ -63,20 +70,57 @@ namespace EmpAttendanceSQLite
             {
                 if (bmEmployeeId == 0)
                 {
-                    var filteredData = context.BiometricLogs
-                        .Where(b => b.PunchTime >= fromDate && b.PunchTime <= toDate)
-                        .ToList();
 
-                    dataGridViewMain.DataSource = filteredData;
+                    var biometricLogData = (from bl in context.BiometricLogs
+                                            join emp in context.Employees on bl.BMEmployeeId equals emp.BMEmployeeId
+                                            where bl.PunchTime >= fromDate && bl.PunchTime <= toDate  // Apply date range filter
+                                            orderby bl.BMEmployeeId,bl.PunchTime  // Sorting first by PunchTime, then by BMEmployeeId
+                                            select new
+                                            {
+                                                bl.LogId,
+                                                bl.BMEmployeeId,
+                                                EmployeeName = emp.EmployeeName,
+                                                EmployeeId = emp.EmployeeId,
+                                                bl.PunchTime,
+                                                bl.DeviceId,
+                                                bl.PunchTypeFlag,
+                                                bl.VerificationMode,
+                                                bl.StatusCode,
+                                                bl.CreatedAt,
+                                                bl.RecordType,
+                                                bl.BatchCode
+                                            }).ToList();
+
+                    dataGridViewMain.DataSource = biometricLogData;
                     labelTotal.Text = "Total Rows: " + dataGridViewMain.Rows.Count.ToString();
                 }
                 else
                 {
-                    var filteredData = context.BiometricLogs
-                        .Where(b => b.PunchTime >= fromDate && b.PunchTime <= toDate && b.BMEmployeeId == bmEmployeeId)
-                        .ToList();
+                    var biometricLogData = (from bl in context.BiometricLogs
+                                            join emp in context.Employees on bl.BMEmployeeId equals emp.BMEmployeeId
+                                            where bl.PunchTime >= fromDate && bl.PunchTime <= toDate && bl.BMEmployeeId == bmEmployeeId // Apply date range filter
+                                            orderby bl.BMEmployeeId, bl.PunchTime  // Sorting first by PunchTime, then by BMEmployeeId
+                                            select new
+                                            {
+                                                bl.LogId,
+                                                bl.BMEmployeeId,
+                                                EmployeeName = emp.EmployeeName,
+                                                EmployeeId = emp.EmployeeId,
+                                                bl.PunchTime,
+                                                bl.DeviceId,
+                                                bl.PunchTypeFlag,
+                                                bl.VerificationMode,
+                                                bl.StatusCode,
+                                                bl.CreatedAt,
+                                                bl.RecordType,
+                                                bl.BatchCode
+                                            }).ToList();
 
-                    dataGridViewMain.DataSource = filteredData;
+                    //var filteredData = context.BiometricLogs
+                    //    .Where(b => b.PunchTime >= fromDate && b.PunchTime <= toDate && b.BMEmployeeId == bmEmployeeId)
+                    //    .ToList();
+
+                    dataGridViewMain.DataSource = biometricLogData;
                     labelTotal.Text = "Total Rows: " + dataGridViewMain.Rows.Count.ToString();
                 }
             }
@@ -91,7 +135,6 @@ namespace EmpAttendanceSQLite
         {
             MissingLogPunchTypeAmPm();
         }
-
 
         private void MissingLogPunchType()
         {

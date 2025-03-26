@@ -21,6 +21,7 @@ namespace EmpAttendanceSQLite
             {
                 mnuCompanyInfo.Visible = true;
                 mnuUser.Visible = true;
+                mnuBiometricMachine.Visible = true;
             }
             else if (Program.loginUser.Role == (int)UserRoles.Admin)
             {
@@ -39,6 +40,12 @@ namespace EmpAttendanceSQLite
         {
             FormCompanyInfo formCompanyInfo = new FormCompanyInfo();
             formCompanyInfo.ShowDialog();
+        }
+
+        private void mnuBiometricMachine_Click(object sender, EventArgs e)
+        {
+            FormMachineSearch formMachineSearch = new FormMachineSearch();
+            formMachineSearch.ShowDialog();
         }
 
         private void mnuUser_Click(object sender, EventArgs e)
@@ -65,21 +72,23 @@ namespace EmpAttendanceSQLite
             formImportAttendanceLog.ShowDialog();
         }
 
+        private void mnuManageMissingLog_Click(object sender, EventArgs e)
+        {
+            FormManageMissingLog formManageMissingLog = new FormManageMissingLog();
+            formManageMissingLog.ShowDialog();
+        }
         private void mnuManageAttendanceLog_Click(object sender, EventArgs e)
         {
-            FormManageLog formManageLog = new FormManageLog();
+            FormManageAttendance formManageLog = new FormManageAttendance();
             formManageLog.ShowDialog();
         }
 
-        private void mnuMissingEntry_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         private void mnuExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        
+       
     }
 }

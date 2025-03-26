@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EmpAttendanceSQLite.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDatabase10 : Migration
+    public partial class initialmigration10 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,7 +27,9 @@ namespace EmpAttendanceSQLite.Migrations
                     StatusCode = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     RecordType = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
-                    BatchCode = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false)
+                    BatchCode = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
+                    InOut = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
+                    ManualEntryRemark = table.Column<string>(type: "TEXT", maxLength: 150, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,7 +64,9 @@ namespace EmpAttendanceSQLite.Migrations
                     EmailId = table.Column<string>(type: "TEXT", maxLength: 150, nullable: false),
                     ContactNo = table.Column<string>(type: "TEXT", maxLength: 150, nullable: false),
                     Website = table.Column<string>(type: "TEXT", maxLength: 150, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ShiftStart = table.Column<TimeSpan>(type: "TEXT", nullable: false),
+                    ShiftEnd = table.Column<TimeSpan>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -124,7 +128,8 @@ namespace EmpAttendanceSQLite.Migrations
                     BMEmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
                     PunchDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     MissingType = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    BatchCode = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,8 +138,8 @@ namespace EmpAttendanceSQLite.Migrations
 
             migrationBuilder.InsertData(
                 table: "CompanyInfos",
-                columns: new[] { "CompanyId", "CompanyAddress", "CompanyName", "ContactNo", "CreatedAt", "EmailId", "Website" },
-                values: new object[] { 1, "123, Tech Park, Mumbai", "ABC Pvt Ltd", "+91-9876543210", new DateTime(2025, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "contact@abc.com", "https://www.abc.com" });
+                columns: new[] { "CompanyId", "CompanyAddress", "CompanyName", "ContactNo", "CreatedAt", "EmailId", "ShiftEnd", "ShiftStart", "Website" },
+                values: new object[] { 1, "123, Tech Park, Mumbai", "ABC Pvt Ltd", "+91-9876543210", new DateTime(2025, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "contact@abc.com", new TimeSpan(0, 20, 0, 0, 0), new TimeSpan(0, 8, 30, 0, 0), "https://www.abc.com" });
 
             migrationBuilder.InsertData(
                 table: "LoginUsers",
