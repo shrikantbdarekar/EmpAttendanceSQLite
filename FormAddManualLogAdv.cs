@@ -73,6 +73,8 @@ namespace EmpAttendanceSQLite
                     StatusCode = existingBiometricLog.StatusCode,
                     RecordType = "MANL",
                     BatchCode = existingBiometricLog.BatchCode,
+                    StartDate=existingBiometricLog.StartDate,
+                    EndDate=existingBiometricLog.EndDate,
                     CreatedAt = DateTime.UtcNow
                 };
 

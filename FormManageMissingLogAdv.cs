@@ -11,7 +11,6 @@ namespace EmpAttendanceSQLite
         {
             InitializeComponent();
 
-            dataGridViewMissingLogs.AutoGenerateColumns = false;
             dataGridViewBiometricLogs.AutoGenerateColumns = false;
             dataGridViewOneEntry.AutoGenerateColumns = false;
             dataGridViewTwoPlusEntry.AutoGenerateColumns = false;
@@ -22,8 +21,11 @@ namespace EmpAttendanceSQLite
             // Visible for super admin only
             if (Program.loginUser.Role == (int)UserRoles.SuperAdmin)
             {
-                dgcMissingBatchCode.Visible = true;
                 dgcBatchCode.Visible = true;
+                dgcOneEntryBatchCode.Visible = true;
+                dgcTwoPlusEntryBatchCode.Visible = true;
+
+                buttonDeleteLog.Visible = true;
             }
 
             LoadBatchCode();
@@ -52,6 +54,9 @@ namespace EmpAttendanceSQLite
         private void buttonLoadData_Click(object sender, EventArgs e)
         {
             LoadGridviewData();
+
+            if (dataGridViewOneEntry.RowCount == 0 && dataGridViewTwoPlusEntry.RowCount == 0)
+                buttonApplyInOutFlag.Enabled = true;
         }
 
         private void LoadGridviewData()
@@ -61,89 +66,15 @@ namespace EmpAttendanceSQLite
                 if (comboBoxBatchCode.SelectedValue != null)
                 {
                     string batchCode = comboBoxBatchCode.SelectedValue.ToString();
-
-                    //var missingLogData = (from ml in context.MissingLogs
-                    //                      join emp in context.Employees on ml.BMEmployeeId equals emp.BMEmployeeId
-                    //                      select new
-                    //                      {
-                    //                          ml.MissingLogId,
-                    //                          ml.BMEmployeeId,
-                    //                          EmployeeName = emp.EmployeeName,
-                    //                          EmployeeId = emp.EmployeeId,
-                    //                          ml.PunchDate,
-                    //                          ml.MissingType,
-                    //                          ml.CreatedAt,
-                    //                          ml.BatchCode
-                    //                      }).ToList();
-
-                    //dataGridViewMissingLogs.DataSource = missingLogData;
-
+                    if (batchCode == null)
+                    {
+                        MessageBox.Show("Select batch to proceed!","Alert");
+                        return;
+                    }
 
                     LoadBioMetricData(batchCode);
-
-
-                    //dataGridViewImportedLogs.DataSource = context.BiometricLogs
-                    //    .Where(x => x.BatchCode == comboBoxBatchCode.SelectedValue)
-                    //    .ToList();
-
-                    //dataGridViewMissingLogs.DataSource = context.MissingLogs
-                    //    .Where(x => x.BatchCode == comboBoxBatchCode.SelectedValue)
-                    //    .ToList();
-
-                    // working code
-                    //var biometricLogDataEmployeeGroup = context.BiometricLogs
-                    //    .Join(context.Employees,
-                    //          bl => bl.BMEmployeeId,
-                    //          emp => emp.BMEmployeeId,
-                    //          (bl, emp) => new
-                    //          {
-                    //              bl.LogId,
-                    //              bl.BMEmployeeId,
-                    //              EmployeeName = emp.EmployeeName,
-                    //              EmployeeId = emp.EmployeeId,
-                    //              bl.PunchTime,
-                    //              bl.DeviceId,
-                    //              bl.PunchTypeFlag,
-                    //              bl.VerificationMode,
-                    //              bl.StatusCode,
-                    //              bl.CreatedAt,
-                    //              bl.RecordType,
-                    //              bl.BatchCode
-                    //          })
-                    //    .ToList()
-                    //    .GroupBy(x => x.BMEmployeeId) // Group by BMEmployeeId
-                    //    .Select(g => g.OrderBy(x => x.PunchTime)) // Order within each group by PunchTime
-                    //    .SelectMany(g => g) // Flatten grouped results into a single list
-                    //    .ToList();
-
-                    //var biometricLogDataEmployeeGroup = (from bl in context.BiometricLogs
-                    //                        join emp in context.Employees on bl.BMEmployeeId equals emp.BMEmployeeId
-                    //                        select new
-                    //                        {
-                    //                            bl.LogId,
-                    //                            bl.BMEmployeeId,
-                    //                            EmployeeName = emp.EmployeeName,
-                    //                            EmployeeId = emp.EmployeeId,
-                    //                            bl.PunchTime,
-                    //                            bl.DeviceId,
-                    //                            bl.PunchTypeFlag,
-                    //                            bl.VerificationMode,
-                    //                            bl.StatusCode,
-                    //                            bl.CreatedAt,
-                    //                            bl.RecordType,
-                    //                            bl.BatchCode
-                    //                        })
-                    //    .GroupBy(x => x.BMEmployeeId)
-                    //    .SelectMany(g => g.OrderBy(x => x.PunchTime))
-                    //    .ToList();
-
-                    //dataGridViewGroupByEmployee.DataSource = biometricLogDataEmployeeGroup;
-
                     LoadOneEntryData(batchCode);
-
                     LoadTwoPlusEntryData(batchCode);
-
-
                 }
                 else
                 {
@@ -152,10 +83,7 @@ namespace EmpAttendanceSQLite
                 }
             }
 
-            //tabPageMissingLogs.Text = "#Missing Logs " + dataGridViewMissingLogs.RowCount + "     ";
-            tabPageImportedLog.Text = "#All Records " + dataGridViewBiometricLogs.RowCount + "     ";
-            tabPageOneEntry.Text = "#One Entry " + dataGridViewOneEntry.RowCount + "     ";
-            tabPageTwoPlusEntry.Text = "#Two Plus Entry " + dataGridViewTwoPlusEntry.RowCount + "     ";
+           
 
             Application.DoEvents();
         }
@@ -192,6 +120,7 @@ namespace EmpAttendanceSQLite
 
                 // Bind data to DataGridView
                 dataGridViewBiometricLogs.DataSource = biometricLogData;
+                tabPageImportedLog.Text = "#All Records " + dataGridViewBiometricLogs.RowCount + "     ";
             }
         }
         private void LoadOneEntryData(string batchCode)
@@ -231,6 +160,7 @@ namespace EmpAttendanceSQLite
 
                 // Bind data to DataGridView
                 dataGridViewOneEntry.DataSource = biometricLogDataOneEntry;
+                tabPageOneEntry.Text = "#One Entry " + dataGridViewOneEntry.RowCount + "     ";
             }
         }
 
@@ -271,6 +201,7 @@ namespace EmpAttendanceSQLite
 
                 // Bind data to DataGridView
                 dataGridViewTwoPlusEntry.DataSource = biometricLogDataTwoPlusEntry;
+                tabPageTwoPlusEntry.Text = "#Two Plus Entry " + dataGridViewTwoPlusEntry.RowCount + "     ";
             }
         }
         private void buttonDeleteBatchData_Click(object sender, EventArgs e)
@@ -315,33 +246,6 @@ namespace EmpAttendanceSQLite
             }
 
         }
-
-        private void dataGridViewMissingLogs_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgcMissingAddLog.Index)
-            {
-                using (var context = new AppDbContext())
-                {
-                    var employee = context.Employees.Find(dataGridViewMissingLogs.CurrentRow.Cells[dgcMissingEmployeeId.Name].Value);
-                    var missingLog = context.MissingLogs.Find(dataGridViewMissingLogs.CurrentRow.Cells[dgcMissingLogId.Name].Value);
-
-                    if (employee == null || missingLog == null)
-                    {
-                        MessageBox.Show("Employee data or missing log data missing!");
-                        return;
-                    }
-
-                    // Show form to read values
-                    FormAddManualLog formAddManualLog = new FormAddManualLog(employee, missingLog);
-                    formAddManualLog.ShowDialog();
-
-                    // Reload grid missing logs
-                    // Reload grid imported logs
-                    LoadGridviewData();
-                }
-            }
-        }
-
         private void dataGridViewImportedLogs_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             // Ensure the row index is valid
@@ -366,14 +270,18 @@ namespace EmpAttendanceSQLite
             {
                 using (var context = new AppDbContext())
                 {
-                    int employeeId= Convert.ToInt32(dataGridViewOneEntry.Rows[e.RowIndex].Cells[dgcOneEntryEmployeeId.Name].Value);
+                    int employeeId = Convert.ToInt32(dataGridViewOneEntry.Rows[e.RowIndex].Cells[dgcOneEntryEmployeeId.Name].Value);
                     int logId = Convert.ToInt32(dataGridViewOneEntry.Rows[e.RowIndex].Cells[dgcOneEntryLogId.Name].Value);
                     var employee = context.Employees.Find(employeeId);
                     var biometricLog = context.BiometricLogs.Find(logId);
-                    if (employee != null && biometricLog !=null)
+
+                    if (employee != null && biometricLog != null)
                     {
                         FormAddManualLogAdv formAddManualLogAdv = new FormAddManualLogAdv(employee, biometricLog);
                         formAddManualLogAdv.ShowDialog();
+
+                        LoadBioMetricData(biometricLog.BatchCode);
+                        LoadOneEntryData(biometricLog.BatchCode);
                     }
 
                 }
@@ -391,13 +299,55 @@ namespace EmpAttendanceSQLite
                     using (var context = new AppDbContext())
                     {
                         var biometricLog = context.BiometricLogs.Find(id);
+                        
+
                         if (biometricLog != null)
                         {
+                            string batchCode = biometricLog.BatchCode;
+
                             context.BiometricLogs.Remove(biometricLog);
                             context.SaveChanges();
+
+                            LoadBioMetricData(batchCode);
+                            LoadTwoPlusEntryData(batchCode);
                         }
                     }
                 }
+            }
+        }
+
+        private void ButtonApplyInOutFlag_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Do you want to apply IN/OUT flag for selected month?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                MessageBox.Show("Process completed! You can now proceed to calculate monthly salary.");
+            }
+        }
+
+        private void buttonDeleteLog_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to delete log data for selected Batch?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return;
+            }
+
+            var batchCode = comboBoxBatchCode.SelectedValue;
+            if (batchCode == null)
+            {
+                MessageBox.Show("Select data to delete!", "Alert");
+                return;
+            }
+
+            using (var context = new AppDbContext())
+            {
+                // Delete from MissingLogs
+                var existingLogs = context.BiometricLogs.Where(x => x.BatchCode == batchCode).ToList();
+                context.BiometricLogs.RemoveRange(existingLogs);
+
+                context.SaveChanges();
+
+                MessageBox.Show("Batch data deleted successfully!", "Process Complete");
             }
         }
     }

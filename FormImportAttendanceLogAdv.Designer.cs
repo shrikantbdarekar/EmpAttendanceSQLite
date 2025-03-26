@@ -53,13 +53,13 @@
             tabPageRawLogs = new TabPage();
             tabPageBatchHistory = new TabPage();
             dataGridViewBatchHistory = new DataGridView();
+            labelBatchCode = new Label();
+            label3 = new Label();
             dgcHistoryBatchCode = new DataGridViewTextBoxColumn();
             dgcHistoryStartDate = new DataGridViewTextBoxColumn();
             dgcHistoryEndDate = new DataGridViewTextBoxColumn();
             dgcHistoryView = new DataGridViewLinkColumn();
             dgcHistoryDelete = new DataGridViewLinkColumn();
-            labelBatchCode = new Label();
-            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBiometricLogs).BeginInit();
             tabControlMain.SuspendLayout();
             tabPageRawLogs.SuspendLayout();
@@ -320,6 +320,28 @@
             dataGridViewBatchHistory.TabIndex = 35;
             dataGridViewBatchHistory.CellContentClick += dataGridViewBatchHistory_CellContentClick;
             // 
+            // labelBatchCode
+            // 
+            labelBatchCode.BorderStyle = BorderStyle.FixedSingle;
+            labelBatchCode.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelBatchCode.Location = new Point(703, 28);
+            labelBatchCode.Name = "labelBatchCode";
+            labelBatchCode.Size = new Size(372, 74);
+            labelBatchCode.TabIndex = 36;
+            labelBatchCode.Text = "Batch Code\r\nxxxxxxxxxxxx";
+            labelBatchCode.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Firebrick;
+            label3.Location = new Point(625, 120);
+            label3.Name = "label3";
+            label3.Size = new Size(462, 28);
+            label3.TabIndex = 37;
+            label3.Text = "* Select proper log file and dates before processing.";
+            // 
             // dgcHistoryBatchCode
             // 
             dgcHistoryBatchCode.DataPropertyName = "BatchCode";
@@ -367,29 +389,8 @@
             dgcHistoryDelete.ReadOnly = true;
             dgcHistoryDelete.Text = "Delete Log";
             dgcHistoryDelete.UseColumnTextForLinkValue = true;
+            dgcHistoryDelete.Visible = false;
             dgcHistoryDelete.Width = 150;
-            // 
-            // labelBatchCode
-            // 
-            labelBatchCode.BorderStyle = BorderStyle.FixedSingle;
-            labelBatchCode.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelBatchCode.Location = new Point(703, 28);
-            labelBatchCode.Name = "labelBatchCode";
-            labelBatchCode.Size = new Size(372, 74);
-            labelBatchCode.TabIndex = 36;
-            labelBatchCode.Text = "Batch Code\r\nxxxxxxxxxxxx";
-            labelBatchCode.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(625, 120);
-            label3.Name = "label3";
-            label3.Size = new Size(462, 28);
-            label3.TabIndex = 37;
-            label3.Text = "* Select proper log file and dates before processing.";
             // 
             // FormImportAttendanceLogAdv
             // 

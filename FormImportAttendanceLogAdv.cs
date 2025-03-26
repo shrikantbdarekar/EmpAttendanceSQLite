@@ -15,6 +15,12 @@ namespace EmpAttendanceSQLite
 
         private void FormImportAttendanceLog_Load(object sender, EventArgs e)
         {
+            // Visible for super admin only
+            if (Program.loginUser.Role == (int)UserRoles.SuperAdmin)
+            {
+                dgcHistoryDelete.Visible = true;
+            }
+
             DateTime now = DateTime.Now;
 
             // Get the first day of the previous month

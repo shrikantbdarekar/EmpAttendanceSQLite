@@ -31,29 +31,8 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             labelBatchCode = new Label();
             dataGridViewBiometricLogs = new DataGridView();
-            openAttendanceLogFileDialog = new OpenFileDialog();
-            tabControl1 = new TabControl();
-            tabPageImportedLog = new TabPage();
-            tabPageOneEntry = new TabPage();
-            dataGridViewOneEntry = new DataGridView();
-            tabPageTwoPlusEntry = new TabPage();
-            dataGridViewTwoPlusEntry = new DataGridView();
-            tabPageMissingLogs = new TabPage();
-            dataGridViewMissingLogs = new DataGridView();
-            dgcMissingAddLog = new DataGridViewLinkColumn();
-            dgcMissingLogId = new DataGridViewTextBoxColumn();
-            dgcMIssingBMEmployeeId = new DataGridViewTextBoxColumn();
-            dgcMissingEmployeeName = new DataGridViewTextBoxColumn();
-            dgcMissingEmployeeId = new DataGridViewTextBoxColumn();
-            dgcMissingPunchDate = new DataGridViewTextBoxColumn();
-            dgcMIssingMissingType = new DataGridViewTextBoxColumn();
-            dgcMissingCreatedAt = new DataGridViewTextBoxColumn();
-            dgcMissingBatchCode = new DataGridViewTextBoxColumn();
-            comboBoxBatchCode = new ComboBox();
-            buttonLoadData = new Button();
             dgcLogId = new DataGridViewTextBoxColumn();
             dgcBMEmployeeId = new DataGridViewTextBoxColumn();
             dgcEmployeeName = new DataGridViewTextBoxColumn();
@@ -66,6 +45,11 @@
             dgcBatchCode = new DataGridViewTextBoxColumn();
             dgcRecordType = new DataGridViewTextBoxColumn();
             dgcBiometricLogEmployeeId = new DataGridViewTextBoxColumn();
+            openAttendanceLogFileDialog = new OpenFileDialog();
+            tabControl1 = new TabControl();
+            tabPageImportedLog = new TabPage();
+            tabPageOneEntry = new TabPage();
+            dataGridViewOneEntry = new DataGridView();
             dgcOneEntryLogId = new DataGridViewTextBoxColumn();
             dgcOneEntryBMEmpId = new DataGridViewTextBoxColumn();
             dgcOneEntryEmployeeName = new DataGridViewTextBoxColumn();
@@ -79,6 +63,8 @@
             dgcOneEntryBatchCode = new DataGridViewTextBoxColumn();
             dgcOneEntryRType = new DataGridViewTextBoxColumn();
             dgcOneEntryEmployeeId = new DataGridViewTextBoxColumn();
+            tabPageTwoPlusEntry = new TabPage();
+            dataGridViewTwoPlusEntry = new DataGridView();
             dgcTwoPlusEntryLogId = new DataGridViewTextBoxColumn();
             dgcTwoPlusEntryBMEmpId = new DataGridViewTextBoxColumn();
             dgcTwoPlusEntryEmployeeName = new DataGridViewTextBoxColumn();
@@ -92,6 +78,10 @@
             dgcTwoPlusEntryRType = new DataGridViewTextBoxColumn();
             dgcTwoPlusEntryDeleteLog = new DataGridViewLinkColumn();
             dgcTwoPlusEntryEmployeeId = new DataGridViewTextBoxColumn();
+            comboBoxBatchCode = new ComboBox();
+            buttonLoadData = new Button();
+            buttonApplyInOutFlag = new Button();
+            buttonDeleteLog = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBiometricLogs).BeginInit();
             tabControl1.SuspendLayout();
             tabPageImportedLog.SuspendLayout();
@@ -99,15 +89,13 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewOneEntry).BeginInit();
             tabPageTwoPlusEntry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTwoPlusEntry).BeginInit();
-            tabPageMissingLogs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewMissingLogs).BeginInit();
             SuspendLayout();
             // 
             // labelBatchCode
             // 
             labelBatchCode.AutoSize = true;
             labelBatchCode.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelBatchCode.Location = new Point(12, 9);
+            labelBatchCode.Location = new Point(12, 12);
             labelBatchCode.Name = "labelBatchCode";
             labelBatchCode.Size = new Size(124, 30);
             labelBatchCode.TabIndex = 1;
@@ -131,265 +119,6 @@
             dataGridViewBiometricLogs.Size = new Size(1164, 648);
             dataGridViewBiometricLogs.TabIndex = 6;
             dataGridViewBiometricLogs.RowPrePaint += dataGridViewImportedLogs_RowPrePaint;
-            // 
-            // openAttendanceLogFileDialog
-            // 
-            openAttendanceLogFileDialog.Filter = "Backup File | *.dat";
-            openAttendanceLogFileDialog.Title = "Attendance Log";
-            // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(tabPageImportedLog);
-            tabControl1.Controls.Add(tabPageOneEntry);
-            tabControl1.Controls.Add(tabPageTwoPlusEntry);
-            tabControl1.Controls.Add(tabPageMissingLogs);
-            tabControl1.Dock = DockStyle.Bottom;
-            tabControl1.Font = new Font("Segoe UI", 9F);
-            tabControl1.Location = new Point(0, 52);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1178, 692);
-            tabControl1.TabIndex = 7;
-            // 
-            // tabPageImportedLog
-            // 
-            tabPageImportedLog.Controls.Add(dataGridViewBiometricLogs);
-            tabPageImportedLog.Location = new Point(4, 34);
-            tabPageImportedLog.Name = "tabPageImportedLog";
-            tabPageImportedLog.Padding = new Padding(3);
-            tabPageImportedLog.Size = new Size(1170, 654);
-            tabPageImportedLog.TabIndex = 0;
-            tabPageImportedLog.Text = "#All Records     ";
-            tabPageImportedLog.UseVisualStyleBackColor = true;
-            // 
-            // tabPageOneEntry
-            // 
-            tabPageOneEntry.Controls.Add(dataGridViewOneEntry);
-            tabPageOneEntry.Location = new Point(4, 34);
-            tabPageOneEntry.Name = "tabPageOneEntry";
-            tabPageOneEntry.Size = new Size(1170, 654);
-            tabPageOneEntry.TabIndex = 2;
-            tabPageOneEntry.Text = "#One Entry     ";
-            tabPageOneEntry.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewOneEntry
-            // 
-            dataGridViewOneEntry.AllowUserToAddRows = false;
-            dataGridViewOneEntry.AllowUserToDeleteRows = false;
-            dataGridViewOneEntry.BackgroundColor = Color.Gainsboro;
-            dataGridViewOneEntry.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewOneEntry.ColumnHeadersHeight = 40;
-            dataGridViewOneEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewOneEntry.Columns.AddRange(new DataGridViewColumn[] { dgcOneEntryLogId, dgcOneEntryBMEmpId, dgcOneEntryEmployeeName, dgcOneEntryPunchTime, dgcOneEntryAddLog, dgcOneEntryDeviceId, dgcOneEntryInOut, dgcOneEntryMode, dgcOneEntryStatus, dgcOneEntryCreatedAt, dgcOneEntryBatchCode, dgcOneEntryRType, dgcOneEntryEmployeeId });
-            dataGridViewOneEntry.Dock = DockStyle.Fill;
-            dataGridViewOneEntry.Location = new Point(0, 0);
-            dataGridViewOneEntry.Name = "dataGridViewOneEntry";
-            dataGridViewOneEntry.ReadOnly = true;
-            dataGridViewOneEntry.RowHeadersWidth = 62;
-            dataGridViewOneEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewOneEntry.ShowCellToolTips = false;
-            dataGridViewOneEntry.Size = new Size(1170, 654);
-            dataGridViewOneEntry.TabIndex = 7;
-            dataGridViewOneEntry.CellContentClick += dataGridViewOneEntry_CellContentClick;
-            // 
-            // tabPageTwoPlusEntry
-            // 
-            tabPageTwoPlusEntry.Controls.Add(dataGridViewTwoPlusEntry);
-            tabPageTwoPlusEntry.Location = new Point(4, 34);
-            tabPageTwoPlusEntry.Name = "tabPageTwoPlusEntry";
-            tabPageTwoPlusEntry.Padding = new Padding(3);
-            tabPageTwoPlusEntry.Size = new Size(1170, 654);
-            tabPageTwoPlusEntry.TabIndex = 3;
-            tabPageTwoPlusEntry.Text = "#Two Plus Entry     ";
-            tabPageTwoPlusEntry.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewTwoPlusEntry
-            // 
-            dataGridViewTwoPlusEntry.AllowUserToAddRows = false;
-            dataGridViewTwoPlusEntry.AllowUserToDeleteRows = false;
-            dataGridViewTwoPlusEntry.BackgroundColor = Color.Gainsboro;
-            dataGridViewTwoPlusEntry.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewTwoPlusEntry.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewTwoPlusEntry.ColumnHeadersHeight = 40;
-            dataGridViewTwoPlusEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewTwoPlusEntry.Columns.AddRange(new DataGridViewColumn[] { dgcTwoPlusEntryLogId, dgcTwoPlusEntryBMEmpId, dgcTwoPlusEntryEmployeeName, dgcTwoPlusEntryPunchTime, dgcTwoPlusEntryDeviceId, dgcTwoPlusEntryInOut, dgcTwoPlusEntryMode, dgcTwoPlusEntryStatus, dgcTwoPlusEntryCreatedAt, dgcTwoPlusEntryBatchCode, dgcTwoPlusEntryRType, dgcTwoPlusEntryDeleteLog, dgcTwoPlusEntryEmployeeId });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewTwoPlusEntry.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewTwoPlusEntry.Dock = DockStyle.Fill;
-            dataGridViewTwoPlusEntry.Location = new Point(3, 3);
-            dataGridViewTwoPlusEntry.Name = "dataGridViewTwoPlusEntry";
-            dataGridViewTwoPlusEntry.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewTwoPlusEntry.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewTwoPlusEntry.RowHeadersWidth = 62;
-            dataGridViewTwoPlusEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTwoPlusEntry.ShowCellToolTips = false;
-            dataGridViewTwoPlusEntry.Size = new Size(1164, 648);
-            dataGridViewTwoPlusEntry.TabIndex = 8;
-            dataGridViewTwoPlusEntry.CellContentClick += dataGridViewTwoPlusEntry_CellContentClick;
-            // 
-            // tabPageMissingLogs
-            // 
-            tabPageMissingLogs.Controls.Add(dataGridViewMissingLogs);
-            tabPageMissingLogs.Font = new Font("Segoe UI", 9F);
-            tabPageMissingLogs.Location = new Point(4, 34);
-            tabPageMissingLogs.Margin = new Padding(3, 3, 10, 3);
-            tabPageMissingLogs.Name = "tabPageMissingLogs";
-            tabPageMissingLogs.Padding = new Padding(3);
-            tabPageMissingLogs.Size = new Size(1170, 654);
-            tabPageMissingLogs.TabIndex = 1;
-            tabPageMissingLogs.Text = "#Missing Logs     ";
-            tabPageMissingLogs.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewMissingLogs
-            // 
-            dataGridViewMissingLogs.AllowUserToAddRows = false;
-            dataGridViewMissingLogs.AllowUserToDeleteRows = false;
-            dataGridViewMissingLogs.BackgroundColor = Color.Gainsboro;
-            dataGridViewMissingLogs.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridViewMissingLogs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewMissingLogs.ColumnHeadersHeight = 40;
-            dataGridViewMissingLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewMissingLogs.Columns.AddRange(new DataGridViewColumn[] { dgcMissingAddLog, dgcMissingLogId, dgcMIssingBMEmployeeId, dgcMissingEmployeeName, dgcMissingEmployeeId, dgcMissingPunchDate, dgcMIssingMissingType, dgcMissingCreatedAt, dgcMissingBatchCode });
-            dataGridViewMissingLogs.Dock = DockStyle.Fill;
-            dataGridViewMissingLogs.Location = new Point(3, 3);
-            dataGridViewMissingLogs.Name = "dataGridViewMissingLogs";
-            dataGridViewMissingLogs.ReadOnly = true;
-            dataGridViewMissingLogs.RowHeadersWidth = 62;
-            dataGridViewMissingLogs.Size = new Size(1164, 648);
-            dataGridViewMissingLogs.TabIndex = 7;
-            dataGridViewMissingLogs.CellContentClick += dataGridViewMissingLogs_CellContentClick;
-            // 
-            // dgcMissingAddLog
-            // 
-            dgcMissingAddLog.HeaderText = "Add Log";
-            dgcMissingAddLog.MinimumWidth = 8;
-            dgcMissingAddLog.Name = "dgcMissingAddLog";
-            dgcMissingAddLog.ReadOnly = true;
-            dgcMissingAddLog.Text = "Add Log";
-            dgcMissingAddLog.UseColumnTextForLinkValue = true;
-            dgcMissingAddLog.Width = 150;
-            // 
-            // dgcMissingLogId
-            // 
-            dgcMissingLogId.DataPropertyName = "MissingLogId";
-            dgcMissingLogId.HeaderText = "Log Id";
-            dgcMissingLogId.MinimumWidth = 8;
-            dgcMissingLogId.Name = "dgcMissingLogId";
-            dgcMissingLogId.ReadOnly = true;
-            dgcMissingLogId.Visible = false;
-            dgcMissingLogId.Width = 150;
-            // 
-            // dgcMIssingBMEmployeeId
-            // 
-            dgcMIssingBMEmployeeId.DataPropertyName = "BMEmployeeId";
-            dgcMIssingBMEmployeeId.HeaderText = "BM Emp.Id";
-            dgcMIssingBMEmployeeId.MinimumWidth = 8;
-            dgcMIssingBMEmployeeId.Name = "dgcMIssingBMEmployeeId";
-            dgcMIssingBMEmployeeId.ReadOnly = true;
-            dgcMIssingBMEmployeeId.Width = 150;
-            // 
-            // dgcMissingEmployeeName
-            // 
-            dgcMissingEmployeeName.DataPropertyName = "EmployeeName";
-            dgcMissingEmployeeName.HeaderText = "EmployeeName";
-            dgcMissingEmployeeName.MinimumWidth = 8;
-            dgcMissingEmployeeName.Name = "dgcMissingEmployeeName";
-            dgcMissingEmployeeName.ReadOnly = true;
-            dgcMissingEmployeeName.Width = 220;
-            // 
-            // dgcMissingEmployeeId
-            // 
-            dgcMissingEmployeeId.DataPropertyName = "EmployeeId";
-            dgcMissingEmployeeId.HeaderText = "Employee Id";
-            dgcMissingEmployeeId.MinimumWidth = 8;
-            dgcMissingEmployeeId.Name = "dgcMissingEmployeeId";
-            dgcMissingEmployeeId.ReadOnly = true;
-            dgcMissingEmployeeId.Visible = false;
-            dgcMissingEmployeeId.Width = 150;
-            // 
-            // dgcMissingPunchDate
-            // 
-            dgcMissingPunchDate.DataPropertyName = "PunchDate";
-            dgcMissingPunchDate.HeaderText = "Punch Date";
-            dgcMissingPunchDate.MinimumWidth = 8;
-            dgcMissingPunchDate.Name = "dgcMissingPunchDate";
-            dgcMissingPunchDate.ReadOnly = true;
-            dgcMissingPunchDate.Width = 150;
-            // 
-            // dgcMIssingMissingType
-            // 
-            dgcMIssingMissingType.DataPropertyName = "MissingType";
-            dgcMIssingMissingType.HeaderText = "Missing Type";
-            dgcMIssingMissingType.MinimumWidth = 8;
-            dgcMIssingMissingType.Name = "dgcMIssingMissingType";
-            dgcMIssingMissingType.ReadOnly = true;
-            dgcMIssingMissingType.Width = 150;
-            // 
-            // dgcMissingCreatedAt
-            // 
-            dgcMissingCreatedAt.DataPropertyName = "CreatedAt";
-            dgcMissingCreatedAt.HeaderText = "Created At";
-            dgcMissingCreatedAt.MinimumWidth = 8;
-            dgcMissingCreatedAt.Name = "dgcMissingCreatedAt";
-            dgcMissingCreatedAt.ReadOnly = true;
-            dgcMissingCreatedAt.Visible = false;
-            dgcMissingCreatedAt.Width = 150;
-            // 
-            // dgcMissingBatchCode
-            // 
-            dgcMissingBatchCode.DataPropertyName = "BatchCode";
-            dgcMissingBatchCode.HeaderText = "Batch Code";
-            dgcMissingBatchCode.MinimumWidth = 8;
-            dgcMissingBatchCode.Name = "dgcMissingBatchCode";
-            dgcMissingBatchCode.ReadOnly = true;
-            dgcMissingBatchCode.Visible = false;
-            dgcMissingBatchCode.Width = 250;
-            // 
-            // comboBoxBatchCode
-            // 
-            comboBoxBatchCode.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxBatchCode.FormattingEnabled = true;
-            comboBoxBatchCode.Location = new Point(174, 8);
-            comboBoxBatchCode.Name = "comboBoxBatchCode";
-            comboBoxBatchCode.Size = new Size(760, 33);
-            comboBoxBatchCode.TabIndex = 8;
-            // 
-            // buttonLoadData
-            // 
-            buttonLoadData.Location = new Point(940, 5);
-            buttonLoadData.Name = "buttonLoadData";
-            buttonLoadData.Size = new Size(226, 38);
-            buttonLoadData.TabIndex = 9;
-            buttonLoadData.Text = "Load Data";
-            buttonLoadData.UseVisualStyleBackColor = true;
-            buttonLoadData.Click += buttonLoadData_Click;
             // 
             // dgcLogId
             // 
@@ -507,6 +236,65 @@
             dgcBiometricLogEmployeeId.ReadOnly = true;
             dgcBiometricLogEmployeeId.Visible = false;
             dgcBiometricLogEmployeeId.Width = 150;
+            // 
+            // openAttendanceLogFileDialog
+            // 
+            openAttendanceLogFileDialog.Filter = "Backup File | *.dat";
+            openAttendanceLogFileDialog.Title = "Attendance Log";
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPageImportedLog);
+            tabControl1.Controls.Add(tabPageOneEntry);
+            tabControl1.Controls.Add(tabPageTwoPlusEntry);
+            tabControl1.Dock = DockStyle.Bottom;
+            tabControl1.Font = new Font("Segoe UI", 9F);
+            tabControl1.Location = new Point(0, 52);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1178, 692);
+            tabControl1.TabIndex = 7;
+            // 
+            // tabPageImportedLog
+            // 
+            tabPageImportedLog.Controls.Add(dataGridViewBiometricLogs);
+            tabPageImportedLog.Location = new Point(4, 34);
+            tabPageImportedLog.Name = "tabPageImportedLog";
+            tabPageImportedLog.Padding = new Padding(3);
+            tabPageImportedLog.Size = new Size(1170, 654);
+            tabPageImportedLog.TabIndex = 0;
+            tabPageImportedLog.Text = "#All Records     ";
+            tabPageImportedLog.UseVisualStyleBackColor = true;
+            // 
+            // tabPageOneEntry
+            // 
+            tabPageOneEntry.Controls.Add(dataGridViewOneEntry);
+            tabPageOneEntry.Location = new Point(4, 34);
+            tabPageOneEntry.Name = "tabPageOneEntry";
+            tabPageOneEntry.Size = new Size(1170, 654);
+            tabPageOneEntry.TabIndex = 2;
+            tabPageOneEntry.Text = "#One Entry     ";
+            tabPageOneEntry.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewOneEntry
+            // 
+            dataGridViewOneEntry.AllowUserToAddRows = false;
+            dataGridViewOneEntry.AllowUserToDeleteRows = false;
+            dataGridViewOneEntry.BackgroundColor = Color.Gainsboro;
+            dataGridViewOneEntry.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewOneEntry.ColumnHeadersHeight = 40;
+            dataGridViewOneEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewOneEntry.Columns.AddRange(new DataGridViewColumn[] { dgcOneEntryLogId, dgcOneEntryBMEmpId, dgcOneEntryEmployeeName, dgcOneEntryPunchTime, dgcOneEntryAddLog, dgcOneEntryDeviceId, dgcOneEntryInOut, dgcOneEntryMode, dgcOneEntryStatus, dgcOneEntryCreatedAt, dgcOneEntryBatchCode, dgcOneEntryRType, dgcOneEntryEmployeeId });
+            dataGridViewOneEntry.Dock = DockStyle.Fill;
+            dataGridViewOneEntry.Location = new Point(0, 0);
+            dataGridViewOneEntry.Name = "dataGridViewOneEntry";
+            dataGridViewOneEntry.ReadOnly = true;
+            dataGridViewOneEntry.RowHeadersWidth = 62;
+            dataGridViewOneEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewOneEntry.ShowCellToolTips = false;
+            dataGridViewOneEntry.Size = new Size(1170, 654);
+            dataGridViewOneEntry.TabIndex = 7;
+            dataGridViewOneEntry.CellContentClick += dataGridViewOneEntry_CellContentClick;
             // 
             // dgcOneEntryLogId
             // 
@@ -635,6 +423,61 @@
             dgcOneEntryEmployeeId.Visible = false;
             dgcOneEntryEmployeeId.Width = 150;
             // 
+            // tabPageTwoPlusEntry
+            // 
+            tabPageTwoPlusEntry.Controls.Add(dataGridViewTwoPlusEntry);
+            tabPageTwoPlusEntry.Location = new Point(4, 34);
+            tabPageTwoPlusEntry.Name = "tabPageTwoPlusEntry";
+            tabPageTwoPlusEntry.Padding = new Padding(3);
+            tabPageTwoPlusEntry.Size = new Size(1170, 654);
+            tabPageTwoPlusEntry.TabIndex = 3;
+            tabPageTwoPlusEntry.Text = "#Two Plus Entry     ";
+            tabPageTwoPlusEntry.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewTwoPlusEntry
+            // 
+            dataGridViewTwoPlusEntry.AllowUserToAddRows = false;
+            dataGridViewTwoPlusEntry.AllowUserToDeleteRows = false;
+            dataGridViewTwoPlusEntry.BackgroundColor = Color.Gainsboro;
+            dataGridViewTwoPlusEntry.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewTwoPlusEntry.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewTwoPlusEntry.ColumnHeadersHeight = 40;
+            dataGridViewTwoPlusEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewTwoPlusEntry.Columns.AddRange(new DataGridViewColumn[] { dgcTwoPlusEntryLogId, dgcTwoPlusEntryBMEmpId, dgcTwoPlusEntryEmployeeName, dgcTwoPlusEntryPunchTime, dgcTwoPlusEntryDeviceId, dgcTwoPlusEntryInOut, dgcTwoPlusEntryMode, dgcTwoPlusEntryStatus, dgcTwoPlusEntryCreatedAt, dgcTwoPlusEntryBatchCode, dgcTwoPlusEntryRType, dgcTwoPlusEntryDeleteLog, dgcTwoPlusEntryEmployeeId });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewTwoPlusEntry.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewTwoPlusEntry.Dock = DockStyle.Fill;
+            dataGridViewTwoPlusEntry.Location = new Point(3, 3);
+            dataGridViewTwoPlusEntry.Name = "dataGridViewTwoPlusEntry";
+            dataGridViewTwoPlusEntry.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewTwoPlusEntry.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewTwoPlusEntry.RowHeadersWidth = 62;
+            dataGridViewTwoPlusEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewTwoPlusEntry.ShowCellToolTips = false;
+            dataGridViewTwoPlusEntry.Size = new Size(1164, 648);
+            dataGridViewTwoPlusEntry.TabIndex = 8;
+            dataGridViewTwoPlusEntry.CellContentClick += dataGridViewTwoPlusEntry_CellContentClick;
+            // 
             // dgcTwoPlusEntryLogId
             // 
             dgcTwoPlusEntryLogId.DataPropertyName = "LogId";
@@ -762,12 +605,61 @@
             dgcTwoPlusEntryEmployeeId.Visible = false;
             dgcTwoPlusEntryEmployeeId.Width = 150;
             // 
+            // comboBoxBatchCode
+            // 
+            comboBoxBatchCode.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxBatchCode.FormattingEnabled = true;
+            comboBoxBatchCode.Location = new Point(174, 11);
+            comboBoxBatchCode.Name = "comboBoxBatchCode";
+            comboBoxBatchCode.Size = new Size(585, 33);
+            comboBoxBatchCode.TabIndex = 8;
+            // 
+            // buttonLoadData
+            // 
+            buttonLoadData.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            buttonLoadData.ForeColor = Color.RoyalBlue;
+            buttonLoadData.Location = new Point(765, 8);
+            buttonLoadData.Name = "buttonLoadData";
+            buttonLoadData.Size = new Size(168, 38);
+            buttonLoadData.TabIndex = 9;
+            buttonLoadData.Text = "Load Data";
+            buttonLoadData.UseVisualStyleBackColor = true;
+            buttonLoadData.Click += buttonLoadData_Click;
+            // 
+            // buttonApplyInOutFlag
+            // 
+            buttonApplyInOutFlag.Enabled = false;
+            buttonApplyInOutFlag.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            buttonApplyInOutFlag.ForeColor = Color.RoyalBlue;
+            buttonApplyInOutFlag.Location = new Point(939, 8);
+            buttonApplyInOutFlag.Name = "buttonApplyInOutFlag";
+            buttonApplyInOutFlag.Size = new Size(206, 38);
+            buttonApplyInOutFlag.TabIndex = 10;
+            buttonApplyInOutFlag.Text = "Apply IN/OUT Flag";
+            buttonApplyInOutFlag.UseVisualStyleBackColor = true;
+            buttonApplyInOutFlag.Click += ButtonApplyInOutFlag_Click;
+            // 
+            // buttonDeleteLog
+            // 
+            buttonDeleteLog.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            buttonDeleteLog.ForeColor = Color.Brown;
+            buttonDeleteLog.Location = new Point(0, 8);
+            buttonDeleteLog.Name = "buttonDeleteLog";
+            buttonDeleteLog.Size = new Size(168, 38);
+            buttonDeleteLog.TabIndex = 11;
+            buttonDeleteLog.Text = "Delete Log";
+            buttonDeleteLog.UseVisualStyleBackColor = true;
+            buttonDeleteLog.Visible = false;
+            buttonDeleteLog.Click += buttonDeleteLog_Click;
+            // 
             // FormManageMissingLogAdv
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1178, 744);
+            Controls.Add(buttonDeleteLog);
+            Controls.Add(buttonApplyInOutFlag);
             Controls.Add(buttonLoadData);
             Controls.Add(comboBoxBatchCode);
             Controls.Add(tabControl1);
@@ -785,8 +677,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewOneEntry).EndInit();
             tabPageTwoPlusEntry.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewTwoPlusEntry).EndInit();
-            tabPageMissingLogs.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewMissingLogs).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -801,19 +691,8 @@
         private OpenFileDialog openAttendanceLogFileDialog;
         private TabControl tabControl1;
         private TabPage tabPageImportedLog;
-        private TabPage tabPageMissingLogs;
-        private DataGridView dataGridViewMissingLogs;
         private ComboBox comboBoxBatchCode;
         private Button buttonLoadData;
-        private DataGridViewLinkColumn dgcMissingAddLog;
-        private DataGridViewTextBoxColumn dgcMissingLogId;
-        private DataGridViewTextBoxColumn dgcMIssingBMEmployeeId;
-        private DataGridViewTextBoxColumn dgcMissingEmployeeName;
-        private DataGridViewTextBoxColumn dgcMissingEmployeeId;
-        private DataGridViewTextBoxColumn dgcMissingPunchDate;
-        private DataGridViewTextBoxColumn dgcMIssingMissingType;
-        private DataGridViewTextBoxColumn dgcMissingCreatedAt;
-        private DataGridViewTextBoxColumn dgcMissingBatchCode;
         private TabPage tabPageOneEntry;
         private DataGridView dataGridViewOneEntry;
         private TabPage tabPageTwoPlusEntry;
@@ -856,5 +735,7 @@
         private DataGridViewTextBoxColumn dgcTwoPlusEntryRType;
         private DataGridViewLinkColumn dgcTwoPlusEntryDeleteLog;
         private DataGridViewTextBoxColumn dgcTwoPlusEntryEmployeeId;
+        private Button buttonApplyInOutFlag;
+        private Button buttonDeleteLog;
     }
 }
