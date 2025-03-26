@@ -18,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FormAddManualLogAdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormAddManualLog.cs">
       <SubType>Form</SubType>
     </Compile>

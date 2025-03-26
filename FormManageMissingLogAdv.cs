@@ -12,7 +12,7 @@ namespace EmpAttendanceSQLite
             InitializeComponent();
 
             dataGridViewMissingLogs.AutoGenerateColumns = false;
-            dataGridViewImportedLogs.AutoGenerateColumns = false;
+            dataGridViewBiometricLogs.AutoGenerateColumns = false;
             dataGridViewOneEntry.AutoGenerateColumns = false;
             dataGridViewTwoPlusEntry.AutoGenerateColumns = false;
         }
@@ -142,7 +142,7 @@ namespace EmpAttendanceSQLite
                     LoadOneEntryData(batchCode);
 
                     LoadTwoPlusEntryData(batchCode);
-                    
+
 
                 }
                 else
@@ -153,7 +153,7 @@ namespace EmpAttendanceSQLite
             }
 
             //tabPageMissingLogs.Text = "#Missing Logs " + dataGridViewMissingLogs.RowCount + "     ";
-            tabPageImportedLog.Text = "#All Records " + dataGridViewImportedLogs.RowCount + "     ";
+            tabPageImportedLog.Text = "#All Records " + dataGridViewBiometricLogs.RowCount + "     ";
             tabPageOneEntry.Text = "#One Entry " + dataGridViewOneEntry.RowCount + "     ";
             tabPageTwoPlusEntry.Text = "#Two Plus Entry " + dataGridViewTwoPlusEntry.RowCount + "     ";
 
@@ -191,7 +191,7 @@ namespace EmpAttendanceSQLite
                          .ToList();
 
                 // Bind data to DataGridView
-                dataGridViewImportedLogs.DataSource = biometricLogData;
+                dataGridViewBiometricLogs.DataSource = biometricLogData;
             }
         }
         private void LoadOneEntryData(string batchCode)
@@ -275,7 +275,7 @@ namespace EmpAttendanceSQLite
         }
         private void buttonDeleteBatchData_Click(object sender, EventArgs e)
         {
-            if (dataGridViewImportedLogs.RowCount <= 0)
+            if (dataGridViewBiometricLogs.RowCount <= 0)
             {
                 MessageBox.Show("Load Batch to delete data!");
                 return;
@@ -348,7 +348,7 @@ namespace EmpAttendanceSQLite
             if (e.RowIndex >= 0)
             {
                 // Get the RecordType value from the DataGridView
-                var row = dataGridViewImportedLogs.Rows[e.RowIndex];
+                var row = dataGridViewBiometricLogs.Rows[e.RowIndex];
                 var recordType = row.Cells[dgcRecordType.Name].Value?.ToString(); // Ensure column name is correct
 
                 // Check if the record type is "MANL"
@@ -356,6 +356,47 @@ namespace EmpAttendanceSQLite
                 {
                     row.DefaultCellStyle.ForeColor = Color.Black; // Change text color to red
                     row.DefaultCellStyle.BackColor = Color.Silver; // Change text color to red
+                }
+            }
+        }
+
+        private void dataGridViewOneEntry_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgcOneEntryAddLog.Index)
+            {
+                using (var context = new AppDbContext())
+                {
+                    int employeeId= Convert.ToInt32(dataGridViewOneEntry.Rows[e.RowIndex].Cells[dgcOneEntryEmployeeId.Name].Value);
+                    int logId = Convert.ToInt32(dataGridViewOneEntry.Rows[e.RowIndex].Cells[dgcOneEntryLogId.Name].Value);
+                    var employee = context.Employees.Find(employeeId);
+                    var biometricLog = context.BiometricLogs.Find(logId);
+                    if (employee != null && biometricLog !=null)
+                    {
+                        FormAddManualLogAdv formAddManualLogAdv = new FormAddManualLogAdv(employee, biometricLog);
+                        formAddManualLogAdv.ShowDialog();
+                    }
+
+                }
+            }
+        }
+
+        private void dataGridViewTwoPlusEntry_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgcTwoPlusEntryDeleteLog.Index)
+            {
+                if (MessageBox.Show("Do you want to delete this log?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(dataGridViewTwoPlusEntry.Rows[e.RowIndex].Cells[dgcTwoPlusEntryLogId.Name].Value);
+
+                    using (var context = new AppDbContext())
+                    {
+                        var biometricLog = context.BiometricLogs.Find(id);
+                        if (biometricLog != null)
+                        {
+                            context.BiometricLogs.Remove(biometricLog);
+                            context.SaveChanges();
+                        }
+                    }
                 }
             }
         }

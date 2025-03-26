@@ -33,7 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             labelBatchCode = new Label();
-            dataGridViewImportedLogs = new DataGridView();
+            dataGridViewBiometricLogs = new DataGridView();
             openAttendanceLogFileDialog = new OpenFileDialog();
             tabControl1 = new TabControl();
             tabPageImportedLog = new TabPage();
@@ -65,31 +65,34 @@
             dgcCreatedAt = new DataGridViewTextBoxColumn();
             dgcBatchCode = new DataGridViewTextBoxColumn();
             dgcRecordType = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dgcDuplicatesAdd = new DataGridViewLinkColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn13 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn15 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn14 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn16 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn17 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn18 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn19 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn20 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn21 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn22 = new DataGridViewTextBoxColumn();
-            dataGridViewLinkColumn2 = new DataGridViewLinkColumn();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewImportedLogs).BeginInit();
+            dgcBiometricLogEmployeeId = new DataGridViewTextBoxColumn();
+            dgcOneEntryLogId = new DataGridViewTextBoxColumn();
+            dgcOneEntryBMEmpId = new DataGridViewTextBoxColumn();
+            dgcOneEntryEmployeeName = new DataGridViewTextBoxColumn();
+            dgcOneEntryPunchTime = new DataGridViewTextBoxColumn();
+            dgcOneEntryAddLog = new DataGridViewLinkColumn();
+            dgcOneEntryDeviceId = new DataGridViewTextBoxColumn();
+            dgcOneEntryInOut = new DataGridViewTextBoxColumn();
+            dgcOneEntryMode = new DataGridViewTextBoxColumn();
+            dgcOneEntryStatus = new DataGridViewTextBoxColumn();
+            dgcOneEntryCreatedAt = new DataGridViewTextBoxColumn();
+            dgcOneEntryBatchCode = new DataGridViewTextBoxColumn();
+            dgcOneEntryRType = new DataGridViewTextBoxColumn();
+            dgcOneEntryEmployeeId = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryLogId = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryBMEmpId = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryEmployeeName = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryPunchTime = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryDeviceId = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryInOut = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryMode = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryStatus = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryCreatedAt = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryBatchCode = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryRType = new DataGridViewTextBoxColumn();
+            dgcTwoPlusEntryDeleteLog = new DataGridViewLinkColumn();
+            dgcTwoPlusEntryEmployeeId = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewBiometricLogs).BeginInit();
             tabControl1.SuspendLayout();
             tabPageImportedLog.SuspendLayout();
             tabPageOneEntry.SuspendLayout();
@@ -110,23 +113,24 @@
             labelBatchCode.TabIndex = 1;
             labelBatchCode.Text = "Batch Code";
             // 
-            // dataGridViewImportedLogs
+            // dataGridViewBiometricLogs
             // 
-            dataGridViewImportedLogs.AllowUserToAddRows = false;
-            dataGridViewImportedLogs.AllowUserToDeleteRows = false;
-            dataGridViewImportedLogs.BackgroundColor = Color.Gainsboro;
-            dataGridViewImportedLogs.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewImportedLogs.ColumnHeadersHeight = 40;
-            dataGridViewImportedLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewImportedLogs.Columns.AddRange(new DataGridViewColumn[] { dgcLogId, dgcBMEmployeeId, dgcEmployeeName, dgcPunchTime, dgcDeviceId, dgcPunchTypeFlag, dgcVerificationMode, dgcStatusCode, dgcCreatedAt, dgcBatchCode, dgcRecordType });
-            dataGridViewImportedLogs.Dock = DockStyle.Fill;
-            dataGridViewImportedLogs.Location = new Point(3, 3);
-            dataGridViewImportedLogs.Name = "dataGridViewImportedLogs";
-            dataGridViewImportedLogs.ReadOnly = true;
-            dataGridViewImportedLogs.RowHeadersWidth = 62;
-            dataGridViewImportedLogs.Size = new Size(1164, 648);
-            dataGridViewImportedLogs.TabIndex = 6;
-            dataGridViewImportedLogs.RowPrePaint += dataGridViewImportedLogs_RowPrePaint;
+            dataGridViewBiometricLogs.AllowUserToAddRows = false;
+            dataGridViewBiometricLogs.AllowUserToDeleteRows = false;
+            dataGridViewBiometricLogs.BackgroundColor = Color.Gainsboro;
+            dataGridViewBiometricLogs.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewBiometricLogs.ColumnHeadersHeight = 40;
+            dataGridViewBiometricLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewBiometricLogs.Columns.AddRange(new DataGridViewColumn[] { dgcLogId, dgcBMEmployeeId, dgcEmployeeName, dgcPunchTime, dgcDeviceId, dgcPunchTypeFlag, dgcVerificationMode, dgcStatusCode, dgcCreatedAt, dgcBatchCode, dgcRecordType, dgcBiometricLogEmployeeId });
+            dataGridViewBiometricLogs.Dock = DockStyle.Fill;
+            dataGridViewBiometricLogs.Location = new Point(3, 3);
+            dataGridViewBiometricLogs.Name = "dataGridViewBiometricLogs";
+            dataGridViewBiometricLogs.ReadOnly = true;
+            dataGridViewBiometricLogs.RowHeadersWidth = 62;
+            dataGridViewBiometricLogs.ShowCellToolTips = false;
+            dataGridViewBiometricLogs.Size = new Size(1164, 648);
+            dataGridViewBiometricLogs.TabIndex = 6;
+            dataGridViewBiometricLogs.RowPrePaint += dataGridViewImportedLogs_RowPrePaint;
             // 
             // openAttendanceLogFileDialog
             // 
@@ -149,7 +153,7 @@
             // 
             // tabPageImportedLog
             // 
-            tabPageImportedLog.Controls.Add(dataGridViewImportedLogs);
+            tabPageImportedLog.Controls.Add(dataGridViewBiometricLogs);
             tabPageImportedLog.Location = new Point(4, 34);
             tabPageImportedLog.Name = "tabPageImportedLog";
             tabPageImportedLog.Padding = new Padding(3);
@@ -176,15 +180,17 @@
             dataGridViewOneEntry.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewOneEntry.ColumnHeadersHeight = 40;
             dataGridViewOneEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewOneEntry.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn3, dgcDuplicatesAdd, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11 });
+            dataGridViewOneEntry.Columns.AddRange(new DataGridViewColumn[] { dgcOneEntryLogId, dgcOneEntryBMEmpId, dgcOneEntryEmployeeName, dgcOneEntryPunchTime, dgcOneEntryAddLog, dgcOneEntryDeviceId, dgcOneEntryInOut, dgcOneEntryMode, dgcOneEntryStatus, dgcOneEntryCreatedAt, dgcOneEntryBatchCode, dgcOneEntryRType, dgcOneEntryEmployeeId });
             dataGridViewOneEntry.Dock = DockStyle.Fill;
             dataGridViewOneEntry.Location = new Point(0, 0);
             dataGridViewOneEntry.Name = "dataGridViewOneEntry";
             dataGridViewOneEntry.ReadOnly = true;
             dataGridViewOneEntry.RowHeadersWidth = 62;
             dataGridViewOneEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewOneEntry.ShowCellToolTips = false;
             dataGridViewOneEntry.Size = new Size(1170, 654);
             dataGridViewOneEntry.TabIndex = 7;
+            dataGridViewOneEntry.CellContentClick += dataGridViewOneEntry_CellContentClick;
             // 
             // tabPageTwoPlusEntry
             // 
@@ -213,7 +219,7 @@
             dataGridViewTwoPlusEntry.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTwoPlusEntry.ColumnHeadersHeight = 40;
             dataGridViewTwoPlusEntry.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewTwoPlusEntry.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn12, dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn15, dataGridViewTextBoxColumn14, dataGridViewTextBoxColumn16, dataGridViewTextBoxColumn17, dataGridViewTextBoxColumn18, dataGridViewTextBoxColumn19, dataGridViewTextBoxColumn20, dataGridViewTextBoxColumn21, dataGridViewTextBoxColumn22, dataGridViewLinkColumn2 });
+            dataGridViewTwoPlusEntry.Columns.AddRange(new DataGridViewColumn[] { dgcTwoPlusEntryLogId, dgcTwoPlusEntryBMEmpId, dgcTwoPlusEntryEmployeeName, dgcTwoPlusEntryPunchTime, dgcTwoPlusEntryDeviceId, dgcTwoPlusEntryInOut, dgcTwoPlusEntryMode, dgcTwoPlusEntryStatus, dgcTwoPlusEntryCreatedAt, dgcTwoPlusEntryBatchCode, dgcTwoPlusEntryRType, dgcTwoPlusEntryDeleteLog, dgcTwoPlusEntryEmployeeId });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -236,8 +242,10 @@
             dataGridViewTwoPlusEntry.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTwoPlusEntry.RowHeadersWidth = 62;
             dataGridViewTwoPlusEntry.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewTwoPlusEntry.ShowCellToolTips = false;
             dataGridViewTwoPlusEntry.Size = new Size(1164, 648);
             dataGridViewTwoPlusEntry.TabIndex = 8;
+            dataGridViewTwoPlusEntry.CellContentClick += dataGridViewTwoPlusEntry_CellContentClick;
             // 
             // tabPageMissingLogs
             // 
@@ -490,239 +498,269 @@
             dgcRecordType.Visible = false;
             dgcRecordType.Width = 150;
             // 
-            // dataGridViewTextBoxColumn1
+            // dgcBiometricLogEmployeeId
             // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "LogId";
-            dataGridViewTextBoxColumn1.HeaderText = "LogId";
-            dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Visible = false;
-            dataGridViewTextBoxColumn1.Width = 150;
+            dgcBiometricLogEmployeeId.DataPropertyName = "EmployeeId";
+            dgcBiometricLogEmployeeId.HeaderText = "Emp.Id";
+            dgcBiometricLogEmployeeId.MinimumWidth = 8;
+            dgcBiometricLogEmployeeId.Name = "dgcBiometricLogEmployeeId";
+            dgcBiometricLogEmployeeId.ReadOnly = true;
+            dgcBiometricLogEmployeeId.Visible = false;
+            dgcBiometricLogEmployeeId.Width = 150;
             // 
-            // dataGridViewTextBoxColumn2
+            // dgcOneEntryLogId
             // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "BMEmployeeId";
-            dataGridViewTextBoxColumn2.HeaderText = "BMEmp.Id";
-            dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 150;
+            dgcOneEntryLogId.DataPropertyName = "LogId";
+            dgcOneEntryLogId.HeaderText = "LogId";
+            dgcOneEntryLogId.MinimumWidth = 8;
+            dgcOneEntryLogId.Name = "dgcOneEntryLogId";
+            dgcOneEntryLogId.ReadOnly = true;
+            dgcOneEntryLogId.Visible = false;
+            dgcOneEntryLogId.Width = 150;
             // 
-            // dataGridViewTextBoxColumn4
+            // dgcOneEntryBMEmpId
             // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "EmployeeName";
-            dataGridViewTextBoxColumn4.HeaderText = "Employee Name";
-            dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 300;
+            dgcOneEntryBMEmpId.DataPropertyName = "BMEmployeeId";
+            dgcOneEntryBMEmpId.HeaderText = "BMEmp.Id";
+            dgcOneEntryBMEmpId.MinimumWidth = 8;
+            dgcOneEntryBMEmpId.Name = "dgcOneEntryBMEmpId";
+            dgcOneEntryBMEmpId.ReadOnly = true;
+            dgcOneEntryBMEmpId.Width = 150;
             // 
-            // dataGridViewTextBoxColumn3
+            // dgcOneEntryEmployeeName
             // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "PunchTime";
-            dataGridViewTextBoxColumn3.HeaderText = "PunchTime";
-            dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 220;
+            dgcOneEntryEmployeeName.DataPropertyName = "EmployeeName";
+            dgcOneEntryEmployeeName.HeaderText = "Employee Name";
+            dgcOneEntryEmployeeName.MinimumWidth = 8;
+            dgcOneEntryEmployeeName.Name = "dgcOneEntryEmployeeName";
+            dgcOneEntryEmployeeName.ReadOnly = true;
+            dgcOneEntryEmployeeName.Width = 300;
             // 
-            // dgcDuplicatesAdd
+            // dgcOneEntryPunchTime
             // 
-            dgcDuplicatesAdd.HeaderText = "Add Log";
-            dgcDuplicatesAdd.MinimumWidth = 8;
-            dgcDuplicatesAdd.Name = "dgcDuplicatesAdd";
-            dgcDuplicatesAdd.ReadOnly = true;
-            dgcDuplicatesAdd.Text = "Add Log";
-            dgcDuplicatesAdd.UseColumnTextForLinkValue = true;
-            dgcDuplicatesAdd.Width = 150;
+            dgcOneEntryPunchTime.DataPropertyName = "PunchTime";
+            dgcOneEntryPunchTime.HeaderText = "PunchTime";
+            dgcOneEntryPunchTime.MinimumWidth = 8;
+            dgcOneEntryPunchTime.Name = "dgcOneEntryPunchTime";
+            dgcOneEntryPunchTime.ReadOnly = true;
+            dgcOneEntryPunchTime.Width = 220;
             // 
-            // dataGridViewTextBoxColumn5
+            // dgcOneEntryAddLog
             // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "DeviceId";
-            dataGridViewTextBoxColumn5.HeaderText = "DeviceId";
-            dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            dataGridViewTextBoxColumn5.Visible = false;
-            dataGridViewTextBoxColumn5.Width = 150;
+            dgcOneEntryAddLog.HeaderText = "Add Log";
+            dgcOneEntryAddLog.MinimumWidth = 8;
+            dgcOneEntryAddLog.Name = "dgcOneEntryAddLog";
+            dgcOneEntryAddLog.ReadOnly = true;
+            dgcOneEntryAddLog.Text = "Add Log";
+            dgcOneEntryAddLog.UseColumnTextForLinkValue = true;
+            dgcOneEntryAddLog.Width = 150;
             // 
-            // dataGridViewTextBoxColumn6
+            // dgcOneEntryDeviceId
             // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "PunchTypeFlag";
-            dataGridViewTextBoxColumn6.HeaderText = "I/O";
-            dataGridViewTextBoxColumn6.MinimumWidth = 8;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            dataGridViewTextBoxColumn6.Visible = false;
-            dataGridViewTextBoxColumn6.Width = 150;
+            dgcOneEntryDeviceId.DataPropertyName = "DeviceId";
+            dgcOneEntryDeviceId.HeaderText = "DeviceId";
+            dgcOneEntryDeviceId.MinimumWidth = 8;
+            dgcOneEntryDeviceId.Name = "dgcOneEntryDeviceId";
+            dgcOneEntryDeviceId.ReadOnly = true;
+            dgcOneEntryDeviceId.Visible = false;
+            dgcOneEntryDeviceId.Width = 150;
             // 
-            // dataGridViewTextBoxColumn7
+            // dgcOneEntryInOut
             // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "VerificationMode";
-            dataGridViewTextBoxColumn7.HeaderText = "Mode";
-            dataGridViewTextBoxColumn7.MinimumWidth = 8;
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.ReadOnly = true;
-            dataGridViewTextBoxColumn7.Visible = false;
-            dataGridViewTextBoxColumn7.Width = 80;
+            dgcOneEntryInOut.DataPropertyName = "PunchTypeFlag";
+            dgcOneEntryInOut.HeaderText = "I/O";
+            dgcOneEntryInOut.MinimumWidth = 8;
+            dgcOneEntryInOut.Name = "dgcOneEntryInOut";
+            dgcOneEntryInOut.ReadOnly = true;
+            dgcOneEntryInOut.Visible = false;
+            dgcOneEntryInOut.Width = 150;
             // 
-            // dataGridViewTextBoxColumn8
+            // dgcOneEntryMode
             // 
-            dataGridViewTextBoxColumn8.DataPropertyName = "StatusCode";
-            dataGridViewTextBoxColumn8.HeaderText = "Status";
-            dataGridViewTextBoxColumn8.MinimumWidth = 8;
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.ReadOnly = true;
-            dataGridViewTextBoxColumn8.Visible = false;
-            dataGridViewTextBoxColumn8.Width = 80;
+            dgcOneEntryMode.DataPropertyName = "VerificationMode";
+            dgcOneEntryMode.HeaderText = "Mode";
+            dgcOneEntryMode.MinimumWidth = 8;
+            dgcOneEntryMode.Name = "dgcOneEntryMode";
+            dgcOneEntryMode.ReadOnly = true;
+            dgcOneEntryMode.Visible = false;
+            dgcOneEntryMode.Width = 80;
             // 
-            // dataGridViewTextBoxColumn9
+            // dgcOneEntryStatus
             // 
-            dataGridViewTextBoxColumn9.DataPropertyName = "CreatedAt";
-            dataGridViewTextBoxColumn9.HeaderText = "CreatedAt";
-            dataGridViewTextBoxColumn9.MinimumWidth = 8;
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.ReadOnly = true;
-            dataGridViewTextBoxColumn9.Visible = false;
-            dataGridViewTextBoxColumn9.Width = 150;
+            dgcOneEntryStatus.DataPropertyName = "StatusCode";
+            dgcOneEntryStatus.HeaderText = "Status";
+            dgcOneEntryStatus.MinimumWidth = 8;
+            dgcOneEntryStatus.Name = "dgcOneEntryStatus";
+            dgcOneEntryStatus.ReadOnly = true;
+            dgcOneEntryStatus.Visible = false;
+            dgcOneEntryStatus.Width = 80;
             // 
-            // dataGridViewTextBoxColumn10
+            // dgcOneEntryCreatedAt
             // 
-            dataGridViewTextBoxColumn10.DataPropertyName = "BatchCode";
-            dataGridViewTextBoxColumn10.HeaderText = "Batch Code";
-            dataGridViewTextBoxColumn10.MinimumWidth = 8;
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            dataGridViewTextBoxColumn10.ReadOnly = true;
-            dataGridViewTextBoxColumn10.Visible = false;
-            dataGridViewTextBoxColumn10.Width = 150;
+            dgcOneEntryCreatedAt.DataPropertyName = "CreatedAt";
+            dgcOneEntryCreatedAt.HeaderText = "CreatedAt";
+            dgcOneEntryCreatedAt.MinimumWidth = 8;
+            dgcOneEntryCreatedAt.Name = "dgcOneEntryCreatedAt";
+            dgcOneEntryCreatedAt.ReadOnly = true;
+            dgcOneEntryCreatedAt.Visible = false;
+            dgcOneEntryCreatedAt.Width = 150;
             // 
-            // dataGridViewTextBoxColumn11
+            // dgcOneEntryBatchCode
             // 
-            dataGridViewTextBoxColumn11.DataPropertyName = "RecordType";
-            dataGridViewTextBoxColumn11.HeaderText = "RType";
-            dataGridViewTextBoxColumn11.MinimumWidth = 8;
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            dataGridViewTextBoxColumn11.ReadOnly = true;
-            dataGridViewTextBoxColumn11.Visible = false;
-            dataGridViewTextBoxColumn11.Width = 150;
+            dgcOneEntryBatchCode.DataPropertyName = "BatchCode";
+            dgcOneEntryBatchCode.HeaderText = "Batch Code";
+            dgcOneEntryBatchCode.MinimumWidth = 8;
+            dgcOneEntryBatchCode.Name = "dgcOneEntryBatchCode";
+            dgcOneEntryBatchCode.ReadOnly = true;
+            dgcOneEntryBatchCode.Visible = false;
+            dgcOneEntryBatchCode.Width = 150;
             // 
-            // dataGridViewTextBoxColumn12
+            // dgcOneEntryRType
             // 
-            dataGridViewTextBoxColumn12.DataPropertyName = "LogId";
-            dataGridViewTextBoxColumn12.HeaderText = "LogId";
-            dataGridViewTextBoxColumn12.MinimumWidth = 8;
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            dataGridViewTextBoxColumn12.ReadOnly = true;
-            dataGridViewTextBoxColumn12.Visible = false;
-            dataGridViewTextBoxColumn12.Width = 150;
+            dgcOneEntryRType.DataPropertyName = "RecordType";
+            dgcOneEntryRType.HeaderText = "RType";
+            dgcOneEntryRType.MinimumWidth = 8;
+            dgcOneEntryRType.Name = "dgcOneEntryRType";
+            dgcOneEntryRType.ReadOnly = true;
+            dgcOneEntryRType.Visible = false;
+            dgcOneEntryRType.Width = 150;
             // 
-            // dataGridViewTextBoxColumn13
+            // dgcOneEntryEmployeeId
             // 
-            dataGridViewTextBoxColumn13.DataPropertyName = "BMEmployeeId";
-            dataGridViewTextBoxColumn13.HeaderText = "BMEmp.Id";
-            dataGridViewTextBoxColumn13.MinimumWidth = 8;
-            dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            dataGridViewTextBoxColumn13.ReadOnly = true;
-            dataGridViewTextBoxColumn13.Width = 150;
+            dgcOneEntryEmployeeId.DataPropertyName = "EmployeeId";
+            dgcOneEntryEmployeeId.HeaderText = "Emp.Id";
+            dgcOneEntryEmployeeId.MinimumWidth = 8;
+            dgcOneEntryEmployeeId.Name = "dgcOneEntryEmployeeId";
+            dgcOneEntryEmployeeId.ReadOnly = true;
+            dgcOneEntryEmployeeId.Visible = false;
+            dgcOneEntryEmployeeId.Width = 150;
             // 
-            // dataGridViewTextBoxColumn15
+            // dgcTwoPlusEntryLogId
             // 
-            dataGridViewTextBoxColumn15.DataPropertyName = "EmployeeName";
-            dataGridViewTextBoxColumn15.HeaderText = "Employee Name";
-            dataGridViewTextBoxColumn15.MinimumWidth = 8;
-            dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            dataGridViewTextBoxColumn15.ReadOnly = true;
-            dataGridViewTextBoxColumn15.Width = 300;
+            dgcTwoPlusEntryLogId.DataPropertyName = "LogId";
+            dgcTwoPlusEntryLogId.HeaderText = "LogId";
+            dgcTwoPlusEntryLogId.MinimumWidth = 8;
+            dgcTwoPlusEntryLogId.Name = "dgcTwoPlusEntryLogId";
+            dgcTwoPlusEntryLogId.ReadOnly = true;
+            dgcTwoPlusEntryLogId.Visible = false;
+            dgcTwoPlusEntryLogId.Width = 150;
             // 
-            // dataGridViewTextBoxColumn14
+            // dgcTwoPlusEntryBMEmpId
             // 
-            dataGridViewTextBoxColumn14.DataPropertyName = "PunchTime";
-            dataGridViewTextBoxColumn14.HeaderText = "PunchTime";
-            dataGridViewTextBoxColumn14.MinimumWidth = 8;
-            dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            dataGridViewTextBoxColumn14.ReadOnly = true;
-            dataGridViewTextBoxColumn14.Width = 220;
+            dgcTwoPlusEntryBMEmpId.DataPropertyName = "BMEmployeeId";
+            dgcTwoPlusEntryBMEmpId.HeaderText = "BMEmp.Id";
+            dgcTwoPlusEntryBMEmpId.MinimumWidth = 8;
+            dgcTwoPlusEntryBMEmpId.Name = "dgcTwoPlusEntryBMEmpId";
+            dgcTwoPlusEntryBMEmpId.ReadOnly = true;
+            dgcTwoPlusEntryBMEmpId.Width = 150;
             // 
-            // dataGridViewTextBoxColumn16
+            // dgcTwoPlusEntryEmployeeName
             // 
-            dataGridViewTextBoxColumn16.DataPropertyName = "DeviceId";
-            dataGridViewTextBoxColumn16.HeaderText = "DeviceId";
-            dataGridViewTextBoxColumn16.MinimumWidth = 8;
-            dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            dataGridViewTextBoxColumn16.ReadOnly = true;
-            dataGridViewTextBoxColumn16.Visible = false;
-            dataGridViewTextBoxColumn16.Width = 150;
+            dgcTwoPlusEntryEmployeeName.DataPropertyName = "EmployeeName";
+            dgcTwoPlusEntryEmployeeName.HeaderText = "Employee Name";
+            dgcTwoPlusEntryEmployeeName.MinimumWidth = 8;
+            dgcTwoPlusEntryEmployeeName.Name = "dgcTwoPlusEntryEmployeeName";
+            dgcTwoPlusEntryEmployeeName.ReadOnly = true;
+            dgcTwoPlusEntryEmployeeName.Width = 300;
             // 
-            // dataGridViewTextBoxColumn17
+            // dgcTwoPlusEntryPunchTime
             // 
-            dataGridViewTextBoxColumn17.DataPropertyName = "PunchTypeFlag";
-            dataGridViewTextBoxColumn17.HeaderText = "I/O";
-            dataGridViewTextBoxColumn17.MinimumWidth = 8;
-            dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            dataGridViewTextBoxColumn17.ReadOnly = true;
-            dataGridViewTextBoxColumn17.Visible = false;
-            dataGridViewTextBoxColumn17.Width = 150;
+            dgcTwoPlusEntryPunchTime.DataPropertyName = "PunchTime";
+            dgcTwoPlusEntryPunchTime.HeaderText = "PunchTime";
+            dgcTwoPlusEntryPunchTime.MinimumWidth = 8;
+            dgcTwoPlusEntryPunchTime.Name = "dgcTwoPlusEntryPunchTime";
+            dgcTwoPlusEntryPunchTime.ReadOnly = true;
+            dgcTwoPlusEntryPunchTime.Width = 220;
             // 
-            // dataGridViewTextBoxColumn18
+            // dgcTwoPlusEntryDeviceId
             // 
-            dataGridViewTextBoxColumn18.DataPropertyName = "VerificationMode";
-            dataGridViewTextBoxColumn18.HeaderText = "Mode";
-            dataGridViewTextBoxColumn18.MinimumWidth = 8;
-            dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            dataGridViewTextBoxColumn18.ReadOnly = true;
-            dataGridViewTextBoxColumn18.Visible = false;
-            dataGridViewTextBoxColumn18.Width = 80;
+            dgcTwoPlusEntryDeviceId.DataPropertyName = "DeviceId";
+            dgcTwoPlusEntryDeviceId.HeaderText = "DeviceId";
+            dgcTwoPlusEntryDeviceId.MinimumWidth = 8;
+            dgcTwoPlusEntryDeviceId.Name = "dgcTwoPlusEntryDeviceId";
+            dgcTwoPlusEntryDeviceId.ReadOnly = true;
+            dgcTwoPlusEntryDeviceId.Visible = false;
+            dgcTwoPlusEntryDeviceId.Width = 150;
             // 
-            // dataGridViewTextBoxColumn19
+            // dgcTwoPlusEntryInOut
             // 
-            dataGridViewTextBoxColumn19.DataPropertyName = "StatusCode";
-            dataGridViewTextBoxColumn19.HeaderText = "Status";
-            dataGridViewTextBoxColumn19.MinimumWidth = 8;
-            dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            dataGridViewTextBoxColumn19.ReadOnly = true;
-            dataGridViewTextBoxColumn19.Visible = false;
-            dataGridViewTextBoxColumn19.Width = 80;
+            dgcTwoPlusEntryInOut.DataPropertyName = "PunchTypeFlag";
+            dgcTwoPlusEntryInOut.HeaderText = "I/O";
+            dgcTwoPlusEntryInOut.MinimumWidth = 8;
+            dgcTwoPlusEntryInOut.Name = "dgcTwoPlusEntryInOut";
+            dgcTwoPlusEntryInOut.ReadOnly = true;
+            dgcTwoPlusEntryInOut.Visible = false;
+            dgcTwoPlusEntryInOut.Width = 150;
             // 
-            // dataGridViewTextBoxColumn20
+            // dgcTwoPlusEntryMode
             // 
-            dataGridViewTextBoxColumn20.DataPropertyName = "CreatedAt";
-            dataGridViewTextBoxColumn20.HeaderText = "CreatedAt";
-            dataGridViewTextBoxColumn20.MinimumWidth = 8;
-            dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            dataGridViewTextBoxColumn20.ReadOnly = true;
-            dataGridViewTextBoxColumn20.Visible = false;
-            dataGridViewTextBoxColumn20.Width = 150;
+            dgcTwoPlusEntryMode.DataPropertyName = "VerificationMode";
+            dgcTwoPlusEntryMode.HeaderText = "Mode";
+            dgcTwoPlusEntryMode.MinimumWidth = 8;
+            dgcTwoPlusEntryMode.Name = "dgcTwoPlusEntryMode";
+            dgcTwoPlusEntryMode.ReadOnly = true;
+            dgcTwoPlusEntryMode.Visible = false;
+            dgcTwoPlusEntryMode.Width = 80;
             // 
-            // dataGridViewTextBoxColumn21
+            // dgcTwoPlusEntryStatus
             // 
-            dataGridViewTextBoxColumn21.DataPropertyName = "BatchCode";
-            dataGridViewTextBoxColumn21.HeaderText = "Batch Code";
-            dataGridViewTextBoxColumn21.MinimumWidth = 8;
-            dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            dataGridViewTextBoxColumn21.ReadOnly = true;
-            dataGridViewTextBoxColumn21.Visible = false;
-            dataGridViewTextBoxColumn21.Width = 150;
+            dgcTwoPlusEntryStatus.DataPropertyName = "StatusCode";
+            dgcTwoPlusEntryStatus.HeaderText = "Status";
+            dgcTwoPlusEntryStatus.MinimumWidth = 8;
+            dgcTwoPlusEntryStatus.Name = "dgcTwoPlusEntryStatus";
+            dgcTwoPlusEntryStatus.ReadOnly = true;
+            dgcTwoPlusEntryStatus.Visible = false;
+            dgcTwoPlusEntryStatus.Width = 80;
             // 
-            // dataGridViewTextBoxColumn22
+            // dgcTwoPlusEntryCreatedAt
             // 
-            dataGridViewTextBoxColumn22.DataPropertyName = "RecordType";
-            dataGridViewTextBoxColumn22.HeaderText = "RType";
-            dataGridViewTextBoxColumn22.MinimumWidth = 8;
-            dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            dataGridViewTextBoxColumn22.ReadOnly = true;
-            dataGridViewTextBoxColumn22.Visible = false;
-            dataGridViewTextBoxColumn22.Width = 150;
+            dgcTwoPlusEntryCreatedAt.DataPropertyName = "CreatedAt";
+            dgcTwoPlusEntryCreatedAt.HeaderText = "CreatedAt";
+            dgcTwoPlusEntryCreatedAt.MinimumWidth = 8;
+            dgcTwoPlusEntryCreatedAt.Name = "dgcTwoPlusEntryCreatedAt";
+            dgcTwoPlusEntryCreatedAt.ReadOnly = true;
+            dgcTwoPlusEntryCreatedAt.Visible = false;
+            dgcTwoPlusEntryCreatedAt.Width = 150;
             // 
-            // dataGridViewLinkColumn2
+            // dgcTwoPlusEntryBatchCode
             // 
-            dataGridViewLinkColumn2.HeaderText = "Delete";
-            dataGridViewLinkColumn2.MinimumWidth = 8;
-            dataGridViewLinkColumn2.Name = "dataGridViewLinkColumn2";
-            dataGridViewLinkColumn2.ReadOnly = true;
-            dataGridViewLinkColumn2.Text = "Delete";
-            dataGridViewLinkColumn2.UseColumnTextForLinkValue = true;
-            dataGridViewLinkColumn2.Width = 150;
+            dgcTwoPlusEntryBatchCode.DataPropertyName = "BatchCode";
+            dgcTwoPlusEntryBatchCode.HeaderText = "Batch Code";
+            dgcTwoPlusEntryBatchCode.MinimumWidth = 8;
+            dgcTwoPlusEntryBatchCode.Name = "dgcTwoPlusEntryBatchCode";
+            dgcTwoPlusEntryBatchCode.ReadOnly = true;
+            dgcTwoPlusEntryBatchCode.Visible = false;
+            dgcTwoPlusEntryBatchCode.Width = 150;
+            // 
+            // dgcTwoPlusEntryRType
+            // 
+            dgcTwoPlusEntryRType.DataPropertyName = "RecordType";
+            dgcTwoPlusEntryRType.HeaderText = "RType";
+            dgcTwoPlusEntryRType.MinimumWidth = 8;
+            dgcTwoPlusEntryRType.Name = "dgcTwoPlusEntryRType";
+            dgcTwoPlusEntryRType.ReadOnly = true;
+            dgcTwoPlusEntryRType.Visible = false;
+            dgcTwoPlusEntryRType.Width = 150;
+            // 
+            // dgcTwoPlusEntryDeleteLog
+            // 
+            dgcTwoPlusEntryDeleteLog.HeaderText = "Delete";
+            dgcTwoPlusEntryDeleteLog.MinimumWidth = 8;
+            dgcTwoPlusEntryDeleteLog.Name = "dgcTwoPlusEntryDeleteLog";
+            dgcTwoPlusEntryDeleteLog.ReadOnly = true;
+            dgcTwoPlusEntryDeleteLog.Text = "Delete";
+            dgcTwoPlusEntryDeleteLog.UseColumnTextForLinkValue = true;
+            dgcTwoPlusEntryDeleteLog.Width = 150;
+            // 
+            // dgcTwoPlusEntryEmployeeId
+            // 
+            dgcTwoPlusEntryEmployeeId.DataPropertyName = "EmployeeId";
+            dgcTwoPlusEntryEmployeeId.HeaderText = "Emp.Id";
+            dgcTwoPlusEntryEmployeeId.MinimumWidth = 8;
+            dgcTwoPlusEntryEmployeeId.Name = "dgcTwoPlusEntryEmployeeId";
+            dgcTwoPlusEntryEmployeeId.ReadOnly = true;
+            dgcTwoPlusEntryEmployeeId.Visible = false;
+            dgcTwoPlusEntryEmployeeId.Width = 150;
             // 
             // FormManageMissingLogAdv
             // 
@@ -740,7 +778,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Manage Missing Log";
             Load += FormImportAttendanceLog_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewImportedLogs).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewBiometricLogs).EndInit();
             tabControl1.ResumeLayout(false);
             tabPageImportedLog.ResumeLayout(false);
             tabPageOneEntry.ResumeLayout(false);
@@ -759,7 +797,7 @@
         private Label labelBatchCode;
         private TextBox textBoxUserId;
         private Button buttonExit;
-        private DataGridView dataGridViewImportedLogs;
+        private DataGridView dataGridViewBiometricLogs;
         private OpenFileDialog openAttendanceLogFileDialog;
         private TabControl tabControl1;
         private TabPage tabPageImportedLog;
@@ -791,29 +829,32 @@
         private DataGridViewTextBoxColumn dgcCreatedAt;
         private DataGridViewTextBoxColumn dgcBatchCode;
         private DataGridViewTextBoxColumn dgcRecordType;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewLinkColumn dgcDuplicatesAdd;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private DataGridViewLinkColumn dataGridViewLinkColumn2;
+        private DataGridViewTextBoxColumn dgcBiometricLogEmployeeId;
+        private DataGridViewTextBoxColumn dgcOneEntryLogId;
+        private DataGridViewTextBoxColumn dgcOneEntryBMEmpId;
+        private DataGridViewTextBoxColumn dgcOneEntryEmployeeName;
+        private DataGridViewTextBoxColumn dgcOneEntryPunchTime;
+        private DataGridViewLinkColumn dgcOneEntryAddLog;
+        private DataGridViewTextBoxColumn dgcOneEntryDeviceId;
+        private DataGridViewTextBoxColumn dgcOneEntryInOut;
+        private DataGridViewTextBoxColumn dgcOneEntryMode;
+        private DataGridViewTextBoxColumn dgcOneEntryStatus;
+        private DataGridViewTextBoxColumn dgcOneEntryCreatedAt;
+        private DataGridViewTextBoxColumn dgcOneEntryBatchCode;
+        private DataGridViewTextBoxColumn dgcOneEntryRType;
+        private DataGridViewTextBoxColumn dgcOneEntryEmployeeId;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryLogId;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryBMEmpId;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryEmployeeName;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryPunchTime;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryDeviceId;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryInOut;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryMode;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryStatus;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryCreatedAt;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryBatchCode;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryRType;
+        private DataGridViewLinkColumn dgcTwoPlusEntryDeleteLog;
+        private DataGridViewTextBoxColumn dgcTwoPlusEntryEmployeeId;
     }
 }
