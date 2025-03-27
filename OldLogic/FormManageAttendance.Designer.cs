@@ -31,16 +31,6 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             labelDate = new Label();
             dataGridViewMain = new DataGridView();
-            dgcLogId = new DataGridViewTextBoxColumn();
-            dgcBMEmployeeId = new DataGridViewTextBoxColumn();
-            dgcEmployeeName = new DataGridViewTextBoxColumn();
-            dgcEmployeeId = new DataGridViewTextBoxColumn();
-            dgcPunchTime = new DataGridViewTextBoxColumn();
-            dgcDeviceId = new DataGridViewTextBoxColumn();
-            dgcPunchTypeFlag = new DataGridViewTextBoxColumn();
-            dgcVerificationMode = new DataGridViewTextBoxColumn();
-            dgcStatusCode = new DataGridViewTextBoxColumn();
-            dgcCreatedAt = new DataGridViewTextBoxColumn();
             openAttendanceLogFileDialog = new OpenFileDialog();
             dtpFromDate = new DateTimePicker();
             dtpToDate = new DateTimePicker();
@@ -57,6 +47,17 @@
             dataGridView1 = new DataGridView();
             tabPageOrderByEmpIdTime = new TabPage();
             tabControl1 = new TabControl();
+            dgcLogId = new DataGridViewTextBoxColumn();
+            dgcBMEmployeeId = new DataGridViewTextBoxColumn();
+            dgcEmployeeName = new DataGridViewTextBoxColumn();
+            dgcEmployeeId = new DataGridViewTextBoxColumn();
+            dgcPunchTime = new DataGridViewTextBoxColumn();
+            dgcDeviceId = new DataGridViewTextBoxColumn();
+            dgcPunchTypeFlag = new DataGridViewTextBoxColumn();
+            dgcVerificationMode = new DataGridViewTextBoxColumn();
+            dgcStatusCode = new DataGridViewTextBoxColumn();
+            dgcCreatedAt = new DataGridViewTextBoxColumn();
+            dgcInOut = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -92,109 +93,13 @@
             dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewMain.ColumnHeadersHeight = 40;
             dataGridViewMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewMain.Columns.AddRange(new DataGridViewColumn[] { dgcLogId, dgcBMEmployeeId, dgcEmployeeName, dgcEmployeeId, dgcPunchTime, dgcDeviceId, dgcPunchTypeFlag, dgcVerificationMode, dgcStatusCode, dgcCreatedAt });
+            dataGridViewMain.Columns.AddRange(new DataGridViewColumn[] { dgcLogId, dgcBMEmployeeId, dgcEmployeeName, dgcEmployeeId, dgcPunchTime, dgcDeviceId, dgcPunchTypeFlag, dgcVerificationMode, dgcStatusCode, dgcCreatedAt, dgcInOut });
             dataGridViewMain.Location = new Point(3, 3);
             dataGridViewMain.Name = "dataGridViewMain";
             dataGridViewMain.ReadOnly = true;
             dataGridViewMain.RowHeadersWidth = 62;
             dataGridViewMain.Size = new Size(1157, 594);
             dataGridViewMain.TabIndex = 6;
-            // 
-            // dgcLogId
-            // 
-            dgcLogId.DataPropertyName = "LogId";
-            dgcLogId.HeaderText = "LogId";
-            dgcLogId.MinimumWidth = 8;
-            dgcLogId.Name = "dgcLogId";
-            dgcLogId.ReadOnly = true;
-            dgcLogId.Visible = false;
-            dgcLogId.Width = 150;
-            // 
-            // dgcBMEmployeeId
-            // 
-            dgcBMEmployeeId.DataPropertyName = "BMEmployeeId";
-            dgcBMEmployeeId.HeaderText = "BMEmp.Id";
-            dgcBMEmployeeId.MinimumWidth = 8;
-            dgcBMEmployeeId.Name = "dgcBMEmployeeId";
-            dgcBMEmployeeId.ReadOnly = true;
-            dgcBMEmployeeId.Width = 150;
-            // 
-            // dgcEmployeeName
-            // 
-            dgcEmployeeName.DataPropertyName = "EmployeeName";
-            dgcEmployeeName.HeaderText = "EmployeeName";
-            dgcEmployeeName.MinimumWidth = 8;
-            dgcEmployeeName.Name = "dgcEmployeeName";
-            dgcEmployeeName.ReadOnly = true;
-            dgcEmployeeName.Width = 250;
-            // 
-            // dgcEmployeeId
-            // 
-            dgcEmployeeId.DataPropertyName = "EmployeeName";
-            dgcEmployeeId.HeaderText = "Emp.Id";
-            dgcEmployeeId.MinimumWidth = 8;
-            dgcEmployeeId.Name = "dgcEmployeeId";
-            dgcEmployeeId.ReadOnly = true;
-            dgcEmployeeId.Visible = false;
-            dgcEmployeeId.Width = 150;
-            // 
-            // dgcPunchTime
-            // 
-            dgcPunchTime.DataPropertyName = "PunchTime";
-            dgcPunchTime.HeaderText = "PunchTime";
-            dgcPunchTime.MinimumWidth = 8;
-            dgcPunchTime.Name = "dgcPunchTime";
-            dgcPunchTime.ReadOnly = true;
-            dgcPunchTime.Width = 300;
-            // 
-            // dgcDeviceId
-            // 
-            dgcDeviceId.DataPropertyName = "DeviceId";
-            dgcDeviceId.HeaderText = "DeviceId";
-            dgcDeviceId.MinimumWidth = 8;
-            dgcDeviceId.Name = "dgcDeviceId";
-            dgcDeviceId.ReadOnly = true;
-            dgcDeviceId.Visible = false;
-            dgcDeviceId.Width = 150;
-            // 
-            // dgcPunchTypeFlag
-            // 
-            dgcPunchTypeFlag.DataPropertyName = "PunchTypeFlag";
-            dgcPunchTypeFlag.HeaderText = "PunchType";
-            dgcPunchTypeFlag.MinimumWidth = 8;
-            dgcPunchTypeFlag.Name = "dgcPunchTypeFlag";
-            dgcPunchTypeFlag.ReadOnly = true;
-            dgcPunchTypeFlag.Visible = false;
-            dgcPunchTypeFlag.Width = 150;
-            // 
-            // dgcVerificationMode
-            // 
-            dgcVerificationMode.DataPropertyName = "VerificationMode";
-            dgcVerificationMode.HeaderText = "Mode";
-            dgcVerificationMode.MinimumWidth = 8;
-            dgcVerificationMode.Name = "dgcVerificationMode";
-            dgcVerificationMode.ReadOnly = true;
-            dgcVerificationMode.Visible = false;
-            dgcVerificationMode.Width = 150;
-            // 
-            // dgcStatusCode
-            // 
-            dgcStatusCode.DataPropertyName = "StatusCode";
-            dgcStatusCode.HeaderText = "I/O";
-            dgcStatusCode.MinimumWidth = 8;
-            dgcStatusCode.Name = "dgcStatusCode";
-            dgcStatusCode.ReadOnly = true;
-            dgcStatusCode.Width = 150;
-            // 
-            // dgcCreatedAt
-            // 
-            dgcCreatedAt.DataPropertyName = "CreatedAt";
-            dgcCreatedAt.HeaderText = "CreatedAt";
-            dgcCreatedAt.MinimumWidth = 8;
-            dgcCreatedAt.Name = "dgcCreatedAt";
-            dgcCreatedAt.ReadOnly = true;
-            dgcCreatedAt.Visible = false;
-            dgcCreatedAt.Width = 150;
             // 
             // openAttendanceLogFileDialog
             // 
@@ -209,6 +114,7 @@
             dtpFromDate.Name = "dtpFromDate";
             dtpFromDate.Size = new Size(158, 31);
             dtpFromDate.TabIndex = 27;
+            dtpFromDate.ValueChanged += dtpFromDate_ValueChanged;
             // 
             // dtpToDate
             // 
@@ -354,6 +260,111 @@
             tabControl1.Size = new Size(1171, 629);
             tabControl1.TabIndex = 46;
             // 
+            // dgcLogId
+            // 
+            dgcLogId.DataPropertyName = "LogId";
+            dgcLogId.HeaderText = "LogId";
+            dgcLogId.MinimumWidth = 8;
+            dgcLogId.Name = "dgcLogId";
+            dgcLogId.ReadOnly = true;
+            dgcLogId.Visible = false;
+            dgcLogId.Width = 150;
+            // 
+            // dgcBMEmployeeId
+            // 
+            dgcBMEmployeeId.DataPropertyName = "BMEmployeeId";
+            dgcBMEmployeeId.HeaderText = "BMEmp.Id";
+            dgcBMEmployeeId.MinimumWidth = 8;
+            dgcBMEmployeeId.Name = "dgcBMEmployeeId";
+            dgcBMEmployeeId.ReadOnly = true;
+            dgcBMEmployeeId.Width = 150;
+            // 
+            // dgcEmployeeName
+            // 
+            dgcEmployeeName.DataPropertyName = "EmployeeName";
+            dgcEmployeeName.HeaderText = "EmployeeName";
+            dgcEmployeeName.MinimumWidth = 8;
+            dgcEmployeeName.Name = "dgcEmployeeName";
+            dgcEmployeeName.ReadOnly = true;
+            dgcEmployeeName.Width = 250;
+            // 
+            // dgcEmployeeId
+            // 
+            dgcEmployeeId.DataPropertyName = "EmployeeName";
+            dgcEmployeeId.HeaderText = "Emp.Id";
+            dgcEmployeeId.MinimumWidth = 8;
+            dgcEmployeeId.Name = "dgcEmployeeId";
+            dgcEmployeeId.ReadOnly = true;
+            dgcEmployeeId.Visible = false;
+            dgcEmployeeId.Width = 150;
+            // 
+            // dgcPunchTime
+            // 
+            dgcPunchTime.DataPropertyName = "PunchTime";
+            dgcPunchTime.HeaderText = "PunchTime";
+            dgcPunchTime.MinimumWidth = 8;
+            dgcPunchTime.Name = "dgcPunchTime";
+            dgcPunchTime.ReadOnly = true;
+            dgcPunchTime.Width = 300;
+            // 
+            // dgcDeviceId
+            // 
+            dgcDeviceId.DataPropertyName = "DeviceId";
+            dgcDeviceId.HeaderText = "DeviceId";
+            dgcDeviceId.MinimumWidth = 8;
+            dgcDeviceId.Name = "dgcDeviceId";
+            dgcDeviceId.ReadOnly = true;
+            dgcDeviceId.Visible = false;
+            dgcDeviceId.Width = 150;
+            // 
+            // dgcPunchTypeFlag
+            // 
+            dgcPunchTypeFlag.DataPropertyName = "PunchTypeFlag";
+            dgcPunchTypeFlag.HeaderText = "I/O Flag";
+            dgcPunchTypeFlag.MinimumWidth = 8;
+            dgcPunchTypeFlag.Name = "dgcPunchTypeFlag";
+            dgcPunchTypeFlag.ReadOnly = true;
+            dgcPunchTypeFlag.Width = 150;
+            // 
+            // dgcVerificationMode
+            // 
+            dgcVerificationMode.DataPropertyName = "VerificationMode";
+            dgcVerificationMode.HeaderText = "Mode";
+            dgcVerificationMode.MinimumWidth = 8;
+            dgcVerificationMode.Name = "dgcVerificationMode";
+            dgcVerificationMode.ReadOnly = true;
+            dgcVerificationMode.Visible = false;
+            dgcVerificationMode.Width = 150;
+            // 
+            // dgcStatusCode
+            // 
+            dgcStatusCode.DataPropertyName = "StatusCode";
+            dgcStatusCode.HeaderText = "Status ";
+            dgcStatusCode.MinimumWidth = 8;
+            dgcStatusCode.Name = "dgcStatusCode";
+            dgcStatusCode.ReadOnly = true;
+            dgcStatusCode.Visible = false;
+            dgcStatusCode.Width = 150;
+            // 
+            // dgcCreatedAt
+            // 
+            dgcCreatedAt.DataPropertyName = "CreatedAt";
+            dgcCreatedAt.HeaderText = "CreatedAt";
+            dgcCreatedAt.MinimumWidth = 8;
+            dgcCreatedAt.Name = "dgcCreatedAt";
+            dgcCreatedAt.ReadOnly = true;
+            dgcCreatedAt.Visible = false;
+            dgcCreatedAt.Width = 150;
+            // 
+            // dgcInOut
+            // 
+            dgcInOut.DataPropertyName = "InOut";
+            dgcInOut.HeaderText = "In/Out";
+            dgcInOut.MinimumWidth = 8;
+            dgcInOut.Name = "dgcInOut";
+            dgcInOut.ReadOnly = true;
+            dgcInOut.Width = 150;
+            // 
             // FormManageAttendance
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
@@ -421,5 +432,6 @@
         private DataGridViewTextBoxColumn dgcVerificationMode;
         private DataGridViewTextBoxColumn dgcStatusCode;
         private DataGridViewTextBoxColumn dgcCreatedAt;
+        private DataGridViewTextBoxColumn dgcInOut;
     }
 }

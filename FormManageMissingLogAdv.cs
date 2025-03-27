@@ -321,7 +321,42 @@ namespace EmpAttendanceSQLite
 
             if (MessageBox.Show("Do you want to apply IN/OUT flag for selected month?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Process completed! You can now proceed to calculate monthly salary.");
+                string batchCode = dataGridViewBiometricLogs.Rows[0].Cells[dgcBatchCode.Name].Value.ToString();
+                if (batchCode == null)
+                {
+                    MessageBox.Show("System Error!\n Contact Admin.");
+                    return;
+                }
+
+                using (var context = new AppDbContext())
+                {
+                    // Fetch Biometric Logs for the given BatchCode
+                    var biometricLogs = context.BiometricLogs
+                        .Where(bl => bl.BatchCode == batchCode)
+                        .OrderBy(bl => bl.BMEmployeeId)
+                        .ThenBy(bl => bl.PunchTime)
+                        .ToList();
+
+                    // Group by Employee and Date
+                    var groupedLogs = biometricLogs
+                        .GroupBy(bl => new { bl.BMEmployeeId, PunchDate = bl.PunchTime.Date });
+
+                    foreach (var group in groupedLogs)
+                    {
+                        bool isIn = true;  // Start with IN
+
+                        foreach (var log in group.OrderBy(l => l.PunchTime))  // Ensure correct order inside group
+                        {
+                            log.InOut = isIn ? "IN" : "OUT";
+                            log.PunchTypeFlag = isIn ? 1 : 0; // Assign IN=1, OUT=0
+                            isIn = !isIn; // Flip for next record
+                        }
+                    }
+
+                    // Save all updates in a single call
+                    context.SaveChanges();
+                }
+                MessageBox.Show("In/Out Process completed! \n You can now proceed to calculate monthly salary.");
             }
         }
 

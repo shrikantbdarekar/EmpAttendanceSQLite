@@ -74,7 +74,7 @@ namespace EmpAttendanceSQLite
                     var biometricLogData = (from bl in context.BiometricLogs
                                             join emp in context.Employees on bl.BMEmployeeId equals emp.BMEmployeeId
                                             where bl.PunchTime >= fromDate && bl.PunchTime <= toDate  // Apply date range filter
-                                            orderby bl.BMEmployeeId,bl.PunchTime  // Sorting first by PunchTime, then by BMEmployeeId
+                                            orderby bl.BMEmployeeId, bl.PunchTime  // Sorting first by PunchTime, then by BMEmployeeId
                                             select new
                                             {
                                                 bl.LogId,
@@ -88,7 +88,9 @@ namespace EmpAttendanceSQLite
                                                 bl.StatusCode,
                                                 bl.CreatedAt,
                                                 bl.RecordType,
-                                                bl.BatchCode
+                                                bl.BatchCode,
+                                                bl.InOut,
+                                                bl.ManualEntryRemark
                                             }).ToList();
 
                     dataGridViewMain.DataSource = biometricLogData;
@@ -213,6 +215,11 @@ namespace EmpAttendanceSQLite
                     }
                 }
             }
+        }
+
+        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Value = dtpFromDate.Value.AddMonths(1).AddDays(-1);
         }
     }
 }

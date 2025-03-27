@@ -37,14 +37,15 @@
             mnuEmployee = new ToolStripMenuItem();
             mnuAttendance = new ToolStripMenuItem();
             mnuImportAttendanceAdv = new ToolStripMenuItem();
-            mnuManageMissingLog = new ToolStripMenuItem();
             mnuMissingLogAdv = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             mnuManageAttendanceLog = new ToolStripMenuItem();
             mniImportAttendance = new ToolStripMenuItem();
+            mnuManageMissingLog = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
             mnuReport = new ToolStripMenuItem();
             mnuExit = new ToolStripMenuItem();
+            mnuManageAttendanceAdv = new ToolStripMenuItem();
             menuStripMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -108,7 +109,7 @@
             // 
             // mnuAttendance
             // 
-            mnuAttendance.DropDownItems.AddRange(new ToolStripItem[] { mnuImportAttendanceAdv, mnuMissingLogAdv, toolStripSeparator1, mnuManageAttendanceLog, mniImportAttendance, mnuManageMissingLog, toolStripSeparator2 });
+            mnuAttendance.DropDownItems.AddRange(new ToolStripItem[] { mnuImportAttendanceAdv, mnuMissingLogAdv, mnuManageAttendanceAdv, toolStripSeparator1, mnuManageAttendanceLog, mniImportAttendance, mnuManageMissingLog, toolStripSeparator2 });
             mnuAttendance.Name = "mnuAttendance";
             mnuAttendance.Size = new Size(139, 41);
             mnuAttendance.Text = "Attendance";
@@ -116,48 +117,48 @@
             // mnuImportAttendanceAdv
             // 
             mnuImportAttendanceAdv.Name = "mnuImportAttendanceAdv";
-            mnuImportAttendanceAdv.Size = new Size(342, 38);
+            mnuImportAttendanceAdv.Size = new Size(355, 38);
             mnuImportAttendanceAdv.Text = "Import Attendance Adv";
             mnuImportAttendanceAdv.Click += mnuImportAttendanceAdv_Click;
-            // 
-            // mnuManageMissingLog
-            // 
-            mnuManageMissingLog.Name = "mnuManageMissingLog";
-            mnuManageMissingLog.Size = new Size(342, 38);
-            mnuManageMissingLog.Text = "Manage Missing Log";
-            mnuManageMissingLog.Click += mnuManageMissingLog_Click;
             // 
             // mnuMissingLogAdv
             // 
             mnuMissingLogAdv.Name = "mnuMissingLogAdv";
-            mnuMissingLogAdv.Size = new Size(342, 38);
+            mnuMissingLogAdv.Size = new Size(355, 38);
             mnuMissingLogAdv.Text = "Missing Log Adv";
             mnuMissingLogAdv.Click += mnuMissingLogAdv_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(339, 6);
+            toolStripSeparator1.Size = new Size(352, 6);
             // 
             // mnuManageAttendanceLog
             // 
             mnuManageAttendanceLog.ForeColor = Color.Red;
             mnuManageAttendanceLog.Name = "mnuManageAttendanceLog";
-            mnuManageAttendanceLog.Size = new Size(342, 38);
+            mnuManageAttendanceLog.Size = new Size(355, 38);
             mnuManageAttendanceLog.Text = "Manage Attendance";
             mnuManageAttendanceLog.Click += mnuManageAttendanceLog_Click;
             // 
             // mniImportAttendance
             // 
             mniImportAttendance.Name = "mniImportAttendance";
-            mniImportAttendance.Size = new Size(342, 38);
+            mniImportAttendance.Size = new Size(355, 38);
             mniImportAttendance.Text = "Import Attendance";
             mniImportAttendance.Click += mniImportAttendance_Click;
+            // 
+            // mnuManageMissingLog
+            // 
+            mnuManageMissingLog.Name = "mnuManageMissingLog";
+            mnuManageMissingLog.Size = new Size(355, 38);
+            mnuManageMissingLog.Text = "Manage Missing Log";
+            mnuManageMissingLog.Click += mnuManageMissingLog_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(339, 6);
+            toolStripSeparator2.Size = new Size(352, 6);
             // 
             // mnuReport
             // 
@@ -171,6 +172,13 @@
             mnuExit.Size = new Size(62, 41);
             mnuExit.Text = "Exit";
             mnuExit.Click += mnuExit_Click;
+            // 
+            // mnuManageAttendanceAdv
+            // 
+            mnuManageAttendanceAdv.Name = "mnuManageAttendanceAdv";
+            mnuManageAttendanceAdv.Size = new Size(355, 38);
+            mnuManageAttendanceAdv.Text = "Manage Attendance Adv";
+            mnuManageAttendanceAdv.Click += mnuManageAttendanceAdv_Click;
             // 
             // FormMDI
             // 
@@ -207,5 +215,6 @@
         private ToolStripMenuItem mnuImportAttendanceAdv;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem mnuMissingLogAdv;
+        private ToolStripMenuItem mnuManageAttendanceAdv;
     }
 }

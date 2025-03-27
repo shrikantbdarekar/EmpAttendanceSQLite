@@ -42,12 +42,16 @@
             textBoxBMEmployeeCode = new TextBox();
             labelCompanyName = new Label();
             buttonSave = new Button();
+            textBoxRemark = new TextBox();
+            labelRemark = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(textBoxRemark);
+            panel1.Controls.Add(labelRemark);
             panel1.Controls.Add(textBoxPunchDate);
             panel1.Controls.Add(labelPunchDate1);
             panel1.Controls.Add(labelPunchDateToAdd);
@@ -63,7 +67,7 @@
             panel1.Controls.Add(buttonSave);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(663, 265);
+            panel1.Size = new Size(663, 295);
             panel1.TabIndex = 0;
             // 
             // textBoxPunchDate
@@ -154,7 +158,7 @@
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(308, 222);
+            buttonCancel.Location = new Point(308, 253);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(106, 38);
             buttonCancel.TabIndex = 11;
@@ -183,7 +187,7 @@
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(196, 222);
+            buttonSave.Location = new Point(196, 253);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(106, 38);
             buttonSave.TabIndex = 6;
@@ -191,12 +195,28 @@
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
+            // textBoxRemark
+            // 
+            textBoxRemark.Location = new Point(196, 204);
+            textBoxRemark.Name = "textBoxRemark";
+            textBoxRemark.Size = new Size(430, 31);
+            textBoxRemark.TabIndex = 63;
+            // 
+            // labelRemark
+            // 
+            labelRemark.AutoSize = true;
+            labelRemark.Location = new Point(36, 207);
+            labelRemark.Name = "labelRemark";
+            labelRemark.Size = new Size(71, 25);
+            labelRemark.TabIndex = 62;
+            labelRemark.Text = "Remark";
+            // 
             // FormAddManualLogAdv
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.LightSteelBlue;
-            ClientSize = new Size(687, 292);
+            ClientSize = new Size(687, 322);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -226,5 +246,7 @@
         private Label labelPunchDateToAdd;
         private TextBox textBoxPunchDate;
         private Label labelPunchDate1;
+        private TextBox textBoxRemark;
+        private Label labelRemark;
     }
 }

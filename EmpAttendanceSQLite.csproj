@@ -21,7 +21,7 @@
     <Compile Update="FormAddManualLogAdv.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormAddManualLog.cs">
+    <Compile Update="OldLogic\FormAddManualLog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormCompanyInfo.cs">
@@ -30,22 +30,25 @@
     <Compile Update="FormImportAttendanceLogAdv.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormImportAttendanceLogOldLogic.cs">
+    <Compile Update="OldLogic\FormImportAttendanceLogOldLogic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormManageAttendanceAdv.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormManageMissingLogAdv.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormManageMissingLog.cs">
+    <Compile Update="OldLogic\FormManageMissingLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormManageAttendance.cs">
+    <Compile Update="OldLogic\FormManageAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormImportView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormImportAttendanceLog.cs">
+    <Compile Update="OldLogic\FormImportAttendanceLog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormChangePassword.cs">

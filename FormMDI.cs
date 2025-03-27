@@ -100,5 +100,11 @@ namespace EmpAttendanceSQLite
             FormManageMissingLogAdv formManageMissingLogAdv = new FormManageMissingLogAdv();
             formManageMissingLogAdv.ShowDialog();
         }
+
+        private void mnuManageAttendanceAdv_Click(object sender, EventArgs e)
+        {
+            FormManageAttendanceAdv formManageLog = new FormManageAttendanceAdv();
+            formManageLog.ShowDialog();
+        }
     }
 }

@@ -75,7 +75,8 @@ namespace EmpAttendanceSQLite
                     BatchCode = existingBiometricLog.BatchCode,
                     StartDate=existingBiometricLog.StartDate,
                     EndDate=existingBiometricLog.EndDate,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    ManualEntryRemark=textBoxRemark.Text
                 };
 
                 context.BiometricLogs.Add(manualEntry);
