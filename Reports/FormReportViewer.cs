@@ -16,7 +16,10 @@ namespace EmpAttendanceSQLite.Reports
     public partial class FormReportViewer : Form
     {
         private readonly ReportViewer reportViewer;
-        public FormReportViewer()
+        private readonly ReportTypes reportType;
+        private readonly object? dataSource;
+
+        public FormReportViewer(ReportTypes reportType, Object? dataSource)
         {
             InitializeComponent();
 
@@ -31,18 +34,30 @@ namespace EmpAttendanceSQLite.Reports
             reportViewer.ShowStopButton = false;
             reportViewer.ShowParameterPrompts = false;
             reportViewer.ShowFindControls = false;
-            reportViewer.ShowZoomControl = false;
+            //reportViewer.ShowZoomControl = false;
 
             //reportViewer.di = DisplayMode.Normal;//DisplayMode.PrintLayout;
 
             this.Controls.Add(reportViewer);
             Application.DoEvents();
+            this.reportType = reportType;
+            this.dataSource = dataSource;
         }
 
         private void LoadReport()
         {
-            Report.Load(reportViewer.LocalReport);
-            reportViewer.RefreshReport();
+            if (reportType == ReportTypes.TestReport)
+            {
+                Report.LoadTestReport(reportViewer.LocalReport);
+                reportViewer.RefreshReport();
+            }
+            else if (reportType == ReportTypes.MonthlySalaryReport)
+            {
+                List<EmployeeAttendanceReportModel> myList=  (List<EmployeeAttendanceReportModel>)dataSource;
+
+                Report.LoadMonthlySalaryReport(reportViewer.LocalReport, myList);
+                reportViewer.RefreshReport();
+            }
 
             //using (var context = new AppDbContext())
             //{

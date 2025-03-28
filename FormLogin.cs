@@ -16,6 +16,13 @@ namespace EmpAttendanceSQLite
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            if (!Directory.Exists(EmpAttendanceSQLite.Properties.Settings.Default.AppDataPath))
+            {
+                FormSetting formSetting = new FormSetting();
+                formSetting.ShowDialog();
+
+                return;
+            }
             if (Program.companyInfo == null)
             {
                 MessageBox.Show("Invalid company data! \n Contact system admin.");

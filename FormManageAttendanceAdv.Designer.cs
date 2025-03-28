@@ -52,13 +52,13 @@
             labelTotal = new Label();
             tabPageOrderByEmpIdTime = new TabPage();
             tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
+            tabPageDailyHours = new TabPage();
             dataGridView1 = new DataGridView();
             buttonMonthlySalary = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).BeginInit();
             tabPageOrderByEmpIdTime.SuspendLayout();
             tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tabPageDailyHours.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -247,6 +247,7 @@
             // 
             // comboBoxEmployee
             // 
+            comboBoxEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEmployee.FormattingEnabled = true;
             comboBoxEmployee.Location = new Point(115, 53);
             comboBoxEmployee.Name = "comboBoxEmployee";
@@ -286,8 +287,8 @@
             // 
             // tabControl1
             // 
+            tabControl1.Controls.Add(tabPageDailyHours);
             tabControl1.Controls.Add(tabPageOrderByEmpIdTime);
-            tabControl1.Controls.Add(tabPage1);
             tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Location = new Point(0, 115);
             tabControl1.Name = "tabControl1";
@@ -295,15 +296,15 @@
             tabControl1.Size = new Size(1171, 629);
             tabControl1.TabIndex = 46;
             // 
-            // tabPage1
+            // tabPageDailyHours
             // 
-            tabPage1.Controls.Add(dataGridView1);
-            tabPage1.Location = new Point(4, 34);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(1163, 591);
-            tabPage1.TabIndex = 1;
-            tabPage1.Text = "tabPageDailyHours";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabPageDailyHours.Controls.Add(dataGridView1);
+            tabPageDailyHours.Location = new Point(4, 34);
+            tabPageDailyHours.Name = "tabPageDailyHours";
+            tabPageDailyHours.Size = new Size(1163, 591);
+            tabPageDailyHours.TabIndex = 1;
+            tabPageDailyHours.Text = "#Daily Hours     ";
+            tabPageDailyHours.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -351,7 +352,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).EndInit();
             tabPageOrderByEmpIdTime.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
+            tabPageDailyHours.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -385,7 +386,7 @@
         private DataGridViewTextBoxColumn dgcStatusCode;
         private DataGridViewTextBoxColumn dgcCreatedAt;
         private DataGridViewTextBoxColumn dgcInOut;
-        private TabPage tabPage1;
+        private TabPage tabPageDailyHours;
         private DataGridView dataGridView1;
         private Button buttonMonthlySalary;
     }

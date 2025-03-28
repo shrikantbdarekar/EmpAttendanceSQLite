@@ -20,7 +20,10 @@ namespace EmpAttendanceSQLite.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite("Data Source=EmpAttendanceDB.db");
+            //options.UseSqlite("Data Source=EmpAttendanceDB.db");
+
+            string DBFileName= Program.AppDataPath + "\\DB\\" + "EmpAttendanceDB.db";
+            options.UseSqlite("Data Source=" + DBFileName);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

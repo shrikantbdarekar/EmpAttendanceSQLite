@@ -109,7 +109,7 @@ namespace EmpAttendanceSQLite
 
         private void mnuReport_Click(object sender, EventArgs e)
         {
-            Reports.FormReportViewer rptViewer = new Reports.FormReportViewer();
+            Reports.FormReportViewer rptViewer = new Reports.FormReportViewer(ReportTypes.TestReport, null);
             rptViewer.ShowDialog();
         }
     }
