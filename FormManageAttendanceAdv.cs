@@ -177,5 +177,35 @@ namespace EmpAttendanceSQLite
         {
             dtpToDate.Value = dtpFromDate.Value.AddMonths(1).AddDays(-1);
         }
+
+        private void buttonMonthlySalary_Click(object sender, EventArgs e)
+        {
+            using (var context = new AppDbContext())
+            {
+                var attendanceData = context.BiometricLogs
+                    .Join(context.Employees,
+                        bl => bl.BMEmployeeId,
+                        emp => emp.BMEmployeeId,
+                        (bl, emp) => new { bl, emp })
+                    .GroupBy(x => new { x.emp.EmployeeId, x.emp.EmployeeName, PunchDate = x.bl.PunchTime.Date })
+                    .Select(g => new EmployeeAttendanceReportModel
+                    {
+                        EmployeeId = g.Key.EmployeeId,
+                        EmployeeName = g.Key.EmployeeName,
+                        PunchDate = g.Key.PunchDate,
+                        InTime = g.Where(x => x.bl.PunchTypeFlag == 1).Select(x => x.bl.PunchTime.TimeOfDay).FirstOrDefault(),
+                        OutTime = g.Where(x => x.bl.PunchTypeFlag == 0).Select(x => x.bl.PunchTime.TimeOfDay).FirstOrDefault(),
+                        TotalHours = Math.Round((decimal)
+                            (g.Where(x => x.bl.PunchTypeFlag == 0).Select(x => x.bl.PunchTime).FirstOrDefault() -
+                             g.Where(x => x.bl.PunchTypeFlag == 1).Select(x => x.bl.PunchTime).FirstOrDefault()).TotalHours, 2),
+                        HourlySalary = g.Select(x => x.emp.HourlySalary).FirstOrDefault()
+                    })
+                    .ToList();
+
+                // Calculate total salary for report footer
+                decimal totalSalary = attendanceData.Sum(x => x.TotalSalary);
+                //string totalSalaryInWords = ConvertToWords((int)totalSalary);
+            }
+        }
     }
 }

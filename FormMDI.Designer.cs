@@ -38,6 +38,7 @@
             mnuAttendance = new ToolStripMenuItem();
             mnuImportAttendanceAdv = new ToolStripMenuItem();
             mnuMissingLogAdv = new ToolStripMenuItem();
+            mnuManageAttendanceAdv = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             mnuManageAttendanceLog = new ToolStripMenuItem();
             mniImportAttendance = new ToolStripMenuItem();
@@ -45,7 +46,6 @@
             toolStripSeparator2 = new ToolStripSeparator();
             mnuReport = new ToolStripMenuItem();
             mnuExit = new ToolStripMenuItem();
-            mnuManageAttendanceAdv = new ToolStripMenuItem();
             menuStripMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -128,6 +128,13 @@
             mnuMissingLogAdv.Text = "Missing Log Adv";
             mnuMissingLogAdv.Click += mnuMissingLogAdv_Click;
             // 
+            // mnuManageAttendanceAdv
+            // 
+            mnuManageAttendanceAdv.Name = "mnuManageAttendanceAdv";
+            mnuManageAttendanceAdv.Size = new Size(355, 38);
+            mnuManageAttendanceAdv.Text = "Manage Attendance Adv";
+            mnuManageAttendanceAdv.Click += mnuManageAttendanceAdv_Click;
+            // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
@@ -165,6 +172,7 @@
             mnuReport.Name = "mnuReport";
             mnuReport.Size = new Size(94, 41);
             mnuReport.Text = "Report";
+            mnuReport.Click += mnuReport_Click;
             // 
             // mnuExit
             // 
@@ -172,13 +180,6 @@
             mnuExit.Size = new Size(62, 41);
             mnuExit.Text = "Exit";
             mnuExit.Click += mnuExit_Click;
-            // 
-            // mnuManageAttendanceAdv
-            // 
-            mnuManageAttendanceAdv.Name = "mnuManageAttendanceAdv";
-            mnuManageAttendanceAdv.Size = new Size(355, 38);
-            mnuManageAttendanceAdv.Text = "Manage Attendance Adv";
-            mnuManageAttendanceAdv.Click += mnuManageAttendanceAdv_Click;
             // 
             // FormMDI
             // 

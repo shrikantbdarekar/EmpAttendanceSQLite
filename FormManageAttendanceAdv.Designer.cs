@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             labelDate = new Label();
             dataGridViewMain = new DataGridView();
             dgcLogId = new DataGridViewTextBoxColumn();
@@ -54,6 +54,7 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             dataGridView1 = new DataGridView();
+            buttonMonthlySalary = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain).BeginInit();
             tabPageOrderByEmpIdTime.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -77,14 +78,14 @@
             dataGridViewMain.AllowUserToDeleteRows = false;
             dataGridViewMain.BackgroundColor = Color.Gainsboro;
             dataGridViewMain.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewMain.ColumnHeadersHeight = 40;
             dataGridViewMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewMain.Columns.AddRange(new DataGridViewColumn[] { dgcLogId, dgcBMEmployeeId, dgcEmployeeName, dgcEmployeeId, dgcPunchTime, dgcDeviceId, dgcPunchTypeFlag, dgcVerificationMode, dgcStatusCode, dgcCreatedAt, dgcInOut });
@@ -315,12 +316,23 @@
             dataGridView1.Size = new Size(1163, 591);
             dataGridView1.TabIndex = 0;
             // 
+            // buttonMonthlySalary
+            // 
+            buttonMonthlySalary.Location = new Point(637, 12);
+            buttonMonthlySalary.Name = "buttonMonthlySalary";
+            buttonMonthlySalary.Size = new Size(188, 38);
+            buttonMonthlySalary.TabIndex = 47;
+            buttonMonthlySalary.Text = "Monthly Salary";
+            buttonMonthlySalary.UseVisualStyleBackColor = true;
+            buttonMonthlySalary.Click += buttonMonthlySalary_Click;
+            // 
             // FormManageAttendanceAdv
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1171, 744);
+            Controls.Add(buttonMonthlySalary);
             Controls.Add(tabControl1);
             Controls.Add(labelTotal);
             Controls.Add(label2);
@@ -375,5 +387,6 @@
         private DataGridViewTextBoxColumn dgcInOut;
         private TabPage tabPage1;
         private DataGridView dataGridView1;
+        private Button buttonMonthlySalary;
     }
 }

@@ -1,4 +1,21 @@
-﻿######################################################################################################
+﻿public class EmployeeAttendanceReportModel
+{
+    public int EmployeeId { get; set; }
+    public string EmployeeName { get; set; }
+    public DateTime PunchDate { get; set; }
+    public TimeSpan? InTime { get; set; }
+    public TimeSpan? OutTime { get; set; }
+    public decimal TotalHours { get; set; }
+    public decimal HourlySalary { get; set; }
+    public decimal TotalSalary => TotalHours * HourlySalary;
+}
+
+
+###################################################################################################################
+
+https://stackoverflow.com/questions/72408600/how-to-add-report-viewer-tools-in-visual-studio-2022-c-sharp-windows-form-applic
+
+######################################################################################################
 
 General development procedure depending on previous discussion
 

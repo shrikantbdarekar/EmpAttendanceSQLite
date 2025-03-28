@@ -106,5 +106,11 @@ namespace EmpAttendanceSQLite
             FormManageAttendanceAdv formManageLog = new FormManageAttendanceAdv();
             formManageLog.ShowDialog();
         }
+
+        private void mnuReport_Click(object sender, EventArgs e)
+        {
+            Reports.FormReportViewer rptViewer = new Reports.FormReportViewer();
+            rptViewer.ShowDialog();
+        }
     }
 }
